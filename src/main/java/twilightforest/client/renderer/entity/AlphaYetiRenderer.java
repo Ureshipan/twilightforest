@@ -2,7 +2,7 @@ package twilightforest.client.renderer.entity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import twilightforest.TwilightForestMod;
 import twilightforest.client.model.TFModelLayers;
 import twilightforest.client.model.entity.AlphaYetiModel;
@@ -11,7 +11,7 @@ import twilightforest.entity.boss.AlphaYeti;
 
 public class AlphaYetiRenderer extends HumanoidMobRenderer<AlphaYeti, AlphaYetiRenderState, AlphaYetiModel> {
 
-	public static final ResourceLocation TEXTURE = TwilightForestMod.getModelTexture("yetialpha.png");
+	public static final Identifier TEXTURE = TwilightForestMod.getModelTexture("yetialpha.png");
 
 	public AlphaYetiRenderer(EntityRendererProvider.Context context) {
 		super(context, new AlphaYetiModel(context.bakeLayer(TFModelLayers.ALPHA_YETI)), 1.75F);
@@ -31,7 +31,7 @@ public class AlphaYetiRenderer extends HumanoidMobRenderer<AlphaYeti, AlphaYetiR
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(AlphaYetiRenderState state) {
+	public Identifier getTextureLocation(AlphaYetiRenderState state) {
 		return TEXTURE;
 	}
 }

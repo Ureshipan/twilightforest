@@ -1,10 +1,10 @@
 package twilightforest.util.landmarks;
 
 import com.google.common.collect.ImmutableMap;
-import net.minecraft.Util;
+import net.minecraft.util.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.random.SimpleWeightedRandomList;
+import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.LegacyRandomSource;
@@ -32,8 +32,8 @@ public class LegacyLandmarkPlacements {
 		.put(TFBiomes.FINAL_PLATEAU, TFStructures.FINAL_CASTLE)
 		.build();
 
-	public static final SimpleWeightedRandomList<ResourceKey<Structure>> VARIETY_LANDMARKS = Util.make(() -> {
-		SimpleWeightedRandomList.Builder<ResourceKey<Structure>> varietyLandmarks = new SimpleWeightedRandomList.Builder<>();
+	public static final WeightedList<ResourceKey<Structure>> VARIETY_LANDMARKS = Util.make(() -> {
+		WeightedList.Builder<ResourceKey<Structure>> varietyLandmarks = new WeightedList.Builder<>();
 
 		varietyLandmarks.add(TFStructures.HOLLOW_HILL_SMALL, 6);
 		varietyLandmarks.add(TFStructures.HOLLOW_HILL_MEDIUM, 3);

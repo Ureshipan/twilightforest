@@ -4,7 +4,7 @@ import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.block.model.TextureSlots;
 import net.minecraft.client.resources.model.*;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.context.ContextMap;
 import net.neoforged.neoforge.client.model.AbstractUnbakedModel;
 import net.neoforged.neoforge.client.model.StandardModelParameters;
@@ -35,7 +35,7 @@ public class UnbakedNoiseVaryingModel extends AbstractUnbakedModel {
 
 	@NotNull
 	private static BlockModel resolveParent(UnbakedModel.Resolver modelGetter, String variant) {
-		if (modelGetter.resolve(ResourceLocation.parse(variant)) instanceof BlockModel blockModel) {
+		if (modelGetter.resolve(Identifier.parse(variant)) instanceof BlockModel blockModel) {
 			blockModel.resolveDependencies(modelGetter);
 			return blockModel;
 		}

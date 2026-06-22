@@ -9,8 +9,8 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.util.random.SimpleWeightedRandomList;
-import net.minecraft.util.random.WeightedEntry;
+import net.minecraft.util.random.WeightedList;
+import net.minecraft.util.random.Weighted;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.item.ItemStack;
@@ -47,7 +47,7 @@ public abstract class BookshelfSpawner implements IOwnedSpawner {
 	public int spawnRange = 4;
 	public int spawnCheckRange = 12;
 	private int spawnDelay = 20;
-	private SimpleWeightedRandomList<SpawnData> spawnPotentials = SimpleWeightedRandomList.empty();
+	private WeightedList<SpawnData> spawnPotentials = WeightedList.empty();
 	@Nullable
 	private SpawnData nextSpawnData;
 	private int minSpawnDelay = 200;
@@ -131,9 +131,9 @@ public abstract class BookshelfSpawner implements IOwnedSpawner {
 			this.spawnPotentials = SpawnData.LIST_CODEC
 				.parse(NbtOps.INSTANCE, listtag)
 				.resultOrPartial(p_186388_ -> TwilightForestMod.LOGGER.warn("Death Tome Spawner: Invalid SpawnPotentials list: {}", p_186388_))
-				.orElseGet(SimpleWeightedRandomList::empty);
+				.orElseGet(WeightedList::empty);
 		} else {
-			this.spawnPotentials = SimpleWeightedRandomList.single(this.nextSpawnData != null ? this.nextSpawnData : new SpawnData());
+			this.spawnPotentials = WeightedList.single(this.nextSpawnData != null ? this.nextSpawnData : new SpawnData());
 		}
 
 		if (tag.contains("MinSpawnDelay", 99)) {
@@ -199,7 +199,7 @@ public abstract class BookshelfSpawner implements IOwnedSpawner {
 
 	private SpawnData getOrCreateNextSpawnData(@Nullable Level level, RandomSource pRandom, BlockPos pos) {
 		if (this.nextSpawnData == null) {
-			this.setNextSpawnData(level, pos, this.spawnPotentials.getRandom(pRandom).map(WeightedEntry.Wrapper::data).orElseGet(SpawnData::new));
+			this.setNextSpawnData(level, pos, this.spawnPotentials.getRandom(pRandom).map(Weighted::data).orElseGet(SpawnData::new));
 		}
 		return this.nextSpawnData;
 	}

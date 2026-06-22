@@ -25,7 +25,7 @@ import net.minecraft.sounds.Music;
 import net.minecraft.sounds.Musics;
 import net.minecraft.util.Mth;
 import net.minecraft.util.context.ContextKey;
-import net.minecraft.util.random.SimpleWeightedRandomList;
+import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
@@ -137,7 +137,7 @@ public class ClientEvents {
 	private static void setMusicInDimension(SelectMusicEvent event) {
 		MusicInfo music = event.getOriginalMusic();
 		if (Minecraft.getInstance().level != null && Minecraft.getInstance().player != null && (music.music() == Musics.CREATIVE || music.music() == Musics.UNDER_WATER) && TFDimension.isTwilightWorldOnClient(Minecraft.getInstance().level)) {
-			Optional<SimpleWeightedRandomList<Music>> optional = Minecraft.getInstance().level.getBiomeManager().getNoiseBiomeAtPosition(Minecraft.getInstance().player.blockPosition()).value().getBackgroundMusic();
+			Optional<WeightedList<Music>> optional = Minecraft.getInstance().level.getBiomeManager().getNoiseBiomeAtPosition(Minecraft.getInstance().player.blockPosition()).value().getBackgroundMusic();
 
 			if (optional.isPresent()) {
 				Optional<Music> optional1 = optional.get().getRandomValue(Minecraft.getInstance().level.getRandom());

@@ -2,7 +2,7 @@ package twilightforest.client.state;
 
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.phys.Vec3;
 import twilightforest.entity.MagicPaintingVariant;
 
@@ -14,6 +14,6 @@ public class MagicPaintingRenderState extends EntityRenderState {
 	public float yRot;
 	@Nullable
 	public MagicPaintingVariant variant;
-	public ResourceLocation texture;
+	public Identifier texture;
 	public int[] lightCoords = new int[0];
 }

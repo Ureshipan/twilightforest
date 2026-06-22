@@ -11,7 +11,7 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import mezz.jei.api.recipe.types.IRecipeType;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import twilightforest.TwilightForestMod;
@@ -32,7 +32,7 @@ public class CrumbleHornCategory implements IRecipeCategory<CrumbleRecipe> {
 	private final FakeItemEntityRenderer itemRenderer = new FakeItemEntityRenderer(32);
 
 	public CrumbleHornCategory(IGuiHelper helper) {
-		ResourceLocation location = TwilightForestMod.getGuiTexture("crumble_horn_jei.png");
+		Identifier location = TwilightForestMod.getGuiTexture("crumble_horn_jei.png");
 		this.background = helper.createDrawable(location, 0, 0, RecipeViewerConstants.GENERIC_RECIPE_WIDTH, RecipeViewerConstants.GENERIC_RECIPE_HEIGHT);
 		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, TFItems.CRUMBLE_HORN.get().getDefaultInstance());
 		this.crumbleSlot = helper.createDrawable(location, 116, 0, 26, 26);

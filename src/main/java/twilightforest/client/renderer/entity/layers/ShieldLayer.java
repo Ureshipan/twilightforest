@@ -13,7 +13,7 @@ import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.minecraft.util.context.ContextKey;
 import net.minecraft.world.entity.LivingEntity;
@@ -26,7 +26,7 @@ import twilightforest.init.TFDataAttachments;
 
 public class ShieldLayer<S extends LivingEntityRenderState, M extends EntityModel<S>> extends RenderLayer<S, M> {
 
-	public static final ResourceLocation LOC = TwilightForestMod.prefix("item/shield");
+	public static final Identifier LOC = TwilightForestMod.prefix("item/shield");
 	private static final Direction[] DIRS = ArrayUtils.add(Direction.values(), null);
 
 	public static ContextKey<Integer> SHIELD_COUNT_KEY = new ContextKey<>(TwilightForestMod.prefix("shield_count"));

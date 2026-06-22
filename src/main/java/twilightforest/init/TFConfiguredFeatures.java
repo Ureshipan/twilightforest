@@ -12,7 +12,7 @@ import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.Music;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.random.SimpleWeightedRandomList;
+import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
@@ -339,7 +339,7 @@ public final class TFConfiguredFeatures {
 		context.register(CANOPY_RED_SPHEROID_MUSHROOM, new ConfiguredFeature<>(TFFeatures.CANOPY_RED_SPHEROID_MUSHROOM.get(), redCanopyMushroom));
 		context.register(CANOPY_RED_FLAT_MUSHROOM, new ConfiguredFeature<>(TFFeatures.CANOPY_RED_FLAT_MUSHROOM.get(), redCanopyMushroom));
 
-		context.register(RED_CANOPY_MUSHROOM_TREE, new ConfiguredFeature<>(TFFeatures.WEIGHTED_LIST_SELECTOR.value(), new WeightedListFeatureConfig(SimpleWeightedRandomList.<Holder<PlacedFeature>>builder()
+		context.register(RED_CANOPY_MUSHROOM_TREE, new ConfiguredFeature<>(TFFeatures.WEIGHTED_LIST_SELECTOR.value(), new WeightedListFeatureConfig(WeightedList.<Holder<PlacedFeature>>builder()
 			.add(PlacementUtils.inlinePlaced(features.getOrThrow(CANOPY_RED_VANILLA_MUSHROOM)), 33)
 			.add(PlacementUtils.inlinePlaced(features.getOrThrow(CANOPY_RED_SMOOTH_MUSHROOM)), 33)
 			.add(PlacementUtils.inlinePlaced(features.getOrThrow(CANOPY_RED_SPHEROID_MUSHROOM)), 33)

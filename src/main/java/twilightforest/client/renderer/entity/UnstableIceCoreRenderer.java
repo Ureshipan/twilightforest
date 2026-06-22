@@ -5,7 +5,7 @@ import com.mojang.math.Axis;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import twilightforest.TwilightForestMod;
 import twilightforest.client.model.TFModelLayers;
@@ -14,7 +14,7 @@ import twilightforest.entity.monster.UnstableIceCore;
 
 public class UnstableIceCoreRenderer extends MobRenderer<UnstableIceCore, LivingEntityRenderState, UnstableIceCoreModel> {
 
-	public static final ResourceLocation TEXTURE = TwilightForestMod.getModelTexture("iceexploder.png");
+	public static final Identifier TEXTURE = TwilightForestMod.getModelTexture("iceexploder.png");
 
 	public UnstableIceCoreRenderer(EntityRendererProvider.Context context) {
 		super(context, new UnstableIceCoreModel(context.bakeLayer(TFModelLayers.UNSTABLE_ICE_CORE)), 0.4F);
@@ -81,7 +81,7 @@ public class UnstableIceCoreRenderer extends MobRenderer<UnstableIceCore, Living
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(LivingEntityRenderState state) {
+	public Identifier getTextureLocation(LivingEntityRenderState state) {
 		return TEXTURE;
 	}
 }

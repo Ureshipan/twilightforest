@@ -1,4 +1,5 @@
 package twilightforest.block.entity;
+import net.minecraft.core.component.DataComponentGetter;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -104,7 +105,7 @@ public class MasonJarBlockEntity extends JarBlockEntity {
 	}
 
 	@Override
-	protected void applyImplicitComponents(BlockEntity.DataComponentInput input) {
+	protected void applyImplicitComponents(DataComponentGetter input) {
 		super.applyImplicitComponents(input);
 		this.item.setItem(input.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY).copyOne());
 	}

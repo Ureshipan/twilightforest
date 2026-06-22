@@ -5,7 +5,7 @@ import com.mojang.math.Axis;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.state.IronGolemRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import twilightforest.TwilightForestMod;
 import twilightforest.client.model.TFModelLayers;
 import twilightforest.client.model.entity.CarminiteGolemModel;
@@ -13,7 +13,7 @@ import twilightforest.entity.monster.CarminiteGolem;
 
 public class CarminiteGolemRenderer extends MobRenderer<CarminiteGolem, IronGolemRenderState, CarminiteGolemModel> {
 
-	private static final ResourceLocation TEXTURE = TwilightForestMod.getModelTexture("carminitegolem.png");
+	private static final Identifier TEXTURE = TwilightForestMod.getModelTexture("carminitegolem.png");
 
 	public CarminiteGolemRenderer(EntityRendererProvider.Context context) {
 		super(context, new CarminiteGolemModel(context.bakeLayer(TFModelLayers.CARMINITE_GOLEM)), 0.75F);
@@ -44,7 +44,7 @@ public class CarminiteGolemRenderer extends MobRenderer<CarminiteGolem, IronGole
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(IronGolemRenderState state) {
+	public Identifier getTextureLocation(IronGolemRenderState state) {
 		return TEXTURE;
 	}
 }

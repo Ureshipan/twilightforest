@@ -2,7 +2,7 @@ package twilightforest.client.renderer.entity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import twilightforest.TwilightForestMod;
 import twilightforest.client.model.TFModelLayers;
 import twilightforest.client.model.entity.PinchBeetleModel;
@@ -11,7 +11,7 @@ import twilightforest.entity.monster.PinchBeetle;
 
 public class PinchBeetleRenderer extends MobRenderer<PinchBeetle, PinchBeetleRenderState, PinchBeetleModel> {
 
-	private static final ResourceLocation TEXTURE = TwilightForestMod.getModelTexture("pinchbeetle.png");
+	private static final Identifier TEXTURE = TwilightForestMod.getModelTexture("pinchbeetle.png");
 
 	public PinchBeetleRenderer(EntityRendererProvider.Context context) {
 		super(context, new PinchBeetleModel(context.bakeLayer(TFModelLayers.PINCH_BEETLE)), 0.6F);
@@ -29,7 +29,7 @@ public class PinchBeetleRenderer extends MobRenderer<PinchBeetle, PinchBeetleRen
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(PinchBeetleRenderState state) {
+	public Identifier getTextureLocation(PinchBeetleRenderState state) {
 		return TEXTURE;
 	}
 }

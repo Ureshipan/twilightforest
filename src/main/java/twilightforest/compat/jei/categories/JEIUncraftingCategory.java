@@ -14,7 +14,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingRecipe;
@@ -42,7 +42,7 @@ public class JEIUncraftingCategory implements IRecipeCategory<CraftingRecipe> {
 	private final Component localizedName;
 
 	public JEIUncraftingCategory(IGuiHelper guiHelper) {
-		ResourceLocation location = TwilightForestMod.getGuiTexture("uncrafting_jei.png");
+		Identifier location = TwilightForestMod.getGuiTexture("uncrafting_jei.png");
 		this.background = guiHelper.createDrawable(location, 0, 0, RecipeViewerConstants.GENERIC_RECIPE_WIDTH, RecipeViewerConstants.GENERIC_RECIPE_HEIGHT);
 		this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(TFBlocks.UNCRAFTING_TABLE.get()));
 		this.localizedName = Component.translatable("gui.twilightforest.uncrafting_jei");

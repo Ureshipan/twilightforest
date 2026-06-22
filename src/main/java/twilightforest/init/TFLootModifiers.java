@@ -2,8 +2,8 @@ package twilightforest.init;
 
 import com.mojang.serialization.MapCodec;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredRegister;
+import twilightforest.compat.registry.DeferredHolder;
+import twilightforest.compat.registry.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import twilightforest.TwilightForestMod;
 import twilightforest.loot.modifiers.FieryToolSmeltingModifier;

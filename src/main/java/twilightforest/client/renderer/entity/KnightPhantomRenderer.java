@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
 import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import twilightforest.TwilightForestMod;
 import twilightforest.client.model.TFModelLayers;
 import twilightforest.client.model.entity.KnightPhantomModel;
@@ -16,7 +16,7 @@ import twilightforest.entity.boss.KnightPhantom;
 
 public class KnightPhantomRenderer extends HumanoidMobRenderer<KnightPhantom, KnightPhantomRenderState, KnightPhantomModel> {
 
-	public static final ResourceLocation TEXTURE = TwilightForestMod.getModelTexture("phantomskeleton.png");
+	public static final Identifier TEXTURE = TwilightForestMod.getModelTexture("phantomskeleton.png");
 
 	public KnightPhantomRenderer(EntityRendererProvider.Context context) {
 		super(context, new KnightPhantomModel(context.bakeLayer(TFModelLayers.KNIGHT_PHANTOM)), 0.625F);
@@ -47,7 +47,7 @@ public class KnightPhantomRenderer extends HumanoidMobRenderer<KnightPhantom, Kn
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(KnightPhantomRenderState state) {
+	public Identifier getTextureLocation(KnightPhantomRenderState state) {
 		return TEXTURE;
 	}
 

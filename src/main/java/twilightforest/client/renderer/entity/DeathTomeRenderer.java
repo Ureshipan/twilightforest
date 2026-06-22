@@ -2,7 +2,7 @@ package twilightforest.client.renderer.entity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import twilightforest.client.model.TFModelLayers;
 import twilightforest.client.model.entity.DeathTomeModel;
@@ -11,7 +11,7 @@ import twilightforest.entity.monster.DeathTome;
 
 public class DeathTomeRenderer extends MobRenderer<DeathTome, DeathTomeRenderState, DeathTomeModel> {
 
-	private static final ResourceLocation TEXTURE = ResourceLocation.withDefaultNamespace("textures/entity/enchanting_table_book.png");
+	private static final Identifier TEXTURE = Identifier.withDefaultNamespace("textures/entity/enchanting_table_book.png");
 
 	public DeathTomeRenderer(EntityRendererProvider.Context context) {
 		super(context, new DeathTomeModel(context.bakeLayer(TFModelLayers.DEATH_TOME)), 0.3F);
@@ -30,7 +30,7 @@ public class DeathTomeRenderer extends MobRenderer<DeathTome, DeathTomeRenderSta
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(DeathTomeRenderState state) {
+	public Identifier getTextureLocation(DeathTomeRenderState state) {
 		return TEXTURE;
 	}
 }

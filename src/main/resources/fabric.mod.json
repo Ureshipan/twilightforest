@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "id": "twilightforest",
+  "version": "${version}",
+  "name": "The Twilight Forest",
+  "description": "An enchanted forest dimension.",
+  "authors": [
+    "Benimatic",
+    "AtomicBlom",
+    "Drullkus",
+    "Killer_Demon",
+    "quadraxis",
+    "Tamaized",
+    "williewillus",
+    "Andromander",
+    "GizmoTheMoonPig",
+    "jodlodi"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/the-twilight-forest",
+    "issues": "https://github.com/TeamTwilight/twilightforest/issues",
+    "sources": "https://github.com/TeamTwilight/twilightforest"
+  },
+  "license": "LGPL-2.1-only",
+  "icon": "twilightforest_logo.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "twilightforest.TwilightForestMod"
+    ],
+    "client": [
+      "twilightforest.client.TwilightForestClient"
+    ],
+    "fabric-datagen": [
+      "twilightforest.datagen.TFDatagenEntrypoint"
+    ]
+  },
+  "mixins": [
+    "twilightforest.mixins.json"
+  ],
+  "accessWidener": "twilightforest.accesswidener",
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "~${minecraft_version}"
+  },
+  "suggests": {
+    "cloth-config2": "*",
+    "modmenu": "*",
+    "jei": "*"
+  },
+  "custom": {
+    "modmenu": {
+      "config_factory": "twilightforest.client.config.TFModMenuIntegration"
+    }
+  }
+}

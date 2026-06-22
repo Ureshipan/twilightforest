@@ -4,7 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import twilightforest.TwilightForestMod;
 import twilightforest.client.model.TFModelLayers;
@@ -13,7 +13,7 @@ import twilightforest.entity.monster.Adherent;
 
 public class AdherentRenderer extends HumanoidMobRenderer<Adherent, HumanoidRenderState, AdherentModel> {
 
-	public static final ResourceLocation TEXTURE = TwilightForestMod.getModelTexture("adherent.png");
+	public static final Identifier TEXTURE = TwilightForestMod.getModelTexture("adherent.png");
 
 	public AdherentRenderer(EntityRendererProvider.Context context) {
 		super(context, new AdherentModel(context.bakeLayer(TFModelLayers.ADHERENT)), 0.625F);
@@ -30,7 +30,7 @@ public class AdherentRenderer extends HumanoidMobRenderer<Adherent, HumanoidRend
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(HumanoidRenderState state) {
+	public Identifier getTextureLocation(HumanoidRenderState state) {
 		return TEXTURE;
 	}
 }

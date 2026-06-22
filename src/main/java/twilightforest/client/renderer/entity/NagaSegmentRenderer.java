@@ -4,14 +4,14 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import twilightforest.TwilightForestMod;
 import twilightforest.client.model.entity.NagaModel;
 import twilightforest.client.state.NagaSegmentRenderState;
 import twilightforest.entity.boss.NagaSegment;
 
 public class NagaSegmentRenderer extends TFPartRenderer<NagaSegment, NagaSegmentRenderState, NagaModel<NagaSegmentRenderState>> {
-	private static final ResourceLocation TEXTURE = TwilightForestMod.getModelTexture("nagasegment.png");
+	private static final Identifier TEXTURE = TwilightForestMod.getModelTexture("nagasegment.png");
 
 	public NagaSegmentRenderer(EntityRendererProvider.Context context, NagaModel<NagaSegmentRenderState> model) {
 		super(context, model);
@@ -53,7 +53,7 @@ public class NagaSegmentRenderer extends TFPartRenderer<NagaSegment, NagaSegment
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(NagaSegmentRenderState state) {
+	public Identifier getTextureLocation(NagaSegmentRenderState state) {
 		return TEXTURE;
 	}
 }

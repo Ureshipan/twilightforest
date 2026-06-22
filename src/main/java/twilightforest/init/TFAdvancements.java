@@ -2,8 +2,8 @@ package twilightforest.init;
 
 import net.minecraft.advancements.CriterionTrigger;
 import net.minecraft.core.registries.Registries;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredRegister;
+import twilightforest.compat.registry.DeferredHolder;
+import twilightforest.compat.registry.DeferredRegister;
 import twilightforest.TwilightForestMod;
 import twilightforest.advancements.*;
 

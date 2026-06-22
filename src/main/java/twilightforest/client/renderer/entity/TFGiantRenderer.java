@@ -20,7 +20,7 @@ import net.minecraft.client.renderer.item.ItemStackRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.DefaultPlayerSkin;
 import net.minecraft.client.resources.PlayerSkin;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.player.PlayerModelPart;
 import twilightforest.client.model.entity.GiantModel;
@@ -43,9 +43,9 @@ public class TFGiantRenderer<T extends GiantMiner> extends HumanoidMobRenderer<T
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(GiantRenderState state) {
+	public Identifier getTextureLocation(GiantRenderState state) {
 		Minecraft mc = Minecraft.getInstance();
-		ResourceLocation texture = DefaultPlayerSkin.getDefaultTexture();
+		Identifier texture = DefaultPlayerSkin.getDefaultTexture();
 		this.model = this.normalModel;
 
 		GameProfile profile = TFConfig.GAME_PROFILES.isEmpty() ? null : TFConfig.GAME_PROFILES.get(Math.abs((int) state.uuid.getMostSignificantBits()) % TFConfig.GAME_PROFILES.size());

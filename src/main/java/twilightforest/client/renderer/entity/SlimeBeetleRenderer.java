@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import twilightforest.TwilightForestMod;
 import twilightforest.client.model.TFModelLayers;
 import twilightforest.client.model.entity.SlimeBeetleModel;
@@ -18,7 +18,7 @@ import twilightforest.entity.monster.SlimeBeetle;
 
 public class SlimeBeetleRenderer extends MobRenderer<SlimeBeetle, LivingEntityRenderState, SlimeBeetleModel> {
 
-	private static final ResourceLocation TEXTURE = TwilightForestMod.getModelTexture("slimebeetle.png");
+	private static final Identifier TEXTURE = TwilightForestMod.getModelTexture("slimebeetle.png");
 
 	public SlimeBeetleRenderer(EntityRendererProvider.Context context) {
 		super(context, new SlimeBeetleModel(context.bakeLayer(TFModelLayers.SLIME_BEETLE)), 0.6F);
@@ -31,7 +31,7 @@ public class SlimeBeetleRenderer extends MobRenderer<SlimeBeetle, LivingEntityRe
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(LivingEntityRenderState state) {
+	public Identifier getTextureLocation(LivingEntityRenderState state) {
 		return TEXTURE;
 	}
 

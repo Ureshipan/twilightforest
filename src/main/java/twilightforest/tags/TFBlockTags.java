@@ -1,6 +1,6 @@
 package twilightforest.tags;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
@@ -110,6 +110,6 @@ public class TFBlockTags {
 	}
 
 	private static TagKey<Block> create(String modid, String tagName) {
-		return BlockTags.create(ResourceLocation.fromNamespaceAndPath(modid, tagName));
+		return BlockTags.create(Identifier.fromNamespaceAndPath(modid, tagName));
 	}
 }

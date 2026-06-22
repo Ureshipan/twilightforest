@@ -5,14 +5,14 @@ import net.minecraft.client.model.ZombieModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
 import net.minecraft.client.renderer.entity.state.ZombieRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
 import twilightforest.client.model.TFModelLayers;
 import twilightforest.entity.monster.LoyalZombie;
 
 public class LoyalZombieRenderer extends HumanoidMobRenderer<LoyalZombie, ZombieRenderState, AbstractZombieModel<ZombieRenderState>> {
 
-	private static final ResourceLocation TEXTURE = ResourceLocation.withDefaultNamespace("textures/entity/zombie/zombie.png");
+	private static final Identifier TEXTURE = Identifier.withDefaultNamespace("textures/entity/zombie/zombie.png");
 
 	public LoyalZombieRenderer(EntityRendererProvider.Context context) {
 		super(context, new ZombieModel<>(context.bakeLayer(TFModelLayers.LOYAL_ZOMBIE)), 0.5F);
@@ -35,7 +35,7 @@ public class LoyalZombieRenderer extends HumanoidMobRenderer<LoyalZombie, Zombie
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(ZombieRenderState state) {
+	public Identifier getTextureLocation(ZombieRenderState state) {
 		return TEXTURE;
 	}
 }

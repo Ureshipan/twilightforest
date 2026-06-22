@@ -2,7 +2,7 @@ package twilightforest.client.renderer.entity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import twilightforest.TwilightForestMod;
 import twilightforest.client.model.TFModelLayers;
 import twilightforest.client.model.entity.LowerGoblinKnightModel;
@@ -12,7 +12,7 @@ import twilightforest.entity.monster.UpperGoblinKnight;
 
 public class LowerGoblinKnightRenderer extends MobRenderer<LowerGoblinKnight, LowerGoblinKnightRenderState, LowerGoblinKnightModel> {
 
-	private static final ResourceLocation TEXTURE = TwilightForestMod.getModelTexture("doublegoblin.png");
+	private static final Identifier TEXTURE = TwilightForestMod.getModelTexture("doublegoblin.png");
 
 	public LowerGoblinKnightRenderer(EntityRendererProvider.Context context) {
 		super(context, new LowerGoblinKnightModel(context.bakeLayer(TFModelLayers.LOWER_GOBLIN_KNIGHT)), 0.625F);
@@ -31,7 +31,7 @@ public class LowerGoblinKnightRenderer extends MobRenderer<LowerGoblinKnight, Lo
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(LowerGoblinKnightRenderState state) {
+	public Identifier getTextureLocation(LowerGoblinKnightRenderState state) {
 		return TEXTURE;
 	}
 }

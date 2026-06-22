@@ -12,7 +12,7 @@ import mezz.jei.api.recipe.types.IRecipeType;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import twilightforest.TwilightForestMod;
@@ -32,7 +32,7 @@ public class TransformationPowderCategory implements IRecipeCategory<Transformat
 	private final EntityRenderer entityRenderer = new EntityRenderer(32);
 
 	public TransformationPowderCategory(IGuiHelper helper) {
-		ResourceLocation location = TwilightForestMod.getGuiTexture("transformation_jei.png");
+		Identifier location = TwilightForestMod.getGuiTexture("transformation_jei.png");
 		this.background = helper.createDrawable(location, 0, 0, RecipeViewerConstants.GENERIC_RECIPE_WIDTH, RecipeViewerConstants.GENERIC_RECIPE_HEIGHT);
 		this.arrow = helper.createDrawable(location, 116, 0, 23, 15);
 		this.doubleArrow = helper.createDrawable(location, 116, 16, 23, 15);

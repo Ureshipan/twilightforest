@@ -2,7 +2,7 @@ package twilightforest.client.renderer.entity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import twilightforest.client.model.TFModelLayers;
 import twilightforest.client.model.entity.BunnyModel;
 import twilightforest.client.state.DwarfRabbitRenderState;
@@ -26,7 +26,7 @@ public class BunnyRenderer extends MobRenderer<DwarfRabbit, DwarfRabbitRenderSta
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(DwarfRabbitRenderState state) {
+	public Identifier getTextureLocation(DwarfRabbitRenderState state) {
 		return state.texture;
 	}
 }

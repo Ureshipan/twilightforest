@@ -1,7 +1,7 @@
 package twilightforest.client.state;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class TinyBirdRenderState extends BirdRenderState {
-	public ResourceLocation texture;
+	public Identifier texture;
 }

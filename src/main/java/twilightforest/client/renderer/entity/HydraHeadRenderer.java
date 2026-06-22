@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
@@ -23,7 +23,7 @@ import twilightforest.entity.boss.HydraHeadContainer;
 
 public class HydraHeadRenderer extends TFPartRenderer<HydraHead, HydraHeadRenderState, HydraHeadModel> {
 
-	private static final ResourceLocation TEXTURE = TwilightForestMod.getModelTexture("hydra4.png");
+	private static final Identifier TEXTURE = TwilightForestMod.getModelTexture("hydra4.png");
 
 	public HydraHeadRenderer(EntityRendererProvider.Context context, HydraHeadModel model) {
 		super(context, model);
@@ -97,7 +97,7 @@ public class HydraHeadRenderer extends TFPartRenderer<HydraHead, HydraHeadRender
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(HydraHeadRenderState state) {
+	public Identifier getTextureLocation(HydraHeadRenderState state) {
 		return TEXTURE;
 	}
 }

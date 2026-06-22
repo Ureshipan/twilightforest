@@ -11,7 +11,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
@@ -61,7 +61,7 @@ public abstract class TFPartRenderer<T extends TFPart<?>, S extends PartEntitySt
 
 	@Nullable
 	protected RenderType getRenderType(S state, boolean visible, boolean ghostly, boolean glowing) {
-		ResourceLocation resourcelocation = this.getTextureLocation(state);
+		Identifier resourcelocation = this.getTextureLocation(state);
 		if (ghostly) {
 			return RenderType.itemEntityTranslucentCull(resourcelocation);
 		} else if (visible) {
@@ -119,5 +119,5 @@ public abstract class TFPartRenderer<T extends TFPart<?>, S extends PartEntitySt
 		return false;
 	}
 
-	public abstract ResourceLocation getTextureLocation(S state);
+	public abstract Identifier getTextureLocation(S state);
 }

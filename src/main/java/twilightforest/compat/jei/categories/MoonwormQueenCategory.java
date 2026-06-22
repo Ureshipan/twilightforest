@@ -10,7 +10,7 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import mezz.jei.api.recipe.types.IRecipeType;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import twilightforest.TwilightForestMod;
 import twilightforest.compat.RecipeViewerConstants;
@@ -25,7 +25,7 @@ public class MoonwormQueenCategory implements IRecipeCategory<MoonwormQueenRepai
 	private final Component localizedName;
 
 	public MoonwormQueenCategory(IGuiHelper guiHelper) {
-		ResourceLocation location = ResourceLocation.fromNamespaceAndPath(ModIds.JEI_ID, "textures/jei/gui/gui_vanilla.png");
+		Identifier location = Identifier.fromNamespaceAndPath(ModIds.JEI_ID, "textures/jei/gui/gui_vanilla.png");
 		this.background = guiHelper.createDrawable(location, 0, 60, RecipeViewerConstants.GENERIC_RECIPE_WIDTH, RecipeViewerConstants.GENERIC_RECIPE_HEIGHT);
 		this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(TFItems.MOONWORM_QUEEN.get()));
 		this.localizedName = Component.translatable("gui.twilightforest.moonworm_queen_jei");

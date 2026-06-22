@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.entity.state.SlimeRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import twilightforest.TwilightForestMod;
 import twilightforest.client.model.TFModelLayers;
@@ -17,7 +17,7 @@ import twilightforest.entity.monster.MazeSlime;
 
 public class MazeSlimeRenderer extends MobRenderer<MazeSlime, SlimeRenderState, SlimeModel> {
 
-	private static final ResourceLocation TEXTURE = TwilightForestMod.getModelTexture("mazeslime.png");
+	private static final Identifier TEXTURE = TwilightForestMod.getModelTexture("mazeslime.png");
 
 	public MazeSlimeRenderer(EntityRendererProvider.Context context) {
 		super(context, new SlimeModel(context.bakeLayer(TFModelLayers.MAZE_SLIME)), 0.625F);
@@ -53,7 +53,7 @@ public class MazeSlimeRenderer extends MobRenderer<MazeSlime, SlimeRenderState, 
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(SlimeRenderState state) {
+	public Identifier getTextureLocation(SlimeRenderState state) {
 		return TEXTURE;
 	}
 

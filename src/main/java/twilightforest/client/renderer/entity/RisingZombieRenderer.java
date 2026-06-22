@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.jetbrains.annotations.Nullable;
 import twilightforest.client.model.TFModelLayers;
 import twilightforest.client.model.entity.RisingZombieModel;
@@ -16,7 +16,7 @@ import twilightforest.entity.monster.RisingZombie;
 
 public class RisingZombieRenderer extends HumanoidMobRenderer<RisingZombie, RisingZombieRenderState, RisingZombieModel> {
 
-	private static final ResourceLocation ZOMBIE_LOCATION = ResourceLocation.withDefaultNamespace("textures/entity/zombie/zombie.png");
+	private static final Identifier ZOMBIE_LOCATION = Identifier.withDefaultNamespace("textures/entity/zombie/zombie.png");
 
 	public RisingZombieRenderer(EntityRendererProvider.Context context) {
 		super(context, new RisingZombieModel(context.bakeLayer(TFModelLayers.RISING_ZOMBIE)), 0.5F);
@@ -67,7 +67,7 @@ public class RisingZombieRenderer extends HumanoidMobRenderer<RisingZombie, Risi
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(RisingZombieRenderState state) {
+	public Identifier getTextureLocation(RisingZombieRenderState state) {
 		return ZOMBIE_LOCATION;
 	}
 }

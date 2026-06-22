@@ -2,7 +2,7 @@ package twilightforest.world.registration;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.core.Direction;
-import net.minecraft.util.random.SimpleWeightedRandomList;
+import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
@@ -33,8 +33,8 @@ import java.util.OptionalInt;
 public class TreeConfigurations {
 	private static final int canopyDistancing = 5;
 
-	static SimpleWeightedRandomList.Builder<BlockState> createBlockList() {
-		return SimpleWeightedRandomList.builder();
+	static WeightedList.Builder<BlockState> createBlockList() {
+		return WeightedList.builder();
 	}
 
 	public static final TreeConfiguration TWILIGHT_OAK = new TreeConfiguration.TreeConfigurationBuilder(
@@ -142,7 +142,7 @@ public class TreeConfigurations {
 	)
 		.decorators(ImmutableList.of(
 				TreeDecorators.FIREFLY,
-				new TreeRootsDecorator(3, 1, 12, 0, BlockStateProvider.simple(TFBlocks.MANGROVE_ROOT.get().defaultBlockState()), (new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
+				new TreeRootsDecorator(3, 1, 12, 0, BlockStateProvider.simple(TFBlocks.MANGROVE_ROOT.get().defaultBlockState()), (new WeightedStateProvider(WeightedList.<BlockState>builder()
 					.add(TFBlocks.ROOT_BLOCK.get().defaultBlockState(), 4)
 					.add(TFBlocks.LIVEROOT_BLOCK.get().defaultBlockState(), 1).build())), 1),
 				new LeaveVineDecorator(0.125F)

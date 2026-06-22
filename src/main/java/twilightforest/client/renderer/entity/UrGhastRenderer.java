@@ -4,7 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import twilightforest.TwilightForestMod;
 import twilightforest.client.model.TFModelLayers;
@@ -14,9 +14,9 @@ import twilightforest.entity.boss.UrGhast;
 
 public class UrGhastRenderer extends MobRenderer<UrGhast, TFGhastRenderState, UrGhastModel> {
 
-	public static final ResourceLocation TEXTURE = TwilightForestMod.getModelTexture("towerboss.png");
-	public static final ResourceLocation LOOKING_TEXTURE = TwilightForestMod.getModelTexture("towerboss_openeyes.png");
-	public static final ResourceLocation ATTACKING_TEXTURE = TwilightForestMod.getModelTexture("towerboss_fire.png");
+	public static final Identifier TEXTURE = TwilightForestMod.getModelTexture("towerboss.png");
+	public static final Identifier LOOKING_TEXTURE = TwilightForestMod.getModelTexture("towerboss_openeyes.png");
+	public static final Identifier ATTACKING_TEXTURE = TwilightForestMod.getModelTexture("towerboss_fire.png");
 
 	public UrGhastRenderer(EntityRendererProvider.Context context) {
 		super(context, new UrGhastModel(context.bakeLayer(TFModelLayers.UR_GHAST)), 8.0F);
@@ -60,7 +60,7 @@ public class UrGhastRenderer extends MobRenderer<UrGhast, TFGhastRenderState, Ur
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(TFGhastRenderState state) {
+	public Identifier getTextureLocation(TFGhastRenderState state) {
 		if (state.isCharging || state.deathTime > 0) {
 			return ATTACKING_TEXTURE;
 		}

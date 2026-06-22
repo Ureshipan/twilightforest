@@ -4,7 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import twilightforest.TwilightForestMod;
 import twilightforest.client.model.TFModelLayers;
 import twilightforest.client.model.entity.UpperGoblinKnightModel;
@@ -13,7 +13,7 @@ import twilightforest.entity.monster.UpperGoblinKnight;
 
 public class UpperGoblinKnightRenderer extends HumanoidMobRenderer<UpperGoblinKnight, UpperGoblinKnightRenderState, UpperGoblinKnightModel> {
 
-	public static final ResourceLocation TEXTURE = TwilightForestMod.getModelTexture("doublegoblin.png");
+	public static final Identifier TEXTURE = TwilightForestMod.getModelTexture("doublegoblin.png");
 
 	public UpperGoblinKnightRenderer(EntityRendererProvider.Context context) {
 		super(context, new UpperGoblinKnightModel(context.bakeLayer(TFModelLayers.UPPER_GOBLIN_KNIGHT)), 0.625F);
@@ -43,7 +43,7 @@ public class UpperGoblinKnightRenderer extends HumanoidMobRenderer<UpperGoblinKn
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(UpperGoblinKnightRenderState state) {
+	public Identifier getTextureLocation(UpperGoblinKnightRenderState state) {
 		return TEXTURE;
 	}
 }

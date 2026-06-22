@@ -6,14 +6,14 @@ import net.minecraft.client.gui.components.toasts.Toast;
 import net.minecraft.client.gui.components.toasts.ToastManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 
 public class LockedBiomeToast implements Toast {
 
 	private static final Component TITLE = Component.translatable("misc.twilightforest.biome_locked");
 	private static final Component DESCRIPTION = Component.translatable("misc.twilightforest.biome_locked_2");
-	private static final ResourceLocation BACKGROUND_SPRITE = ResourceLocation.withDefaultNamespace("toast/advancement");
+	private static final Identifier BACKGROUND_SPRITE = Identifier.withDefaultNamespace("toast/advancement");
 	private final ItemStack icon;
 	private Toast.Visibility wantedVisibility = Toast.Visibility.HIDE;
 

@@ -9,7 +9,7 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemDisplayContext;
@@ -19,7 +19,7 @@ import twilightforest.client.state.KnightPhantomRenderState;
 
 public class KnightPhantomModel extends HumanoidModel<KnightPhantomRenderState> implements TrophyBlockModel {
 
-	private static final ResourceLocation PHANTOM_ARMOR_TEXTURE = TwilightForestMod.prefix("textures/entity/equipment/humanoid/phantom.png");
+	private static final Identifier PHANTOM_ARMOR_TEXTURE = TwilightForestMod.prefix("textures/entity/equipment/humanoid/phantom.png");
 
 	private ModelPart helmet;
 

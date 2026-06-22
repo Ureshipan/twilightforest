@@ -1,0 +1,270 @@
+accessWidener v2 named
+
+# ── Inner classes ─────────────────────────────────────────────────────────────
+
+# CarminiteGhastguard goal
+accessible class net/minecraft/world/entity/monster/Ghast$GhastLookGoal
+
+# GroundAttackGoal / NoClipMoveControl
+accessible class net/minecraft/world/entity/ai/control/MoveControl$Operation
+
+# Data generation (Fabric datagen uses these)
+accessible class net/minecraft/client/data/models/ModelProvider$ItemInfoCollector
+accessible class net/minecraft/client/data/models/ModelProvider$BlockStateGeneratorCollector
+accessible class net/minecraft/client/data/models/ModelProvider$SimpleModelCollector
+
+# ── Fields ────────────────────────────────────────────────────────────────────
+
+# DarkTowerMainComponent – spawner tunables
+accessible field net/minecraft/world/level/BaseSpawner maxNearbyEntities I
+accessible field net/minecraft/world/level/BaseSpawner spawnCount I
+accessible field net/minecraft/world/level/BaseSpawner spawnRange I
+accessible field net/minecraft/world/level/BaseSpawner displayEntity Lnet/minecraft/world/level/entity/EntityTypeTest;
+accessible field net/minecraft/world/level/BaseSpawner spin D
+accessible field net/minecraft/world/level/BaseSpawner oSpin D
+accessible field net/minecraft/world/level/BaseSpawner spawnDelay I
+
+# Structure pieces builder – used in many structure components
+accessible field net/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder pieces Ljava/util/List;
+
+# ChunkStatus – ChunkBlanketProcessors injects a custom chunk status
+mutable field net/minecraft/world/level/chunk/status/ChunkStatus index I
+accessible field net/minecraft/world/level/chunk/status/ChunkStatus index I
+
+# EntityEvents – reduces frosted effect amplifier
+accessible field net/minecraft/world/effect/MobEffectInstance amplifier I
+
+# MazeMapItem – decorations
+accessible field net/minecraft/world/level/saveddata/maps/MapItemSavedData decorations Ljava/util/Map;
+
+# TFMagicMapData / TFMazeMapData
+mutable field net/minecraft/world/level/saveddata/maps/MapItemSavedData centerX I
+mutable field net/minecraft/world/level/saveddata/maps/MapItemSavedData centerZ I
+accessible field net/minecraft/world/level/saveddata/maps/MapItemSavedData centerX I
+accessible field net/minecraft/world/level/saveddata/maps/MapItemSavedData centerZ I
+mutable field net/minecraft/world/level/saveddata/maps/MapItemSavedData bannerMarkers Ljava/util/Map;
+mutable field net/minecraft/world/level/saveddata/maps/MapItemSavedData frameMarkers Ljava/util/Map;
+mutable field net/minecraft/world/level/saveddata/maps/MapItemSavedData trackedDecorationCount I
+accessible field net/minecraft/world/level/saveddata/maps/MapItemSavedData bannerMarkers Ljava/util/Map;
+accessible field net/minecraft/world/level/saveddata/maps/MapItemSavedData frameMarkers Ljava/util/Map;
+accessible field net/minecraft/world/level/saveddata/maps/MapItemSavedData trackedDecorationCount I
+
+# PinchBeetle / ProtectionBox / TFPart (hitbox sizing)
+accessible field net/minecraft/world/entity/Entity dimensions Lnet/minecraft/world/entity/EntityDimensions;
+
+# GroundAttackGoal / NoClipMoveControl
+accessible field net/minecraft/world/entity/ai/control/MoveControl operation Lnet/minecraft/world/entity/ai/control/MoveControl$Operation;
+
+# HedgeSpider / SwarmSpider / UrGhast – goal set removal
+accessible field net/minecraft/world/entity/ai/goal/GoalSelector availableGoals Ljava/util/Set;
+
+# PlayerHelper – advancements
+accessible field net/minecraft/client/multiplayer/ClientAdvancements progress Ljava/util/Map;
+
+# TFClientSetup – birthday splash
+mutable field net/minecraft/client/gui/components/SplashRenderer splash Ljava/lang/String;
+accessible field net/minecraft/client/gui/screens/TitleScreen splash Lnet/minecraft/client/gui/components/SplashRenderer;
+
+# TFDispenserBehaviors
+accessible field net/minecraft/world/level/block/DispenserBlock DISPENSER_REGISTRY Ljava/util/Map;
+
+# TFSkyRenderer / CloudEvents
+accessible field net/minecraft/client/renderer/LevelRenderer skyRenderer Lnet/minecraft/client/renderer/SkyRenderer;
+accessible field net/minecraft/client/renderer/LevelRenderer weatherEffectRenderer Lnet/minecraft/client/renderer/WeatherEffectRenderer;
+accessible field net/minecraft/client/renderer/WeatherEffectRenderer rainSoundTime I
+
+# TFClientEvents – biome seed for aurora shader
+accessible field net/minecraft/world/level/biome/BiomeManager biomeZoomSeed J
+
+# TFStructureComponent – orientation fields
+accessible field net/minecraft/world/level/levelgen/structure/StructurePiece rotation Lnet/minecraft/world/level/block/Rotation;
+accessible field net/minecraft/world/level/levelgen/structure/StructurePiece mirror Lnet/minecraft/world/level/block/Mirror;
+accessible field net/minecraft/world/level/levelgen/structure/StructurePiece orientation Ljava/util/Optional;
+
+# TFStructureComponentOld – sign text
+accessible field net/minecraft/world/level/block/entity/SignBlockEntity frontText Lnet/minecraft/world/level/block/entity/SignText;
+
+# TFCavesCarver
+accessible field net/minecraft/world/level/levelgen/carver/CaveCarverConfiguration floorLevel Lnet/minecraft/world/level/levelgen/heightproviders/HeightProvider;
+
+# TargetedRotProcessor
+accessible field net/minecraft/world/level/levelgen/structure/templatesystem/BlockRotProcessor integrity F
+
+# TwilightForestMod – strippables and fire
+mutable field net/minecraft/world/item/AxeItem STRIPPABLES Ljava/util/Map;
+
+# UncraftingMenu
+accessible field net/minecraft/world/item/crafting/ShapedRecipe result Lnet/minecraft/world/item/ItemStack;
+accessible field net/minecraft/world/item/crafting/ShapelessRecipe result Lnet/minecraft/world/item/ItemStack;
+
+# KnightStrongholdStructure
+accessible field net/minecraft/world/level/levelgen/structure/StructureStart cachedBoundingBox Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+
+# NbtHasher
+accessible field net/minecraft/nbt/CompoundTag tags Ljava/util/Map;
+
+# Lich – melee attack goal
+accessible field net/minecraft/world/entity/ai/goal/MeleeAttackGoal speedModifier D
+
+# TowerRoom
+accessible field net/minecraft/world/level/block/entity/ChiseledBookShelfBlockEntity items Lnet/minecraft/core/NonNullList;
+accessible field net/minecraft/world/level/block/entity/BrewingStandBlockEntity fuel I
+
+# ServerBossEvent (boss bar)
+accessible field net/minecraft/server/level/ServerBossEvent players Ljava/util/Set;
+accessible field net/minecraft/server/level/ServerBossEvent visible Z
+
+# ClientTFBossBar
+accessible field net/minecraft/client/gui/GuiGraphics bufferSource Lnet/minecraft/client/renderer/MultiBufferSource$BufferSource;
+accessible field net/minecraft/client/gui/GuiGraphics sprites Lnet/minecraft/client/renderer/texture/TextureAtlas;
+
+# BossHealthOverlay
+accessible field net/minecraft/client/gui/components/BossHealthOverlay OVERLAY_BACKGROUND_SPRITES Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+accessible field net/minecraft/client/gui/components/BossHealthOverlay OVERLAY_PROGRESS_SPRITES Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+accessible field net/minecraft/client/gui/components/BossHealthOverlay events Ljava/util/Map;
+
+# TFBeanContext
+accessible field net/minecraft/client/renderer/entity/EntityRenderDispatcher renderers Ljava/util/Map;
+accessible field net/minecraft/client/renderer/blockentity/BlockEntityRenderDispatcher renderers Ljava/util/Map;
+
+# JarRenderer
+accessible field net/minecraft/client/renderer/block/BlockRenderDispatcher blockColors Lnet/minecraft/client/color/block/BlockColors;
+
+# ReloadableResourceManager
+accessible field net/minecraft/server/packs/resources/ReloadableResourceManager listeners Ljava/util/List;
+
+# TFBlocks – TransparentBlock ctor
+accessible method net/minecraft/world/level/block/TransparentBlock <init> (Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+
+# ── Methods ───────────────────────────────────────────────────────────────────
+
+# BaseSpawner – spawner logic
+accessible method net/minecraft/world/level/BaseSpawner delay (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)V
+accessible method net/minecraft/world/level/BaseSpawner getOrCreateNextSpawnData (Lnet/minecraft/world/level/Level;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/SpawnData;
+accessible method net/minecraft/world/level/BaseSpawner isNearPlayer (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Z
+accessible method net/minecraft/world/level/BaseSpawner setNextSpawnData (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/SpawnData;)V
+
+# Display entity setters
+accessible method net/minecraft/world/entity/Display setBillboardConstraints (Lnet/minecraft/world/entity/Display$BillboardConstraints;)V
+accessible method net/minecraft/world/entity/Display$TextDisplay setText (Lnet/minecraft/network/chat/Component;)V
+accessible method net/minecraft/world/entity/Interaction setHeight (F)V
+accessible method net/minecraft/world/entity/Interaction setWidth (F)V
+
+# HumanoidModel arm posing
+accessible method net/minecraft/client/model/HumanoidModel poseRightArm (Lnet/minecraft/client/renderer/entity/state/HumanoidRenderState;Lnet/minecraft/client/model/HumanoidModel$ArmPose;)V
+accessible method net/minecraft/client/model/HumanoidModel poseLeftArm (Lnet/minecraft/client/renderer/entity/state/HumanoidRenderState;Lnet/minecraft/client/model/HumanoidModel$ArmPose;)V
+
+# FoliagePlacerType / TrunkPlacerType / TreeDecoratorType constructors
+accessible method net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacerType <init> (Lcom/mojang/serialization/MapCodec;)V
+accessible method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecoratorType <init> (Lcom/mojang/serialization/MapCodec;)V
+accessible method net/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacerType <init> (Lcom/mojang/serialization/MapCodec;)V
+
+# IBossLootBuffer
+accessible method net/minecraft/world/level/storage/loot/LootTable shuffleAndSplitItems (Lit/unimi/dsi/fastutil/objects/ObjectArrayList;ILnet/minecraft/util/RandomSource;)Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+
+# JigsawUtil
+accessible method net/minecraft/world/level/levelgen/structure/pools/SinglePoolElement sortBySelectionPriority (Ljava/util/List;)Ljava/util/List;
+
+# LootTable
+accessible method net/minecraft/world/item/crafting/ShapedRecipe result (Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/world/item/crafting/ShapedRecipe;
+
+# ProgressionWrappedStructure
+accessible method net/minecraft/world/level/levelgen/structure/Structure findGenerationPoint (Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;)Ljava/util/Optional;
+
+# ProtectionParticle
+accessible method net/minecraft/client/particle/SuspendedTownParticle <init> (Lnet/minecraft/client/multiplayer/ClientLevel;DDDDDD)V
+
+# SpecialFlowerPotBlock
+accessible method net/minecraft/world/level/block/FlowerPotBlock isEmpty ()Z
+
+# TFMagicMapData
+accessible method net/minecraft/world/level/saveddata/maps/MapItemSavedData setDecorationsDirty ()V
+accessible method net/minecraft/world/level/saveddata/maps/MapItemSavedData <init> (IIBZZZLnet/minecraft/resources/ResourceKey;)V
+
+# TFTreeFeature
+accessible method net/minecraft/world/level/levelgen/feature/TreeFeature updateLeaves (Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;)Lnet/minecraft/world/phys/shapes/DiscreteVoxelShape;
+
+# WorldCarver
+accessible method net/minecraft/world/level/levelgen/carver/WorldCarver isDebugEnabled (Lnet/minecraft/world/level/levelgen/carver/CarverConfiguration;)Z
+accessible method net/minecraft/world/level/levelgen/carver/WorldCarver getCarveState (Lnet/minecraft/world/level/levelgen/carver/CarvingContext;Lnet/minecraft/world/level/levelgen/carver/CarverConfiguration;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/Aquifer;)Lnet/minecraft/world/level/block/state/BlockState;
+
+# Ur-Ghast – lightning
+accessible method net/minecraft/server/level/ServerLevel findLightningTargetAround (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+
+# WorldUtil
+accessible method net/minecraft/server/level/ChunkMap generator ()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+
+# MapLocatorCommand
+accessible method net/minecraft/server/commands/LocateCommand getHolders (Lnet/minecraft/commands/arguments/ResourceOrTagKeyArgument$Result;Lnet/minecraft/core/Registry;)Ljava/util/Optional;
+
+# FireBlock
+accessible method net/minecraft/world/level/block/FireBlock setFlammable (Lnet/minecraft/world/level/block/Block;II)V
+
+# LivingEntity – mob utility
+accessible method net/minecraft/world/entity/LivingEntity breakItem (Lnet/minecraft/world/item/ItemStack;)V
+accessible method net/minecraft/world/entity/LivingEntity makePoofParticles ()V
+
+# Mob – equipment drop chance
+accessible method net/minecraft/world/entity/Mob getEquipmentDropChance (Lnet/minecraft/world/entity/EquipmentSlot;)F
+
+# Goblin Knights – boss server event
+accessible method net/minecraft/network/protocol/game/ClientboundBossEventPacket encodeProperties (ZZZ)I
+
+# BiomeMaker
+accessible method net/minecraft/core/Holder$Reference bindKey (Lnet/minecraft/resources/ResourceKey;)V
+
+# CauldronInteraction dye
+accessible method net/minecraft/core/cauldron/CauldronInteraction dyedItemIteration (Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/world/InteractionResult;
+
+# Beardifier – BoxDensityFunction
+accessible method net/minecraft/world/level/levelgen/Beardifier getBeardContribution (IIII)D
+accessible method net/minecraft/world/level/levelgen/Beardifier getBuryContribution (DDD)D
+
+# HumanoidArmorLayer
+accessible method net/minecraft/client/renderer/entity/layers/HumanoidArmorLayer renderArmorPiece (Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/EquipmentSlot;ILnet/minecraft/client/model/HumanoidModel;)V
+accessible method net/minecraft/client/renderer/entity/layers/HumanoidArmorLayer getArmorModel (Lnet/minecraft/client/renderer/entity/state/HumanoidRenderState;Lnet/minecraft/world/entity/EquipmentSlot;)Lnet/minecraft/client/model/HumanoidModel;
+
+# AbstractArrow / Arrow – post-hurt effects
+accessible method net/minecraft/world/entity/projectile/AbstractArrow doPostHurtEffects (Lnet/minecraft/world/entity/LivingEntity;)V
+accessible method net/minecraft/world/entity/projectile/Arrow doPostHurtEffects (Lnet/minecraft/world/entity/LivingEntity;)V
+accessible method net/minecraft/world/entity/projectile/SpectralArrow doPostHurtEffects (Lnet/minecraft/world/entity/LivingEntity;)V
+
+# ItemRenderer / ItemStackRenderState
+accessible method net/minecraft/client/renderer/item/ItemRenderer renderQuadList (Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;Ljava/util/List;[III)V
+accessible method net/minecraft/client/renderer/item/ItemStackRenderState firstLayer ()Lnet/minecraft/client/renderer/item/ItemStackRenderState$LayerRenderState;
+
+# BlockItem
+accessible method net/minecraft/world/item/BlockItem updateBlockEntityComponents (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/item/ItemStack;)V
+
+# ModelProvider constructors
+accessible method net/minecraft/client/data/models/ModelProvider$SimpleModelCollector <init> ()V
+
+# GUI helpers
+accessible method net/minecraft/client/gui/Gui canRenderCrosshairForSpectator (Lnet/minecraft/world/phys/HitResult;)Z
+accessible method net/minecraft/client/gui/Gui renderFood (Lnet/minecraft/client/gui/GuiGraphics;Lnet/minecraft/world/entity/player/Player;II)V
+
+# TextureAtlasHolder
+accessible method net/minecraft/client/resources/TextureAtlasHolder getSprite (Lnet/minecraft/resources/Identifier;)Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+
+# MapItemSavedData constructor for TFMagicMapData / TFMazeMapData
+mutable field net/minecraft/world/level/saveddata/maps/MapItemSavedData bannerMarkers Ljava/util/Map;
+mutable field net/minecraft/world/level/saveddata/maps/MapItemSavedData frameMarkers Ljava/util/Map;
+
+# ── Unfinalised classes ────────────────────────────────────────────────────────
+
+# StructureTreeGrower
+extendable class net/minecraft/world/level/block/grower/TreeGrower
+
+# StructureStart – TFStructureStart extends it
+extendable class net/minecraft/world/level/levelgen/structure/StructureStart
+
+# Model renderToBuffer – QuestRam, FieryArmor, RisingZombie extend Model
+accessible method net/minecraft/client/model/Model renderToBuffer (Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;III)V
+
+# MapColor constructor
+accessible method net/minecraft/world/level/material/MapColor <init> (II)V
+
+# TemplateStructurePiece template location
+accessible method net/minecraft/world/level/levelgen/structure/TemplateStructurePiece makeTemplateLocation ()Lnet/minecraft/resources/Identifier;
+accessible method net/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece makeTemplateLocation ()Lnet/minecraft/resources/Identifier;
+accessible method net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$WoodlandMansionPiece makeTemplateLocation ()Lnet/minecraft/resources/Identifier;

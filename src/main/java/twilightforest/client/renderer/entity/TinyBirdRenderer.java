@@ -2,7 +2,7 @@ package twilightforest.client.renderer.entity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import twilightforest.client.model.TFModelLayers;
 import twilightforest.client.model.entity.TinyBirdModel;
@@ -29,7 +29,7 @@ public class TinyBirdRenderer extends MobRenderer<TinyBird, TinyBirdRenderState,
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(TinyBirdRenderState state) {
+	public Identifier getTextureLocation(TinyBirdRenderState state) {
 		return state.texture;
 	}
 }

@@ -4,8 +4,8 @@ import com.google.common.base.Suppliers;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
 import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import net.minecraft.Util;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Util;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Block;
@@ -90,8 +90,8 @@ public class LichTowerUtil {
 	}
 
 	@Nullable
-	public ResourceLocation rollRandomRoom(RandomSource randomSource, int size) {
-		ResourceLocation pool = switch (size) {
+	public Identifier rollRandomRoom(RandomSource randomSource, int size) {
+		Identifier pool = switch (size) {
 			case 0 -> LichTowerPieces.ROOM_3;
 			case 1 -> LichTowerPieces.ROOM_5;
 			case 2 -> LichTowerPieces.ROOM_7;
@@ -105,45 +105,45 @@ public class LichTowerUtil {
 	}
 
 	@Nullable
-	public ResourceLocation rollTowerGallery(RandomSource randomSource) {
+	public Identifier rollTowerGallery(RandomSource randomSource) {
 		return StructureTemplateDefinitions.INSTANCE.rollTemplatePool(randomSource, LichTowerPieces.GALLERY);
 	}
 
 	@Nullable
-	public ResourceLocation rollGalleryRoof(RandomSource randomSource, BoundingBox box) {
+	public Identifier rollGalleryRoof(RandomSource randomSource, BoundingBox box) {
 		boolean odd = (Math.min(box.getXSpan(), box.getZSpan()) & 1) == 1;
 		return StructureTemplateDefinitions.INSTANCE.rollTemplatePool(randomSource, odd ? LichTowerPieces.GALLERY_ROOF_ODD : LichTowerPieces.GALLERY_ROOF_EVEN);
 	}
 
 	@Nullable
-	public ResourceLocation rollRandomMobBridge(RandomSource randomSource) {
+	public Identifier rollRandomMobBridge(RandomSource randomSource) {
 		return StructureTemplateDefinitions.INSTANCE.rollTemplatePool(randomSource, LichTowerPieces.MOB_BRIDGE);
 	}
 
 	@Nullable
-	public ResourceLocation rollRandomCover(RandomSource randomSource) {
+	public Identifier rollRandomCover(RandomSource randomSource) {
 		return StructureTemplateDefinitions.INSTANCE.rollTemplatePool(randomSource, LichTowerPieces.DOOR_STOPPER);
 	}
 
 	@Nullable
-	public ResourceLocation rollRandomDecor(RandomSource randomSource, boolean inCentralTower) {
+	public Identifier rollRandomDecor(RandomSource randomSource, boolean inCentralTower) {
 		return StructureTemplateDefinitions.INSTANCE.rollTemplatePool(randomSource, inCentralTower ? LichTowerPieces.CENTER_DECOR : LichTowerPieces.ROOM_DECOR);
 	}
 
-	public Iterable<ResourceLocation> shuffledCenterBridges(RandomSource randomSource) {
+	public Iterable<Identifier> shuffledCenterBridges(RandomSource randomSource) {
 		return StructureTemplateDefinitions.INSTANCE.shuffledTemplatePool(randomSource, LichTowerPieces.BRIDGE_FROM_CENTRAL);
 	}
 
-	public Iterable<ResourceLocation> shuffledRoomBridges(RandomSource randomSource) {
+	public Iterable<Identifier> shuffledRoomBridges(RandomSource randomSource) {
 		return StructureTemplateDefinitions.INSTANCE.shuffledTemplatePool(randomSource, LichTowerPieces.ROOM_BRIDGE);
 	}
 
-	public Iterable<ResourceLocation> shuffledEndBridges(RandomSource randomSource) {
+	public Iterable<Identifier> shuffledEndBridges(RandomSource randomSource) {
 		return StructureTemplateDefinitions.INSTANCE.shuffledTemplatePool(randomSource, LichTowerPieces.END_BRIDGE);
 	}
 
-	public Iterable<ResourceLocation> shuffledRoofs(RandomSource randomSource, int size, boolean sideRoof) {
-		ResourceLocation pool = switch (size) {
+	public Iterable<Identifier> shuffledRoofs(RandomSource randomSource, int size, boolean sideRoof) {
+		Identifier pool = switch (size) {
 			case 0 -> sideRoof ? LichTowerPieces.ROOM_3_SIDE_ROOF : LichTowerPieces.ROOM_3_ROOF;
 			case 1 -> sideRoof ? LichTowerPieces.ROOM_5_SIDE_ROOF : LichTowerPieces.ROOM_5_ROOF;
 			case 2 -> sideRoof ? LichTowerPieces.ROOM_7_SIDE_ROOF : LichTowerPieces.ROOM_7_ROOF;
@@ -156,8 +156,8 @@ public class LichTowerUtil {
 		return StructureTemplateDefinitions.INSTANCE.shuffledTemplatePool(randomSource, pool);
 	}
 
-	public Iterable<ResourceLocation> shuffledBeards(RandomSource randomSource, int size) {
-		ResourceLocation pool = switch (size) {
+	public Iterable<Identifier> shuffledBeards(RandomSource randomSource, int size) {
+		Identifier pool = switch (size) {
 			case 1 -> LichTowerPieces.ROOM_5_BEARD;
 			case 2 -> LichTowerPieces.ROOM_7_BEARD;
 			case 3 -> LichTowerPieces.ROOM_9_BEARD;
@@ -170,8 +170,8 @@ public class LichTowerUtil {
 	}
 
 	@Nullable
-	public ResourceLocation getTrim(RandomSource randomSource, int size) {
-		ResourceLocation pool = switch (size) {
+	public Identifier getTrim(RandomSource randomSource, int size) {
+		Identifier pool = switch (size) {
 			case 1 -> LichTowerPieces.ROOM_5_TRIM;
 			case 2 -> LichTowerPieces.ROOM_7_TRIM;
 			case 3 -> LichTowerPieces.ROOM_9_TRIM;
@@ -193,10 +193,10 @@ public class LichTowerUtil {
 	}
 
 	@Nullable
-	public ResourceLocation getRoomUpwards(RandomSource random, int size, int ladderOffset) {
+	public Identifier getRoomUpwards(RandomSource random, int size, int ladderOffset) {
 		if (size > 0 && size <= 3) {
-			Int2ObjectMap<ResourceLocation> roomsForSize = this.lichRoomPieces.ladderRooms.get(size - 1);
-			ResourceLocation roomsForLadderPlacement = roomsForSize.get(ladderOffset);
+			Int2ObjectMap<Identifier> roomsForSize = this.lichRoomPieces.ladderRooms.get(size - 1);
+			Identifier roomsForLadderPlacement = roomsForSize.get(ladderOffset);
 			return roomsForLadderPlacement == null ? null : StructureTemplateDefinitions.INSTANCE.rollTemplatePool(random, roomsForLadderPlacement);
 		}
 
@@ -204,8 +204,8 @@ public class LichTowerUtil {
 	}
 
 	@Nullable
-	public ResourceLocation getFallbackRoof(RandomSource random, int size, boolean sideAttachment) {
-		ResourceLocation pool = switch (size) {
+	public Identifier getFallbackRoof(RandomSource random, int size, boolean sideAttachment) {
+		Identifier pool = switch (size) {
 			case 0 -> sideAttachment ? LichTowerPieces.ROOM_3_SIDE_ROOF_FALLBACK : LichTowerPieces.ROOM_3_ROOF_FALLBACK;
 			case 1 -> sideAttachment ? LichTowerPieces.ROOM_5_SIDE_ROOF_FALLBACK : LichTowerPieces.ROOM_5_ROOF_FALLBACK;
 			case 2 -> sideAttachment ? LichTowerPieces.ROOM_7_SIDE_ROOF_FALLBACK : LichTowerPieces.ROOM_7_ROOF_FALLBACK;
@@ -219,8 +219,8 @@ public class LichTowerUtil {
 	}
 
 	@Nullable
-	public ResourceLocation getFallbackBeard(RandomSource random, int size) {
-		ResourceLocation pool = switch (size) {
+	public Identifier getFallbackBeard(RandomSource random, int size) {
+		Identifier pool = switch (size) {
 			case 1 -> LichTowerPieces.ROOM_5_BEARD_FALLBACK;
 			case 2 -> LichTowerPieces.ROOM_7_BEARD_FALLBACK;
 			case 3 -> LichTowerPieces.ROOM_9_BEARD_FALLBACK;
@@ -242,27 +242,27 @@ public class LichTowerUtil {
 	}
 
 	@Nullable
-	public ResourceLocation getKeepsakeCasketRoom(RandomSource random) {
+	public Identifier getKeepsakeCasketRoom(RandomSource random) {
 		return StructureTemplateDefinitions.INSTANCE.rollTemplatePool(random, LichTowerPieces.ROOM_9_SPECIAL);
 	}
 
 	@Nullable
-	public ResourceLocation getEnclosedCentralBridge(RandomSource random) {
+	public Identifier getEnclosedCentralBridge(RandomSource random) {
 		return StructureTemplateDefinitions.INSTANCE.rollTemplatePool(random, LichTowerPieces.BRIDGE_FROM_CENTRAL_FALLBACK);
 	}
 
 	@Nullable
-	public ResourceLocation getDirectRoomAttachment(RandomSource random) {
+	public Identifier getDirectRoomAttachment(RandomSource random) {
 		return StructureTemplateDefinitions.INSTANCE.rollTemplatePool(random, LichTowerPieces.ROOM_BRIDGE_FALLBACK);
 	}
 
 	@Nullable
-	public ResourceLocation getDefaultBridgeStopper(RandomSource randomSource) {
+	public Identifier getDefaultBridgeStopper(RandomSource randomSource) {
 		return StructureTemplateDefinitions.INSTANCE.rollTemplatePool(randomSource, LichTowerPieces.DOOR_STOPPER_FALLBACK);
 	}
 
 	@Nullable
-	public ResourceLocation rollGrave(RandomSource randomSource) {
+	public Identifier rollGrave(RandomSource randomSource) {
 		return StructureTemplateDefinitions.INSTANCE.rollTemplatePool(randomSource, LichTowerPieces.YARD_GRAVE);
 	}
 }

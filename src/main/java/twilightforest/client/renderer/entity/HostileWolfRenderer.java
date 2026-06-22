@@ -3,7 +3,7 @@ package twilightforest.client.renderer.entity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.state.WolfRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import twilightforest.client.model.TFModelLayers;
 import twilightforest.client.model.entity.HostileWolfModel;
 import twilightforest.entity.monster.HostileWolf;
@@ -27,7 +27,7 @@ public class HostileWolfRenderer extends MobRenderer<HostileWolf, WolfRenderStat
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(WolfRenderState state) {
+	public Identifier getTextureLocation(WolfRenderState state) {
 		return state.texture;
 	}
 

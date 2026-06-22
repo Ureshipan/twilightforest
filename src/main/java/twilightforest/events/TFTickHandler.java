@@ -6,7 +6,7 @@ import net.minecraft.advancements.DisplayInfo;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -108,7 +108,7 @@ public class TFTickHandler {
 	}
 
 	private static void checkForPortalCreation(ServerPlayer player, ServerLevel level, float rangeToCheck) {
-		if (level.dimension().location().equals(ResourceLocation.parse(TFConfig.originDimension))
+		if (level.dimension().location().equals(Identifier.parse(TFConfig.originDimension))
 			|| TFDimension.isTwilightPortalDestination(level)
 			|| TFConfig.allowPortalsInOtherDimensions) {
 

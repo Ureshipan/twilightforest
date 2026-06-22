@@ -15,7 +15,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.SectionPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ParticleStatus;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -50,10 +50,10 @@ import java.util.Optional;
  */
 public class TFWeatherRenderer {
 
-	public static final ResourceLocation RAIN_TEXTURES = ResourceLocation.withDefaultNamespace("textures/environment/rain.png");
-	public static final ResourceLocation SNOW_TEXTURES = ResourceLocation.withDefaultNamespace("textures/environment/snow.png");
+	public static final Identifier RAIN_TEXTURES = Identifier.withDefaultNamespace("textures/environment/rain.png");
+	public static final Identifier SNOW_TEXTURES = Identifier.withDefaultNamespace("textures/environment/snow.png");
 
-	private static final ResourceLocation SPARKLES_TEXTURE = TwilightForestMod.getEnvTexture("sparkles.png");
+	private static final Identifier SPARKLES_TEXTURE = TwilightForestMod.getEnvTexture("sparkles.png");
 
 	public static final float[] rainxs = new float[1024];
 	public static final float[] rainzs = new float[1024];
@@ -317,7 +317,7 @@ public class TFWeatherRenderer {
 		return intervals;
 	}
 
-	private static void renderEffect(ResourceLocation type, double rainX, double rainZ, int minY, int maxY, Vec3 camera, int dx, int dz, float countFactor, float uFactor, float vFactor, float[] color, int light) {
+	private static void renderEffect(Identifier type, double rainX, double rainZ, int minY, int maxY, Vec3 camera, int dx, int dz, float countFactor, float uFactor, float vFactor, float[] color, int light) {
 		VertexConsumer consumer = Minecraft.getInstance().renderBuffers().bufferSource().getBuffer(RenderType.weather(type, Minecraft.useShaderTransparency()));
 		consumer
 			.addVertex((float) (dx - camera.x() - rainX + 0.5F), (float) (minY - camera.y()), (float) (dz - camera.z() - rainZ + 0.5F))
@@ -387,9 +387,9 @@ public class TFWeatherRenderer {
 			this.textureLocation = TwilightForestMod.getEnvTexture(textureName);
 		}
 
-		private final ResourceLocation textureLocation;
+		private final Identifier textureLocation;
 
-		public ResourceLocation getTextureLocation() {
+		public Identifier getTextureLocation() {
 			return textureLocation;
 		}
 	}

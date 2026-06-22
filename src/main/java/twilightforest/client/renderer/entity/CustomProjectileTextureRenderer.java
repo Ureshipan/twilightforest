@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import twilightforest.entity.projectile.TFThrowable;
 
@@ -20,12 +20,12 @@ import twilightforest.entity.projectile.TFThrowable;
  */
 public class CustomProjectileTextureRenderer extends EntityRenderer<TFThrowable, EntityRenderState> {
 
-	private final ResourceLocation texture;
+	private final Identifier texture;
 	private final float scale;
 	private final boolean fullBright;
 	private final boolean flashing;
 
-	public CustomProjectileTextureRenderer(EntityRendererProvider.Context ctx, ResourceLocation texture, float scale, boolean fullBright, boolean flashing) {
+	public CustomProjectileTextureRenderer(EntityRendererProvider.Context ctx, Identifier texture, float scale, boolean fullBright, boolean flashing) {
 		super(ctx);
 		this.texture = texture;
 		this.scale = scale;
@@ -33,7 +33,7 @@ public class CustomProjectileTextureRenderer extends EntityRenderer<TFThrowable,
 		this.flashing = flashing;
 	}
 
-	public CustomProjectileTextureRenderer(EntityRendererProvider.Context ctx, ResourceLocation texture) {
+	public CustomProjectileTextureRenderer(EntityRendererProvider.Context ctx, Identifier texture) {
 		this(ctx, texture, 1.0F, false, false);
 	}
 

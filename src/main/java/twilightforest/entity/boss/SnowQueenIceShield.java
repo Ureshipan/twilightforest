@@ -2,7 +2,7 @@ package twilightforest.entity.boss;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityDimensions;
@@ -13,7 +13,7 @@ import twilightforest.init.TFSounds;
 
 public class SnowQueenIceShield extends TFPart<SnowQueen> {
 
-	public static final ResourceLocation RENDERER = TwilightForestMod.prefix("snowqueen_iceshield");
+	public static final Identifier RENDERER = TwilightForestMod.prefix("snowqueen_iceshield");
 
 	public SnowQueenIceShield(SnowQueen parent) {
 		super(parent);
@@ -21,7 +21,7 @@ public class SnowQueenIceShield extends TFPart<SnowQueen> {
 	}
 
 	@Override
-	public ResourceLocation renderer() {
+	public Identifier renderer() {
 		return RENDERER;
 	}
 

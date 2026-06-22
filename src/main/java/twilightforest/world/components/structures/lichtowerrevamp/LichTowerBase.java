@@ -2,7 +2,7 @@ package twilightforest.world.components.structures.lichtowerrevamp;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelReader;
@@ -66,7 +66,7 @@ public final class LichTowerBase extends TwilightJigsawPiece implements PieceBea
 		switch (connection.target()) {
 			case "twilightforest:lich_tower/tower_below" -> LichTowerSegment.buildTowerBySegments(pieceAccessor, random, connection.pos(), connection.orientation(), this, this.structureManager, random.nextIntBetweenInclusive(12, 15));
 			case "twilightforest:lich_tower/bridge" -> {
-				ResourceLocation room;
+				Identifier room;
 				if (jigsawIndex == this.casketWingIndex) {
 					room = lichTowerUtil.getKeepsakeCasketRoom(random);
 				} else {
@@ -77,7 +77,7 @@ public final class LichTowerBase extends TwilightJigsawPiece implements PieceBea
 				}
 			}
 			case "twilightforest:lich_tower/decor" -> {
-				ResourceLocation decorId = lichTowerUtil.rollRandomDecor(random, true);
+				Identifier decorId = lichTowerUtil.rollRandomDecor(random, true);
 				JigsawPlaceContext placeableJunction = JigsawPlaceContext.pickPlaceableJunction(this.templatePosition(), connection.pos(), connection.orientation(), this.structureManager, decorId, "twilightforest:lich_tower/decor", random);
 
 				if (placeableJunction != null) {
@@ -87,7 +87,7 @@ public final class LichTowerBase extends TwilightJigsawPiece implements PieceBea
 				}
 			}
 			case "twilightforest:lich_tower/tower_trim" -> {
-				ResourceLocation decorId = TwilightForestMod.prefix("lich_tower/central_trim");
+				Identifier decorId = TwilightForestMod.prefix("lich_tower/central_trim");
 				JigsawPlaceContext placeableJunction = JigsawPlaceContext.pickPlaceableJunction(this.templatePosition(), connection.pos(), connection.orientation(), this.structureManager, decorId, "twilightforest:lich_tower/tower_trim", random);
 
 				if (placeableJunction != null) {

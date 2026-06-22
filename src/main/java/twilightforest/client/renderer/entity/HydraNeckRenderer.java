@@ -4,7 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import twilightforest.TwilightForestMod;
 import twilightforest.client.model.entity.HydraNeckModel;
 import twilightforest.client.state.HydraNeckRenderState;
@@ -12,7 +12,7 @@ import twilightforest.entity.boss.HydraNeck;
 
 public class HydraNeckRenderer extends TFPartRenderer<HydraNeck, HydraNeckRenderState, HydraNeckModel> {
 
-	private static final ResourceLocation TEXTURE = TwilightForestMod.getModelTexture("hydra4.png");
+	private static final Identifier TEXTURE = TwilightForestMod.getModelTexture("hydra4.png");
 
 	public HydraNeckRenderer(EntityRendererProvider.Context context, HydraNeckModel model) {
 		super(context, model);
@@ -52,7 +52,7 @@ public class HydraNeckRenderer extends TFPartRenderer<HydraNeck, HydraNeckRender
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(HydraNeckRenderState state) {
+	public Identifier getTextureLocation(HydraNeckRenderState state) {
 		return TEXTURE;
 	}
 }

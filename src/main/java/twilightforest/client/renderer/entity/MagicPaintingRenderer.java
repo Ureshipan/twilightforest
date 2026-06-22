@@ -14,7 +14,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -59,7 +59,7 @@ public class MagicPaintingRenderer extends EntityRenderer<MagicPainting, MagicPa
 	}
 
 	private void renderPainting(PoseStack stack, VertexConsumer vertex, int[] worldLight, int width, int height, MagicPaintingRenderState state, MagicPaintingTextureManager manager, TextureAtlasSprite backSprite) {
-		ResourceLocation textureLocation = state.texture;
+		Identifier textureLocation = state.texture;
 
 		int widthAsBlock = width / 16;
 		int heightAsBlock = height / 16;

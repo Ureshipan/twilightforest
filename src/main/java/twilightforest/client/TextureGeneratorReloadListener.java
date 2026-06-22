@@ -5,7 +5,7 @@ import com.mojang.blaze3d.platform.TextureUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.ReloadableTexture;
 import net.minecraft.client.renderer.texture.TextureContents;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import twilightforest.TwilightForestMod;
@@ -26,7 +26,7 @@ public class TextureGeneratorReloadListener implements ResourceManagerReloadList
 	@Override
 	public void onResourceManagerReload(ResourceManager manager) {
 		// Get a default boat chest texture
-		ResourceLocation oak = getTextureLocation(ResourceLocation.withDefaultNamespace("oak"));
+		Identifier oak = getTextureLocation(Identifier.withDefaultNamespace("oak"));
 
 		manager.getResource(oak).ifPresent(vanillaResource -> {
 			try (InputStream vanillaStream = vanillaResource.open()) {
@@ -34,7 +34,7 @@ public class TextureGeneratorReloadListener implements ResourceManagerReloadList
 					int defaultScale = 128;
 					int vanillaScale = vanillaImage.getWidth() / defaultScale;
 					for (String type : TF_BOATS) {
-						ResourceLocation location = getTextureLocation(TwilightForestMod.prefix(type));
+						Identifier location = getTextureLocation(TwilightForestMod.prefix(type));
 						manager.getResource(location).ifPresent(tfResource -> {
 							try (InputStream tfStream = tfResource.open()) {
 								try (NativeImage tfImage = NativeImage.read(tfStream)) {
@@ -81,7 +81,7 @@ public class TextureGeneratorReloadListener implements ResourceManagerReloadList
 		ref.set(null);
 	}
 
-	private static void registerAndLoad(ResourceManager manager, String type, ResourceLocation location, NativeImage image) throws IOException {
+	private static void registerAndLoad(ResourceManager manager, String type, Identifier location, NativeImage image) throws IOException {
 		ref.set(image);
 
 		if (BOAT_CACHE.containsKey(type)) {
@@ -100,7 +100,7 @@ public class TextureGeneratorReloadListener implements ResourceManagerReloadList
 		}
 	}
 
-	private static ResourceLocation getTextureLocation(ResourceLocation type) {
+	private static Identifier getTextureLocation(Identifier type) {
 		return type.withPrefix("textures/entity/chest_boat/").withSuffix(".png");
 	}
 }

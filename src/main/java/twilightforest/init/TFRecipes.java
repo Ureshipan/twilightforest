@@ -5,8 +5,8 @@ import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredRegister;
+import twilightforest.compat.registry.DeferredHolder;
+import twilightforest.compat.registry.DeferredRegister;
 import twilightforest.TwilightForestMod;
 import twilightforest.item.recipe.*;
 

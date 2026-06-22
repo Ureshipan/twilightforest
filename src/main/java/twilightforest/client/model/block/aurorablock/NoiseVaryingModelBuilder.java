@@ -2,7 +2,7 @@ package twilightforest.client.model.block.aurorablock;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.client.model.generators.template.CustomLoaderBuilder;
 import twilightforest.TwilightForestMod;
 
@@ -11,18 +11,18 @@ import java.util.Arrays;
 import java.util.List;
 
 public class NoiseVaryingModelBuilder extends CustomLoaderBuilder {
-	private final List<ResourceLocation> variants = new ArrayList<>();
+	private final List<Identifier> variants = new ArrayList<>();
 
 	public NoiseVaryingModelBuilder() {
 		super(TwilightForestMod.prefix("noise_varying"), false);
 	}
 
-	public NoiseVaryingModelBuilder add(ResourceLocation builder) {
+	public NoiseVaryingModelBuilder add(Identifier builder) {
 		this.variants.add(builder);
 		return this;
 	}
 
-	public NoiseVaryingModelBuilder addAll(ResourceLocation[] builders) {
+	public NoiseVaryingModelBuilder addAll(Identifier[] builders) {
 		Arrays.stream(builders).forEach(this::add);
 
 		return this;

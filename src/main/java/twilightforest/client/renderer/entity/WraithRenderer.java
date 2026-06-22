@@ -4,7 +4,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraft.client.renderer.entity.state.ZombieRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
 import twilightforest.TwilightForestMod;
 import twilightforest.client.model.TFModelLayers;
@@ -13,7 +13,7 @@ import twilightforest.entity.monster.Wraith;
 
 public class WraithRenderer extends HumanoidMobRenderer<Wraith, HumanoidRenderState, WraithModel> {
 
-	private static final ResourceLocation TEXTURE = TwilightForestMod.getModelTexture("ghost.png");
+	private static final Identifier TEXTURE = TwilightForestMod.getModelTexture("ghost.png");
 
 	public WraithRenderer(EntityRendererProvider.Context context) {
 		super(context, new WraithModel(context.bakeLayer(TFModelLayers.WRAITH)), 0.5F);
@@ -30,7 +30,7 @@ public class WraithRenderer extends HumanoidMobRenderer<Wraith, HumanoidRenderSt
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(HumanoidRenderState state) {
+	public Identifier getTextureLocation(HumanoidRenderState state) {
 		return TEXTURE;
 	}
 }

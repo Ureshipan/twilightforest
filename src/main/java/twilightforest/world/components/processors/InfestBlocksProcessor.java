@@ -2,7 +2,7 @@ package twilightforest.world.components.processors;
 
 import com.google.common.base.Suppliers;
 import com.mojang.serialization.MapCodec;
-import net.minecraft.Util;
+import net.minecraft.util.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelReader;

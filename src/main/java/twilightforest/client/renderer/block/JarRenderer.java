@@ -12,7 +12,7 @@ import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.model.BakedModel;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
@@ -25,7 +25,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.neoforge.client.RenderTypeHelper;
 import net.neoforged.neoforge.client.model.data.ModelData;
 import net.neoforged.neoforge.common.util.Lazy;
-import net.neoforged.neoforge.registries.DeferredBlock;
+import twilightforest.compat.registry.DeferredBlock;
 import tamaized.beanification.Autowired;
 import tamaized.beanification.Configurable;
 import twilightforest.block.entity.JarBlockEntity;
@@ -41,17 +41,17 @@ import java.util.Map;
 public class JarRenderer<T extends JarBlockEntity> implements BlockEntityRenderer<T> {
 	public static final Map<Item, BakedModel> LIDS = new HashMap<>();
 
-	public record LidResource(Item lid, ResourceLocation resourceLocation, @Nullable String customPath) {
+	public record LidResource(Item lid, Identifier resourceLocation, @Nullable String customPath) {
 		public LidResource(DeferredBlock<?> lid) {
 			this(lid.asItem(), lid.getId(), null);
 		}
 
 		public LidResource(Item item, String path) {
-			this(item, ResourceLocation.fromNamespaceAndPath("minecraft", path), null);
+			this(item, Identifier.fromNamespaceAndPath("minecraft", path), null);
 		}
 
 		public LidResource(Item item, String path, String customPath) {
-			this(item, ResourceLocation.fromNamespaceAndPath("minecraft", path), customPath);
+			this(item, Identifier.fromNamespaceAndPath("minecraft", path), customPath);
 		}
 	}
 

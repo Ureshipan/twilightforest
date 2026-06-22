@@ -1,6 +1,6 @@
 package twilightforest.tags;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -107,6 +107,6 @@ public class TFItemTags {
 	}
 
 	private static TagKey<Item> create(String modid, String tagName) {
-		return ItemTags.create(ResourceLocation.fromNamespaceAndPath(modid, tagName));
+		return ItemTags.create(Identifier.fromNamespaceAndPath(modid, tagName));
 	}
 }

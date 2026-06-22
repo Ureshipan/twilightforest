@@ -1,8 +1,8 @@
 package twilightforest.client.state;
 
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class DwarfRabbitRenderState extends LivingEntityRenderState {
-	public ResourceLocation texture;
+	public Identifier texture;
 }

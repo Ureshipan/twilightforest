@@ -2,7 +2,7 @@ package twilightforest.init;
 
 import net.minecraft.client.resources.model.EquipmentClientInfo;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.equipment.EquipmentAsset;
 import net.minecraft.world.item.equipment.EquipmentAssets;
 import twilightforest.TwilightForestMod;
@@ -42,7 +42,7 @@ public class TFEquipmentAssets {
 		consumer.accept(YETI, EquipmentClientInfo.builder().addHumanoidLayers(TwilightForestMod.prefix("yeti"), false).build());
 	}
 
-	public static EquipmentClientInfo.Layer arcticDyeable(ResourceLocation textureId, boolean dyeable) {
+	public static EquipmentClientInfo.Layer arcticDyeable(Identifier textureId, boolean dyeable) {
 		return new EquipmentClientInfo.Layer(textureId, dyeable ? Optional.of(new EquipmentClientInfo.Dyeable(Optional.of(ArcticArmorItem.DEFAULT_COLOR))) : Optional.empty(), false);
 	}
 }

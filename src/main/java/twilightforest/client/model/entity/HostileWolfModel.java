@@ -4,7 +4,7 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.state.WolfRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 
 import java.util.function.Function;
@@ -22,7 +22,7 @@ public class HostileWolfModel extends EntityModel<WolfRenderState> {
 		this(RenderType::entityCutoutNoCull, root);
 	}
 
-	public HostileWolfModel(Function<ResourceLocation, RenderType> type, ModelPart root) {
+	public HostileWolfModel(Function<Identifier, RenderType> type, ModelPart root) {
 		super(root, type);
 		this.head = root.getChild("head");
 		this.rightHindLeg = root.getChild("right_hind_leg");

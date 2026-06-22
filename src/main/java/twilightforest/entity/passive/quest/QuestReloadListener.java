@@ -1,7 +1,7 @@
 package twilightforest.entity.passive.quest;
 
 import net.minecraft.resources.FileToIdConverter;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
@@ -22,7 +22,7 @@ public class QuestReloadListener extends SimpleJsonResourceReloadListener<Questi
 	}
 
 	@Override
-	protected void apply(Map<ResourceLocation, QuestingRamContext> object, ResourceManager resourceManager, ProfilerFiller profiler) {
+	protected void apply(Map<Identifier, QuestingRamContext> object, ResourceManager resourceManager, ProfilerFiller profiler) {
 		boolean found = false;
 		for (var entry : object.entrySet()) {
 			if (entry.getKey().getPath().equals("questing_ram")) {

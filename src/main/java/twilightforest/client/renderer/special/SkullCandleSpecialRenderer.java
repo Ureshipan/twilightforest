@@ -13,7 +13,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.SkullBlockRenderer;
 import net.minecraft.client.renderer.special.SpecialModelRenderer;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ResolvableProfile;
@@ -28,7 +28,7 @@ import twilightforest.init.TFDataComponents;
 
 import java.util.Optional;
 
-public record SkullCandleSpecialRenderer(SkullBlock.Type skullType, SkullModelBase model, @Nullable ResourceLocation textureOverride, float animation) implements SpecialModelRenderer<Pair<ResolvableProfile, SkullCandles>> {
+public record SkullCandleSpecialRenderer(SkullBlock.Type skullType, SkullModelBase model, @Nullable Identifier textureOverride, float animation) implements SpecialModelRenderer<Pair<ResolvableProfile, SkullCandles>> {
 
 	@NotNull
 	@Override
@@ -51,10 +51,10 @@ public record SkullCandleSpecialRenderer(SkullBlock.Type skullType, SkullModelBa
 		}
 	}
 
-	public record Unbaked(SkullBlock.Type kind, Optional<ResourceLocation> textureOverride, float animation) implements SpecialModelRenderer.Unbaked {
+	public record Unbaked(SkullBlock.Type kind, Optional<Identifier> textureOverride, float animation) implements SpecialModelRenderer.Unbaked {
 		public static final MapCodec<SkullCandleSpecialRenderer.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
 				SkullBlock.Type.CODEC.fieldOf("kind").forGetter(SkullCandleSpecialRenderer.Unbaked::kind),
-				ResourceLocation.CODEC.optionalFieldOf("texture").forGetter(SkullCandleSpecialRenderer.Unbaked::textureOverride),
+				Identifier.CODEC.optionalFieldOf("texture").forGetter(SkullCandleSpecialRenderer.Unbaked::textureOverride),
 				Codec.FLOAT.optionalFieldOf("animation", 0.0F).forGetter(SkullCandleSpecialRenderer.Unbaked::animation))
 			.apply(instance, SkullCandleSpecialRenderer.Unbaked::new));
 
@@ -69,7 +69,7 @@ public record SkullCandleSpecialRenderer(SkullBlock.Type skullType, SkullModelBa
 		@Nullable
 		public SpecialModelRenderer<?> bake(EntityModelSet set) {
 			SkullModelBase skullmodelbase = SkullBlockRenderer.createModel(set, this.kind());
-			ResourceLocation resourcelocation = this.textureOverride().map(location -> location.withPath(path -> "textures/entity/" + path + ".png")).orElse(null);
+			Identifier resourcelocation = this.textureOverride().map(location -> location.withPath(path -> "textures/entity/" + path + ".png")).orElse(null);
 			return skullmodelbase != null ? new SkullCandleSpecialRenderer(this.kind(), skullmodelbase, resourcelocation, this.animation()) : null;
 		}
 	}

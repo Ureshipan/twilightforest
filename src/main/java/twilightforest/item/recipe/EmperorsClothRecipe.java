@@ -2,7 +2,7 @@ package twilightforest.item.recipe;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.util.Unit;
-import net.minecraft.world.item.ArmorItem;
+import twilightforest.compat.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.CraftingInput;

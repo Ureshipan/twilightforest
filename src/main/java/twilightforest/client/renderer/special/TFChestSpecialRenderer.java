@@ -14,7 +14,7 @@ import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.special.NoDataSpecialModelRenderer;
 import net.minecraft.client.renderer.special.SpecialModelRenderer;
 import net.minecraft.client.resources.model.Material;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemDisplayContext;
 
 public record TFChestSpecialRenderer(ChestModel model, Material material, float openness) implements NoDataSpecialModelRenderer {
@@ -26,16 +26,16 @@ public record TFChestSpecialRenderer(ChestModel model, Material material, float 
 		this.model.renderToBuffer(stack, vertexconsumer, light, overlay);
 	}
 
-	public record Unbaked(ResourceLocation texture, float openness) implements SpecialModelRenderer.Unbaked {
+	public record Unbaked(Identifier texture, float openness) implements SpecialModelRenderer.Unbaked {
 		public static final MapCodec<TFChestSpecialRenderer.Unbaked> MAP_CODEC = RecordCodecBuilder.mapCodec(
 			instance -> instance.group(
-					ResourceLocation.CODEC.fieldOf("texture").forGetter(TFChestSpecialRenderer.Unbaked::texture),
+					Identifier.CODEC.fieldOf("texture").forGetter(TFChestSpecialRenderer.Unbaked::texture),
 					Codec.FLOAT.optionalFieldOf("openness", 0.0F).forGetter(TFChestSpecialRenderer.Unbaked::openness)
 				)
 				.apply(instance, TFChestSpecialRenderer.Unbaked::new)
 		);
 
-		public Unbaked(ResourceLocation location) {
+		public Unbaked(Identifier location) {
 			this(location, 0.0F);
 		}
 

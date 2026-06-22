@@ -1,6 +1,6 @@
 package twilightforest.entity;
 
-import net.minecraft.Util;
+import net.minecraft.util.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -11,7 +11,7 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerEntity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -107,7 +107,7 @@ public class MagicPainting extends HangingEntity {
 
 	@Override
 	public void addAdditionalSaveData(CompoundTag tag) {
-		ResourceLocation location = this.getReg().getKey(this.getVariant().value());
+		Identifier location = this.getReg().getKey(this.getVariant().value());
 		if (location != null) tag.putString("variant", location.toString());
 		tag.putByte("facing", (byte) this.direction.get2DDataValue());
 		super.addAdditionalSaveData(tag);
@@ -116,7 +116,7 @@ public class MagicPainting extends HangingEntity {
 	@Override
 	public void readAdditionalSaveData(CompoundTag tag) {
 		if (tag.contains("variant")) {
-			ResourceLocation location = ResourceLocation.tryParse(tag.getString("variant"));
+			Identifier location = Identifier.tryParse(tag.getString("variant"));
 			if (location != null) {
 				this.setVariant(this.getReg().get(location).orElse(this.getReg().getOrThrow(MagicPaintingVariants.DEFAULT)));
 			}

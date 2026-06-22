@@ -12,7 +12,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
@@ -24,7 +24,7 @@ import twilightforest.inventory.UncraftingMenu;
 import twilightforest.network.UncraftingGuiPacket;
 
 public class UncraftingScreen extends AbstractRecipeBookScreen<UncraftingMenu> {
-	private static final ResourceLocation TEXTURE = TwilightForestMod.getGuiTexture("guigoblintinkering.png");
+	private static final Identifier TEXTURE = TwilightForestMod.getGuiTexture("guigoblintinkering.png");
 
 	public UncraftingScreen(UncraftingMenu container, Inventory player, Component name) {
 		super(container, new CraftingRecipeBookComponent(container), player, name);
