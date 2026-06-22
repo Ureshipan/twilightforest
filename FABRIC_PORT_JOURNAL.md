@@ -73,6 +73,29 @@
 - Подключены Forge Config API Port (−102) и Primitive-Multipart-Entities (в `libs/`).
 - Итог: **~5036 → ~4800** уникальных ошибок.
 
+### Прогресс сессии 2026-06-22 (часть 2 — библиотеки + массовые переносы)
+- **Forge Config API Port** подключён → −102 (ModConfigSpec, без правок).
+- **TFDataAttachments** → Fabric Data Attachment API (eager `AttachmentRegistry.create`);
+  call-sites `getData`→`getAttachedOrCreate`, `setData`→`setAttached`, `hasData`→`hasAttached`,
+  `removeData`→`removeAttached` (только для `TFDataAttachments.*`; `TFDataMaps.*` — отдельно!).
+- `Codec.unit` удалён в datafixers 9.0.19 → `MapCodec.unitCodec` (6 мест).
+- **JEI исключён** из компиляции (`sourceSets.main.java.exclude 'twilightforest/compat/jei/**'`) — нет JEI под 1.21.11.
+- Стабы NeoForge-аннотаций: `@SubscribeEvent`, `@EventBusSubscriber`, `EventPriority` → −~130.
+- **Массовый перенос пакетов 1.21.11** (скрипт: индекс классов из mapped jar →
+  для каждого `import net.minecraft...` с единственным новым путём переписать):
+  - `RenderType` → `client.renderer.rendertype.RenderType` (62 файла!)
+  - `Boat/ChestBoat/AbstractBoat/Raft` → `vehicle.boat.*`
+  - `AbstractArrow/Arrow/SpectralArrow/ThrownTrident` → `projectile.arrow.*`
+  - `PaintingVariant/Painting` → `decoration.painting.*`
+  - `Spider/Zombie`→`monster.spider/zombie`, `Sheep/Wolf/Cat/Ocelot`→`animal.*`,
+    `AbstractHorse`→`animal.equine`, модели Skull/Slime/Skeleton/Pig/Chest→`model.*` подпакеты,
+    `FogRenderer`→`renderer.fog`, `GameRules`→`level.gamerules`, `MobSpawnSettings`→`level.biome` и др. (27 remap).
+- `ArmorItem` import добавлен в TFItems; `DeferredComponent` (data components) готов.
+- **Итог сессии: ~5036 → ~3915** уникальных ошибок (всё закоммичено).
+
+> ⚠️ Скрипт авто-ремапа импортов (Python) — переиспользуемый приём: построить индекс
+> `ClassName→FQN` из mapped jar (`~/probe.jar`), переписать импорты с единственным кандидатом.
+
 ### Следующие высокоприоритетные шаги
 1. `AttachmentType` (NeoForge) → Fabric Attachment API (`fabric-data-attachment-api-v1`) или шим.
 2. Multipart-рефактор: `TFPart extends EntityPart`, боссы `implements MultipartEntity`,
