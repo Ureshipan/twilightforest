@@ -32,7 +32,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.neoforge.common.ItemAbilities;
+import twilightforest.compat.neoforge.common.ItemAbilities;
 import org.jetbrains.annotations.Nullable;
 import twilightforest.enums.BanisterShape;
 import twilightforest.tags.TFBlockTags;
@@ -214,7 +214,7 @@ public class BanisterBlock extends HorizontalDirectionalBlock implements SimpleW
 
 	@Override
 	protected InteractionResult useItemOn(ItemStack held, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-		if (held.canPerformAction(ItemAbilities.AXE_WAX_OFF)) {
+		if (ItemAbilities.canPerformAction(held, ItemAbilities.AXE_WAX_OFF)) {
 			BlockState newState = state.cycle(SHAPE);
 			BlockState belowState = level.getBlockState(pos.below());
 

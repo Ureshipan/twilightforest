@@ -16,7 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import twilightforest.TFRegistries;
 import twilightforest.init.custom.MagicPaintingVariants;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -47,7 +47,7 @@ public record MagicPaintingVariant(int width, int height, List<Layer> layers, Co
 	}
 
 	public static Identifier getVariantResourceLocation(RegistryAccess regAccess, MagicPaintingVariant variant) {
-		return regAccess.lookup(TFRegistries.Keys.MAGIC_PAINTINGS).map(reg -> reg.getKey(variant)).orElse(MagicPaintingVariants.DEFAULT.location());
+		return regAccess.lookup(TFRegistries.Keys.MAGIC_PAINTINGS).map(reg -> reg.getKey(variant)).orElse(MagicPaintingVariants.DEFAULT.identifier());
 	}
 
 	public record Layer(String path, @Nullable Parallax parallax, @Nullable OpacityModifier opacityModifier, boolean fullbright, boolean localLighting) {

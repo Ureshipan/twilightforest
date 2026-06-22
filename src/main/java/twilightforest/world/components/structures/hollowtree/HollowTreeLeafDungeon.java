@@ -95,7 +95,7 @@ public class HollowTreeLeafDungeon extends HollowTreePiece {
 		tag.put("air", BlockStateProvider.CODEC.encodeStart(NbtOps.INSTANCE, this.inside).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
 		tag.put("loot_block", BlockStateProvider.CODEC.encodeStart(NbtOps.INSTANCE, this.lootContainer).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
 
-		tag.putString("loot_table", this.lootTable.location().toString());
+		tag.putString("loot_table", this.lootTable.identifier().toString());
 
 		tag.putString("monster", BuiltInRegistries.ENTITY_TYPE.getKey(this.monster.value()).toString());
 	}

@@ -3,7 +3,6 @@ package twilightforest;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Style;
 import net.minecraft.world.level.biome.BiomeSpecialEffects;
-import tamaized.beanification.Autowired;
 import twilightforest.init.TFBlocks;
 import twilightforest.init.TFItems;
 import twilightforest.init.TFSounds;
@@ -15,8 +14,7 @@ import java.util.function.UnaryOperator;
 @SuppressWarnings("unused") // Referenced by enumextender.json
 public class TFEnumExtensions {
 
-	@Autowired
-	private static BiomeColorAlgorithms biomeColorAlgorithms;
+	private static BiomeColorAlgorithms biomeColorAlgorithms = new BiomeColorAlgorithms();
 
 	private static final ModidPrefixUtil modidPrefixUtil = new ModidPrefixUtil(); // Enum extensions run before the bean context loads
 

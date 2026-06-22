@@ -14,7 +14,6 @@ import net.minecraft.world.item.equipment.ArmorType;
 import twilightforest.compat.registry.DeferredItem;
 import twilightforest.compat.registry.DeferredRegister;
 import twilightforest.TwilightForestMod;
-import tamaized.beanification.Autowired;
 import twilightforest.components.item.PotionFlaskComponent;
 import twilightforest.enums.extensions.TFRarityEnumExtension;
 import twilightforest.item.*;
@@ -28,8 +27,7 @@ import java.util.function.Supplier;
 
 public class TFItems {
 
-	@Autowired
-	private static TFRarityEnumExtension tfRarityEnumExtension;
+	private static TFRarityEnumExtension tfRarityEnumExtension = new TFRarityEnumExtension();
 
 	public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(TwilightForestMod.ID);
 

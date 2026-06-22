@@ -86,7 +86,7 @@ public class HostileWolf extends Monster implements VariantHolder<Holder<WolfVar
 	@Override
 	public void addAdditionalSaveData(CompoundTag tag) {
 		super.addAdditionalSaveData(tag);
-		tag.putString("variant", this.getVariant().unwrapKey().orElse(WolfVariants.PALE).location().toString());
+		tag.putString("variant", this.getVariant().unwrapKey().orElse(WolfVariants.PALE).identifier().toString());
 	}
 
 	@Override

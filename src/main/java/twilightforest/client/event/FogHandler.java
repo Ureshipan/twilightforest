@@ -11,7 +11,7 @@ import net.neoforged.neoforge.event.level.LevelEvent;
 import twilightforest.client.TwilightForestRenderInfo;
 import twilightforest.init.TFBiomes;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 public class FogHandler {
 

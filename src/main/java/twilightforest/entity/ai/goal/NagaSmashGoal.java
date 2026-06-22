@@ -7,7 +7,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
-import net.neoforged.neoforge.event.EventHooks;
+import twilightforest.compat.neoforge.event.EventHooks;
 import twilightforest.entity.boss.Naga;
 import twilightforest.util.entities.EntityUtil;
 

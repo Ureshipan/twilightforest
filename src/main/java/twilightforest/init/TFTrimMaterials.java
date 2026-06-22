@@ -36,7 +36,7 @@ public class TFTrimMaterials {
 	}
 
 	private static void register(BootstrapContext<TrimMaterial> context, ResourceKey<TrimMaterial> trimKey, Holder<Item> trimItem, Style color) {
-		TrimMaterial material = new TrimMaterial(trimKey.location().getPath(), trimItem, Map.of(), Component.translatable(Util.makeDescriptionId("trim_material", trimKey.location())).withStyle(color));
+		TrimMaterial material = new TrimMaterial(trimKey.identifier().getPath(), trimItem, Map.of(), Component.translatable(Util.makeDescriptionId("trim_material", trimKey.identifier())).withStyle(color));
 		context.register(trimKey, material);
 	}
 }

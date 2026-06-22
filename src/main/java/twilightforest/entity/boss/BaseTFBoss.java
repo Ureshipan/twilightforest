@@ -27,8 +27,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.neoforged.neoforge.fluids.FluidType;
-import net.neoforged.neoforge.network.PacketDistributor;
+import twilightforest.compat.neoforge.fluids.FluidType;
+import twilightforest.compat.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.Nullable;
 import twilightforest.config.TFConfig;
 import twilightforest.entity.EnforcedHomePoint;
@@ -175,7 +175,6 @@ public abstract class BaseTFBoss extends Monster implements IBossLootBuffer, Enf
 		return false;
 	}
 
-	@Override
 	public boolean isPushedByFluid(FluidType type) {
 		return false;
 	}

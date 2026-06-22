@@ -22,9 +22,9 @@ import net.minecraft.world.level.redstone.ExperimentalRedstoneUtils;
 import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.neoforge.common.util.FakePlayer;
-import net.neoforged.neoforge.common.util.FakePlayerFactory;
-import net.neoforged.neoforge.common.util.TriState;
+import twilightforest.compat.neoforge.common.util.FakePlayer;
+import twilightforest.compat.neoforge.common.util.FakePlayerFactory;
+import twilightforest.compat.neoforge.common.util.TriState;
 import org.jetbrains.annotations.Nullable;
 import twilightforest.init.TFBlocks;
 import twilightforest.init.TFItems;
@@ -53,11 +53,10 @@ public class UberousSoilBlock extends Block implements BonemealableBlock {
 		return state.isSolid() && !(state.getBlock() instanceof BonemealableBlock && !state.is(this)) ? Blocks.DIRT.defaultBlockState() : super.getStateForPlacement(ctx);
 	}
 
-	@Override
 	public TriState canSustainPlant(BlockState state, BlockGetter level, BlockPos soilPosition, Direction facing, BlockState plant) {
 		if (facing.getAxis() != Direction.Axis.Y) return TriState.FALSE;
 		if (plant.is(BlockTags.CROPS)) return TriState.TRUE;
-		return super.canSustainPlant(state, level, soilPosition, facing, plant);
+		return TriState.DEFAULT;
 	}
 
 	@Override

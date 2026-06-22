@@ -75,7 +75,7 @@ public class TrollCaveMainComponent extends TFStructureComponentOld {
 		super.addAdditionalSaveData(ctx, tagCompound);
 		tagCompound.putInt("size", this.size);
 		tagCompound.putInt("height", this.height);
-		tagCompound.putString("config_id", this.speleothemConfigHolder.key().location().toString());
+		tagCompound.putString("config_id", this.speleothemConfigHolder.key().identifier().toString());
 	}
 
 	@Override

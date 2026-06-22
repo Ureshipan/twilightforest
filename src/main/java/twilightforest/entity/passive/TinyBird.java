@@ -65,7 +65,7 @@ public class TinyBird extends FlyingBird implements VariantHolder<Holder<TinyBir
 	@Override
 	public void addAdditionalSaveData(CompoundTag compound) {
 		super.addAdditionalSaveData(compound);
-		compound.putString("variant", this.getVariant().unwrapKey().orElse(TinyBirdVariants.RED).location().toString());
+		compound.putString("variant", this.getVariant().unwrapKey().orElse(TinyBirdVariants.RED).identifier().toString());
 	}
 
 	@Override

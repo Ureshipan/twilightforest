@@ -59,7 +59,7 @@ public class HollowHillComponent extends TFStructureComponentOld {
 		// TODO: Maybe write a fallback based on hillsize/Class, possibly in a new superclass
 		Holder.Reference<StructureSpeleothemConfig> configHolder = StructureSpeleothemConfigs.getConfigHolder(ctx.registryAccess(), nbt.getString("config_id"));
 		this.speleothemConfig = configHolder.value();
-		this.speleothemConfigId = configHolder.key().location();
+		this.speleothemConfigId = configHolder.key().identifier();
 	}
 
 	public HollowHillComponent(StructurePieceType piece, int i, int size, int x, int y, int z, Holder.Reference<StructureSpeleothemConfig> speleothemConfig) {
@@ -75,7 +75,7 @@ public class HollowHillComponent extends TFStructureComponentOld {
 		// can we determine the size here?
 		this.boundingBox = BoundingBoxUtils.getComponentToAddBoundingBox(x, y, z, -this.radius, -(3 + this.hillSize), -this.radius, this.radius * 2, this.radius / (this.hillSize == 1 ? 2 : this.hillSize), this.radius * 2, Direction.SOUTH, true);
 
-		this.speleothemConfigId = speleothemConfig.unwrapKey().get().location();
+		this.speleothemConfigId = speleothemConfig.unwrapKey().get().identifier();
 		this.speleothemConfig = speleothemConfig.value();
 	}
 

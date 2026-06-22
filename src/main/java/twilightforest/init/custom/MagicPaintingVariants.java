@@ -116,10 +116,10 @@ public class MagicPaintingVariants {
 
 	@SuppressWarnings("SameParameterValue")
 	private static void register(BootstrapContext<MagicPaintingVariant> context, ResourceKey<MagicPaintingVariant> key, String title, String author, int width, int height, Identifier backSprite, List<Layer> layers) {
-		Component authorComponent = Component.translatable(key.location().toLanguageKey("magic_painting", "author"));
+		Component authorComponent = Component.translatable(key.identifier().toLanguageKey("magic_painting", "author"));
 		MagicPaintingVariant variant = new MagicPaintingVariant(width * 16, height * 16, layers, authorComponent, backSprite);
-		MAGIC_PAINTING_ATLAS_HELPER.put(key.location(), variant);
-		MAGIC_PAINTING_LANG_HELPER.put(key.location(), Pair.of(title, author));
+		MAGIC_PAINTING_ATLAS_HELPER.put(key.identifier(), variant);
+		MAGIC_PAINTING_LANG_HELPER.put(key.identifier(), Pair.of(title, author));
 		context.register(key, variant);
 	}
 }

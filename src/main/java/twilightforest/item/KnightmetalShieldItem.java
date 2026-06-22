@@ -4,8 +4,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.item.TooltipFlag;
-import net.neoforged.neoforge.common.ItemAbilities;
-import net.neoforged.neoforge.common.ItemAbility;
+import twilightforest.compat.neoforge.common.ItemAbilities;
+import twilightforest.compat.neoforge.common.ItemAbility;
 
 import java.util.List;
 

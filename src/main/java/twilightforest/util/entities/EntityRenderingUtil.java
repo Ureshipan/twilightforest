@@ -21,7 +21,7 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.ModList;
+import twilightforest.compat.neoforge.fml.ModList;
 import net.neoforged.neoforgespi.language.IModInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.Nullable;
@@ -179,7 +179,7 @@ public class EntityRenderingUtil {
 		List<Component> components = new ArrayList<>();
 		components.add(type.getDescription());
 		if (Minecraft.getInstance().options.advancedItemTooltips) {
-			components.add(Component.literal(key.location().toString()).withStyle(ChatFormatting.DARK_GRAY));
+			components.add(Component.literal(key.identifier().toString()).withStyle(ChatFormatting.DARK_GRAY));
 		}
 		return components;
 	}

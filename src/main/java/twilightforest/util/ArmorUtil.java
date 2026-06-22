@@ -3,13 +3,11 @@ package twilightforest.util;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.DyedItemColor;
-import tamaized.beanification.Component;
 import twilightforest.init.TFDataComponents;
 import twilightforest.item.ArcticArmorItem;
 
 import java.util.OptionalInt;
 
-@Component
 public class ArmorUtil {
 
 	public float getShroudedArmorPercentage(LivingEntity entity) {

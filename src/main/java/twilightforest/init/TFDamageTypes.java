@@ -11,14 +11,12 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 import twilightforest.TwilightForestMod;
-import tamaized.beanification.Autowired;
 import twilightforest.enums.extensions.TFDamageEffectsEnumExtension;
 import twilightforest.util.entities.EntityExcludedDamageSource;
 
 public class TFDamageTypes {
 
-	@Autowired
-	private static TFDamageEffectsEnumExtension tfDamageEffectsEnumExtension;
+	private static TFDamageEffectsEnumExtension tfDamageEffectsEnumExtension = new TFDamageEffectsEnumExtension();
 
 	public static final ResourceKey<DamageType> GHAST_TEAR = create("ghast_tear"); //Ur-Ghast
 	public static final ResourceKey<DamageType> HYDRA_BITE = create("hydra_bite"); //Hydra

@@ -46,7 +46,6 @@ import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import twilightforest.TwilightForestMod;
-import tamaized.beanification.Autowired;
 import twilightforest.block.GiantBlock;
 import twilightforest.block.MiniatureStructureBlock;
 import twilightforest.block.entity.GrowingBeanstalkBlockEntity;
@@ -83,8 +82,7 @@ public class ClientEvents {
 	private static int aurora = 0;
 	private static int lastAurora = 0;
 
-	@Autowired(dist = Dist.CLIENT)
-	private static HolderMatcher holderMatcher;
+	private static HolderMatcher holderMatcher = null;
 
 	public static void initGameEvents() {
 		NeoForge.EVENT_BUS.addListener(ClientEvents::addCustomTooltips);
@@ -317,7 +315,7 @@ public class ClientEvents {
 	}
 
 	private static void unrenderHeadWithTrophies(RenderLivingEvent.Pre<?, ?, ?> event) {
-		boolean visible = !event.getRenderState().getRenderDataOrDefault(HEAD_KEY, false);
+		boolean visible = true; // TODO: Fabric - getRenderDataOrDefault not in vanilla EntityRenderState
 		boolean isPlayer = event.getRenderState() instanceof PlayerRenderState;
 		if (event.getRenderer().getModel() instanceof HeadedModel headedModel) {
 			headedModel.getHead().visible = visible && (isPlayer || headedModel.getHead().visible);  // some mods like Better Combat can move player's head and hide it in the first person view

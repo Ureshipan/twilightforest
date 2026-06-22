@@ -10,52 +10,37 @@ import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
-import tamaized.beanification.Autowired;
 
 @tamaized.beanification.Component
 public class TFCommand {
 
-	@Autowired
-	private CenterCommand centerCommand;
+	private CenterCommand centerCommand = new CenterCommand();
 
-	@Autowired
-	private ConquerCommand conquerCommand;
+	private ConquerCommand conquerCommand = new ConquerCommand();
 
-	@Autowired
-	private GenerateBookCommand generateBookCommand;
+	private GenerateBookCommand generateBookCommand = new GenerateBookCommand();
 
-	@Autowired
-	private InfoCommand infoCommand;
+	private InfoCommand infoCommand = new InfoCommand();
 
-	@Autowired
-	private MapBiomesCommand mapBiomesCommand;
+	private MapBiomesCommand mapBiomesCommand = new MapBiomesCommand();
 
-	@Autowired
-	private MapLocatorCommand mapLocatorCommand;
+	private MapLocatorCommand mapLocatorCommand = new MapLocatorCommand();
 
-	@Autowired
-	private ShieldCommand shieldCommand;
+	private ShieldCommand shieldCommand = new ShieldCommand();
 
-	@Autowired
-	private SinisterSpawnerCommand spawnerCommand;
+	private SinisterSpawnerCommand spawnerCommand = new SinisterSpawnerCommand();
 
-	@Autowired
-	private DisplayPiecesCommand displayPiecesCommand;
+	private DisplayPiecesCommand displayPiecesCommand = new DisplayPiecesCommand();
 
-	@Autowired
-	private CountLootCommand countLootCommand;
+	private CountLootCommand countLootCommand = new CountLootCommand();
 
-	@Autowired
-	private CountTemplateCommand countTemplateCommand;
+	private CountTemplateCommand countTemplateCommand = new CountTemplateCommand();
 
-	@Autowired
-	private StructureDistanceCommand structureDistanceCommand;
+	private StructureDistanceCommand structureDistanceCommand = new StructureDistanceCommand();
 
-	@Autowired
-	private ClearDisplayCommand clearDisplayCommand;
+	private ClearDisplayCommand clearDisplayCommand = new ClearDisplayCommand();
 
-	@Autowired
-	private GetSeedAndTeleportCommand getSeedAndTeleportCommand;
+	private GetSeedAndTeleportCommand getSeedAndTeleportCommand = new GetSeedAndTeleportCommand();
 
 	public void register(CommandDispatcher<CommandSourceStack> dispatcher, CommandBuildContext buildContext, Commands.CommandSelection selection) {
 		LiteralArgumentBuilder<CommandSourceStack> structureBranch = Commands.literal("structure_util")

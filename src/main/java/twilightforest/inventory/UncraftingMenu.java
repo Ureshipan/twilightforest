@@ -22,8 +22,8 @@ import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.neoforged.fml.loading.FMLLoader;
-import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.network.PacketDistributor;
+import twilightforest.compat.neoforge.common.Tags;
+import twilightforest.compat.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import twilightforest.TwilightForestMod;
@@ -289,7 +289,7 @@ public class UncraftingMenu extends AbstractCraftingMenu {
 			for (RecipeHolder<?> holder : level.recipeAccess().getRecipes()) {
 				if (holder.value() instanceof CraftingRecipe recipe) {
 					if (isRecipeSupported(inputStack, recipe) && TFConfig.reverseRecipeBlacklist == TFConfig.disableUncraftingRecipes.contains(holder.id().toString())) {
-						if (TFConfig.flipUncraftingModIdList == TFConfig.blacklistedUncraftingModIds.contains(holder.id().location().getNamespace())) {
+						if (TFConfig.flipUncraftingModIdList == TFConfig.blacklistedUncraftingModIds.contains(holder.id().identifier().getNamespace())) {
 							recipes.add(recipe);
 						}
 					}

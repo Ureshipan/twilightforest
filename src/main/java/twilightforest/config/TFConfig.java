@@ -14,8 +14,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.neoforged.neoforge.common.TranslatableEnum;
-import net.neoforged.neoforge.network.PacketDistributor;
-import net.neoforged.neoforge.server.ServerLifecycleHooks;
+import twilightforest.compat.neoforge.network.PacketDistributor;
+import twilightforest.compat.neoforge.server.ServerLifecycleHooks;
 import org.jetbrains.annotations.Nullable;
 import twilightforest.TwilightForestMod;
 import twilightforest.network.SyncUncraftingTableConfigPacket;
@@ -59,7 +59,7 @@ public class TFConfig {
 	public static boolean portalForNewPlayerSpawn = true;
 
 	// -- Portal --
-	public static String originDimension = Level.OVERWORLD.location().toString();
+	public static String originDimension = Level.OVERWORLD.identifier().toString();
 	public static boolean allowPortalsInOtherDimensions = false;
 	public static int portalCreationPermission = 0;
 	public static boolean disablePortalCreation = false;

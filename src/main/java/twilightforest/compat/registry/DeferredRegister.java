@@ -1,5 +1,6 @@
 package twilightforest.compat.registry;
 
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -44,6 +45,10 @@ public class DeferredRegister<T> {
 		return new Items(namespace);
 	}
 
+	public static DataComponents createDataComponents(ResourceKey<Registry<net.minecraft.core.component.DataComponentType<?>>> registryKey, String namespace) {
+		return new DataComponents(registryKey, namespace);
+	}
+
 	// ── Registration ──
 
 	public <I extends T> DeferredHolder<T, I> register(String name, Supplier<I> supplier) {
@@ -59,14 +64,16 @@ public class DeferredRegister<T> {
 	 * Call once per register during mod onInitialize() in dependency order.
 	 */
 	public void initialize() {
-		Registry<T> registry = (Registry<T>) BuiltInRegistries.REGISTRY.get(registryKey.location());
+		Registry<T> registry = (Registry<T>) BuiltInRegistries.REGISTRY.get(registryKey.identifier());
 		if (registry == null) {
-			throw new IllegalStateException("Registry not found: " + registryKey.location()
+			throw new IllegalStateException("Registry not found: " + registryKey.identifier()
 				+ " — use a custom initializer for non-built-in registries");
 		}
 		for (PendingEntry<T> entry : pending) {
-			T value = Registry.register(registry, entry.id, entry.supplier.get());
-			entry.holder.setValue(value);
+			ResourceKey<T> key = entry.holder.getKey();
+			Holder.Reference<T> ref = Registry.registerForHolder(registry, key, entry.supplier.get());
+			entry.holder.setValue(ref.value());
+			entry.holder.setHolder(ref);
 		}
 	}
 
@@ -109,10 +116,35 @@ public class DeferredRegister<T> {
 		}
 	}
 
+	/** Typed register for DataComponentType — register() returns DeferredComponent. */
+	public static class DataComponents extends DeferredRegister<net.minecraft.core.component.DataComponentType<?>> {
+		DataComponents(ResourceKey<Registry<net.minecraft.core.component.DataComponentType<?>>> registryKey, String namespace) {
+			super(registryKey, namespace);
+		}
+
+		public <T> DeferredComponent<T> registerComponent(String name, Supplier<net.minecraft.core.component.DataComponentType<T>> supplier) {
+			Identifier id = Identifier.fromNamespaceAndPath(namespace(), name);
+			ResourceKey<net.minecraft.core.component.DataComponentType<?>> key = ResourceKey.create(registryKey(), id);
+			DeferredComponent<T> holder = new DeferredComponent<>(key);
+			addPending(id, (Supplier<net.minecraft.core.component.DataComponentType<?>>) (Supplier<?>) supplier, (DeferredHolder<net.minecraft.core.component.DataComponentType<?>, net.minecraft.core.component.DataComponentType<?>>) (DeferredHolder<?, ?>) holder);
+			return holder;
+		}
+
+		@Override
+		@SuppressWarnings("unchecked")
+		public <I extends net.minecraft.core.component.DataComponentType<?>> DeferredHolder<net.minecraft.core.component.DataComponentType<?>, I> register(String name, Supplier<I> supplier) {
+			return (DeferredHolder<net.minecraft.core.component.DataComponentType<?>, I>) (DeferredHolder<?, ?>) registerComponent(name, (Supplier) supplier);
+		}
+	}
+
 	// ── Internal helpers ──
 
 	protected String namespace() {
 		return namespace;
+	}
+
+	protected ResourceKey<Registry<T>> registryKey() {
+		return registryKey;
 	}
 
 	protected void addPending(Identifier id, Supplier<T> supplier, DeferredHolder<T, T> holder) {

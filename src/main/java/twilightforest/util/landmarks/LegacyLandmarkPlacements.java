@@ -19,7 +19,7 @@ import java.util.Optional;
 
 public class LegacyLandmarkPlacements {
 	private static final Map<ResourceKey<Biome>, ResourceKey<Structure>> BIOME_2_STRUCTURES = new ImmutableMap.Builder<ResourceKey<Biome>, ResourceKey<Structure>>()
-		//.put(TFBiomes.DENSE_MUSHROOM_FOREST.location(), MUSHROOM_TOWER)
+		//.put(TFBiomes.DENSE_MUSHROOM_FOREST.identifier(), MUSHROOM_TOWER)
 		.put(TFBiomes.ENCHANTED_FOREST, TFStructures.QUEST_GROVE)
 		.put(TFBiomes.LAKE, TFStructures.QUEST_ISLAND)
 		.put(TFBiomes.SWAMP, TFStructures.LABYRINTH)

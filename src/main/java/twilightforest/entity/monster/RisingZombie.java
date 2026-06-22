@@ -17,8 +17,8 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.event.EventHooks;
-import net.neoforged.neoforge.fluids.FluidType;
+import twilightforest.compat.neoforge.event.EventHooks;
+import twilightforest.compat.neoforge.fluids.FluidType;
 
 public class RisingZombie extends Monster {
 

@@ -74,7 +74,7 @@ public class MagicPaintingItem extends Item {
 
 		if (magicPainting != null) {
 			MagicPaintingVariant painting = magicPainting.value();
-			Identifier location = magicPainting.unwrapKey().orElse(MagicPaintingVariants.DEFAULT).location();
+			Identifier location = magicPainting.unwrapKey().orElse(MagicPaintingVariants.DEFAULT).identifier();
 			components.add(Component.translatable(location.toLanguageKey("magic_painting", "title")).withStyle(ChatFormatting.YELLOW));
 			components.add(Component.empty().withStyle(ChatFormatting.GRAY).append(painting.author()));
 			components.add(Component.translatable("painting.dimensions", Mth.positiveCeilDiv(painting.width(), 16), Mth.positiveCeilDiv(painting.height(), 16)));

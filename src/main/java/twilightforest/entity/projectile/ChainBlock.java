@@ -26,7 +26,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.common.ItemAbilities;
+import twilightforest.compat.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.entity.IEntityWithComplexSpawn;
 import net.neoforged.neoforge.entity.PartEntity;
 import org.jetbrains.annotations.Nullable;
@@ -134,7 +134,7 @@ public class ChainBlock extends ThrowableProjectile implements IEntityWithComple
 			}
 
 			//properly disable shields
-			if (result.getEntity() instanceof Player player && player.isUsingItem() && player.getUseItem().canPerformAction(ItemAbilities.SHIELD_BLOCK)) {
+			if (result.getEntity() instanceof Player player && player.isUsingItem() && ItemAbilities.canPerformAction(player.getUseItem(), ItemAbilities.SHIELD_BLOCK)) {
 				player.getUseItem().hurtAndBreak(5, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
 				player.disableShield(player.getUseItem());
 			}

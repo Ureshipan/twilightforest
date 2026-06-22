@@ -80,7 +80,7 @@ public class FallenTrunkPiece extends StructurePiece {
 		tag.putInt("length", this.length);
 		tag.putInt("radius", this.radius);
 		tag.put("log", BlockStateProvider.CODEC.encodeStart(NbtOps.INSTANCE, this.log).resultOrPartial(TwilightForestMod.LOGGER::error).orElseGet(CompoundTag::new));
-		tag.putString("chest_loot_table", this.chestLootTable.location().toString());
+		tag.putString("chest_loot_table", this.chestLootTable.identifier().toString());
 		tag.putLong("hole_seed", this.holeSeed);
 	}
 

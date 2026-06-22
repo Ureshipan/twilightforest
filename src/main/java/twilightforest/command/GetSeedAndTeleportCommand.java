@@ -22,7 +22,7 @@ public class GetSeedAndTeleportCommand {
 		long seed = level.getSeed();
 		source.sendSuccess(() -> Component.translatable("commands.seed.success", ComponentUtils.copyOnClickText(String.valueOf(seed))), false);
 		source.sendSuccess(() -> Component.translatable("commands.tffeature.coords", ComponentUtils.copyOnClickText(pos.toShortString())), false);
-		String tp = "/execute in " + level.dimension().location() + " run tp " + pos.getX() + " " + pos.getY() + " " + pos.getZ();
+		String tp = "/execute in " + level.dimension().identifier() + " run tp " + pos.getX() + " " + pos.getY() + " " + pos.getZ();
 		String block = "Seed: `" + seed + "`" + System.lineSeparator() + "Tp: `" + tp + "`";
 		source.sendSuccess(() -> copyOnClickText(Component.translatable("commands.tffeature.tp"), tp).append(" ").append(copyOnClickText(Component.translatable("commands.tffeature.seed_and_tp"), block)), false);
 		return (int) seed;

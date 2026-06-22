@@ -55,7 +55,7 @@ public class SinisterSpawnerBlockEntity extends BlockEntity implements Spawner {
 		this.spawner.save(tag);
 
 		if (this.lootTable != null) {
-			tag.putString("LootTable", this.lootTable.location().toString());
+			tag.putString("LootTable", this.lootTable.identifier().toString());
 		}
 	}
 

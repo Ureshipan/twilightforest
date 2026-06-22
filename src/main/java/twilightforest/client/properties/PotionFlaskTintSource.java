@@ -11,7 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import twilightforest.components.item.PotionFlaskComponent;
 import twilightforest.init.TFDataComponents;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 public record PotionFlaskTintSource(int defaultColor) implements ItemTintSource {
 	public static final MapCodec<PotionFlaskTintSource> TYPE = RecordCodecBuilder.mapCodec(instance -> instance.group(

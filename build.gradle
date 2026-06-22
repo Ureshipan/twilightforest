@@ -68,6 +68,7 @@ java {
 tasks.withType(JavaCompile).configureEach {
 	options.encoding = 'UTF-8'
 	options.release.set(21)
+	options.compilerArgs += ['-Xmaxerrs', '20000']
 }
 
 sourceSets {
@@ -113,6 +114,14 @@ repositories {
 			includeGroup 'curse.maven'
 		}
 	}
+	maven {
+		name = 'Fuzs Mod Resources'   // Forge Config API Port
+		url = 'https://raw.githubusercontent.com/Fuzss/modresources/main/maven/'
+	}
+	maven {
+		name = 'JitPack'              // Primitive Multipart Entities
+		url = 'https://jitpack.io'
+	}
 }
 
 dependencies {
@@ -123,6 +132,13 @@ dependencies {
 
 	// Config UI
 	modApi "me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}"
+
+	// NeoForge ModConfigSpec on Fabric (drop-in for twilightforest config code)
+	modImplementation "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${project.forge_config_api_port_version}"
+
+	// Multipart entity support (Hydra / Naga / UrGhast parts)
+	// Local jar from the GitHub release (JitPack can't serve Loom-built artifacts); Loom remaps & bundles it.
+	modImplementation include(files("libs/Primitive-Multipart-Entities-${project.multipart_entities_version}.jar"))
 
 	// ModMenu integration (optional)
 //	modCompileOnly "com.terraformersmc:modmenu:${project.modmenu_version}"

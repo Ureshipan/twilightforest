@@ -40,30 +40,30 @@ public class MapBiomesCommand {
 	private final HashMap<Identifier, BiomeMapColor> BIOME2COLOR = new HashMap<>();
 
 	private void init() {
-		BIOME2COLOR.put(TFBiomes.STREAM.location(), new BiomeMapColor(0, 0, 255));
-		BIOME2COLOR.put(TFBiomes.LAKE.location(), new BiomeMapColor(0, 0, 255));
-		BIOME2COLOR.put(TFBiomes.CLEARING.location(), new BiomeMapColor(132, 245, 130));
-		BIOME2COLOR.put(TFBiomes.OAK_SAVANNAH.location(), new BiomeMapColor(239, 245, 130));
-		BIOME2COLOR.put(TFBiomes.FOREST.location(), new BiomeMapColor(0, 255, 0));
-		BIOME2COLOR.put(TFBiomes.DENSE_FOREST.location(), new BiomeMapColor(0, 170, 0));
-		BIOME2COLOR.put(TFBiomes.FIREFLY_FOREST.location(), new BiomeMapColor(88, 252, 102));
-		BIOME2COLOR.put(TFBiomes.ENCHANTED_FOREST.location(), new BiomeMapColor(0, 255, 255));
-		BIOME2COLOR.put(TFBiomes.SPOOKY_FOREST.location(), new BiomeMapColor(119, 0, 255));
-		BIOME2COLOR.put(TFBiomes.MUSHROOM_FOREST.location(), new BiomeMapColor(204, 0, 139));
-		BIOME2COLOR.put(TFBiomes.DENSE_MUSHROOM_FOREST.location(), new BiomeMapColor(184, 48, 184));
+		BIOME2COLOR.put(TFBiomes.STREAM.identifier(), new BiomeMapColor(0, 0, 255));
+		BIOME2COLOR.put(TFBiomes.LAKE.identifier(), new BiomeMapColor(0, 0, 255));
+		BIOME2COLOR.put(TFBiomes.CLEARING.identifier(), new BiomeMapColor(132, 245, 130));
+		BIOME2COLOR.put(TFBiomes.OAK_SAVANNAH.identifier(), new BiomeMapColor(239, 245, 130));
+		BIOME2COLOR.put(TFBiomes.FOREST.identifier(), new BiomeMapColor(0, 255, 0));
+		BIOME2COLOR.put(TFBiomes.DENSE_FOREST.identifier(), new BiomeMapColor(0, 170, 0));
+		BIOME2COLOR.put(TFBiomes.FIREFLY_FOREST.identifier(), new BiomeMapColor(88, 252, 102));
+		BIOME2COLOR.put(TFBiomes.ENCHANTED_FOREST.identifier(), new BiomeMapColor(0, 255, 255));
+		BIOME2COLOR.put(TFBiomes.SPOOKY_FOREST.identifier(), new BiomeMapColor(119, 0, 255));
+		BIOME2COLOR.put(TFBiomes.MUSHROOM_FOREST.identifier(), new BiomeMapColor(204, 0, 139));
+		BIOME2COLOR.put(TFBiomes.DENSE_MUSHROOM_FOREST.identifier(), new BiomeMapColor(184, 48, 184));
 
-		BIOME2COLOR.put(TFBiomes.SWAMP.location(), new BiomeMapColor(0, 204, 187));
-		BIOME2COLOR.put(TFBiomes.FIRE_SWAMP.location(), new BiomeMapColor(140, 0, 0));
+		BIOME2COLOR.put(TFBiomes.SWAMP.identifier(), new BiomeMapColor(0, 204, 187));
+		BIOME2COLOR.put(TFBiomes.FIRE_SWAMP.identifier(), new BiomeMapColor(140, 0, 0));
 
-		BIOME2COLOR.put(TFBiomes.DARK_FOREST.location(), new BiomeMapColor(25, 61, 13));
-		BIOME2COLOR.put(TFBiomes.DARK_FOREST_CENTER.location(), new BiomeMapColor(157, 79, 0));
+		BIOME2COLOR.put(TFBiomes.DARK_FOREST.identifier(), new BiomeMapColor(25, 61, 13));
+		BIOME2COLOR.put(TFBiomes.DARK_FOREST_CENTER.identifier(), new BiomeMapColor(157, 79, 0));
 
-		BIOME2COLOR.put(TFBiomes.SNOWY_FOREST.location(), new BiomeMapColor(255, 255, 255));
-		BIOME2COLOR.put(TFBiomes.GLACIER.location(), new BiomeMapColor(130, 191, 245));
+		BIOME2COLOR.put(TFBiomes.SNOWY_FOREST.identifier(), new BiomeMapColor(255, 255, 255));
+		BIOME2COLOR.put(TFBiomes.GLACIER.identifier(), new BiomeMapColor(130, 191, 245));
 
-		BIOME2COLOR.put(TFBiomes.HIGHLANDS.location(), new BiomeMapColor(100, 65, 0));
-		BIOME2COLOR.put(TFBiomes.THORNLANDS.location(), new BiomeMapColor(128, 100, 90));
-		BIOME2COLOR.put(TFBiomes.FINAL_PLATEAU.location(), new BiomeMapColor(128, 128, 128));
+		BIOME2COLOR.put(TFBiomes.HIGHLANDS.identifier(), new BiomeMapColor(100, 65, 0));
+		BIOME2COLOR.put(TFBiomes.THORNLANDS.identifier(), new BiomeMapColor(128, 100, 90));
+		BIOME2COLOR.put(TFBiomes.FINAL_PLATEAU.identifier(), new BiomeMapColor(128, 128, 128));
 	}
 
 	public LiteralArgumentBuilder<CommandSourceStack> register() {

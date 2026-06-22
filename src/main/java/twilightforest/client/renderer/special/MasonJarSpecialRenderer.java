@@ -16,7 +16,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemContainerContents;
 import net.neoforged.api.distmarker.Dist;
 import org.jetbrains.annotations.Nullable;
-import tamaized.beanification.Autowired;
 import twilightforest.client.renderer.block.JarRenderer;
 import twilightforest.components.item.JarLid;
 import twilightforest.enums.extensions.TFItemDisplayContextEnumExtension;

@@ -3,7 +3,7 @@ package twilightforest.client.state;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.network.chat.Component;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 public class PartEntityState extends EntityRenderState {
 	public float yRot;

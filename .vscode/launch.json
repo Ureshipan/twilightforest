@@ -1,0 +1,71 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "Client",
+      "presentation": {
+        "group": "Mod Development - twilightforest",
+        "order": 0
+      },
+      "projectName": "twilightforest",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@/home/vladislav.tiptev@nami.local/projects/twilightforest/build/moddev/clientRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@/home/vladislav.tiptev@nami.local/projects/twilightforest/build/moddev/clientRunVmArgs.txt",
+        "-Dfml.modFolders\u003dtf-asm%%/home/vladislav.tiptev@nami.local/projects/twilightforest/tf-asm/bin/main:twilightforest%%/home/vladislav.tiptev@nami.local/projects/twilightforest/bin/main"
+      ],
+      "cwd": "${workspaceFolder}/run",
+      "env": {},
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    },
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "ClientData",
+      "presentation": {
+        "group": "Mod Development - twilightforest",
+        "order": 1
+      },
+      "projectName": "twilightforest",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@/home/vladislav.tiptev@nami.local/projects/twilightforest/build/moddev/clientDataRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@/home/vladislav.tiptev@nami.local/projects/twilightforest/build/moddev/clientDataRunVmArgs.txt",
+        "-Dfml.modFolders\u003dtf-asm%%/home/vladislav.tiptev@nami.local/projects/twilightforest/tf-asm/bin/main:twilightforest-data%%/home/vladislav.tiptev@nami.local/projects/twilightforest/bin/main:twilightforest-data%%/home/vladislav.tiptev@nami.local/projects/twilightforest/bin/data"
+      ],
+      "cwd": "${workspaceFolder}/run-data",
+      "env": {},
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    },
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "Server",
+      "presentation": {
+        "group": "Mod Development - twilightforest",
+        "order": 2
+      },
+      "projectName": "twilightforest",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@/home/vladislav.tiptev@nami.local/projects/twilightforest/build/moddev/serverRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@/home/vladislav.tiptev@nami.local/projects/twilightforest/build/moddev/serverRunVmArgs.txt",
+        "-Dfml.modFolders\u003dtf-asm%%/home/vladislav.tiptev@nami.local/projects/twilightforest/tf-asm/bin/main:twilightforest%%/home/vladislav.tiptev@nami.local/projects/twilightforest/bin/main"
+      ],
+      "cwd": "${workspaceFolder}/run",
+      "env": {},
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    }
+  ]
+}

@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import net.minecraft.util.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
@@ -23,7 +24,7 @@ import twilightforest.init.TFBlockEntities;
 import twilightforest.init.TFBlocks;
 import twilightforest.init.TFDataComponents;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BooleanSupplier;
@@ -93,9 +94,9 @@ public class JarBlockEntity extends BlockEntity {
 	}
 
 	@Override
-	protected void applyImplicitComponents(DataComponentInput input) {
+	protected void applyImplicitComponents(DataComponentGetter input) {
 		super.applyImplicitComponents(input);
-		this.lid = input.getOrDefault(TFDataComponents.JAR_LID, new JarLid(TFBlocks.TWILIGHT_OAK_LOG.asItem())).lid();
+		this.lid = input.getOrDefault(TFDataComponents.JAR_LID.get(), new JarLid(TFBlocks.TWILIGHT_OAK_LOG.asItem())).lid();
 	}
 
 	@Override

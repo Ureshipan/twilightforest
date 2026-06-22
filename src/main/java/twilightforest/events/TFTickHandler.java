@@ -18,7 +18,7 @@ import net.minecraft.world.level.levelgen.structure.StructurePiece;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-import net.neoforged.neoforge.network.PacketDistributor;
+import twilightforest.compat.neoforge.network.PacketDistributor;
 import twilightforest.TwilightForestMod;
 import twilightforest.block.TFPortalBlock;
 import twilightforest.config.TFConfig;
@@ -108,7 +108,7 @@ public class TFTickHandler {
 	}
 
 	private static void checkForPortalCreation(ServerPlayer player, ServerLevel level, float rangeToCheck) {
-		if (level.dimension().location().equals(Identifier.parse(TFConfig.originDimension))
+		if (level.dimension().identifier().equals(Identifier.parse(TFConfig.originDimension))
 			|| TFDimension.isTwilightPortalDestination(level)
 			|| TFConfig.allowPortalsInOtherDimensions) {
 

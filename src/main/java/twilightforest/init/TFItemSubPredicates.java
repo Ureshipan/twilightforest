@@ -1,6 +1,6 @@
 package twilightforest.init;
 
-import net.minecraft.advancements.critereon.ItemSubPredicate;
+import net.minecraft.advancements.criterion.ItemSubPredicate;
 import net.minecraft.core.registries.Registries;
 import twilightforest.compat.registry.DeferredHolder;
 import twilightforest.compat.registry.DeferredRegister;

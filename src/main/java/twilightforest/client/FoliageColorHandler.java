@@ -4,8 +4,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
-import tamaized.beanification.Autowired;
-import tamaized.beanification.Component;
 import twilightforest.init.TFBiomes;
 import twilightforest.world.components.BiomeColorAlgorithms;
 
@@ -13,11 +11,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-@Component
 public final class FoliageColorHandler {
 
-	@Autowired
-	private BiomeColorAlgorithms biomeColorAlgorithms;
+	private BiomeColorAlgorithms biomeColorAlgorithms = new BiomeColorAlgorithms();
 
 	private final Map<ResourceKey<Biome>, Handler> REGISTRY = new HashMap<>() {{
 		put(TFBiomes.SPOOKY_FOREST, (o, x, z) -> biomeColorAlgorithms.spookyFoliage(x, z));

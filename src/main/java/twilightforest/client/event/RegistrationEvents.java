@@ -715,20 +715,7 @@ public class RegistrationEvents {
 	}
 
 	public static void registerCustomRenderData(RegisterRenderStateModifiersEvent event) {
-		event.registerEntityModifier(new TypeToken<LivingEntityRenderer<?, ?, ?>>() {}, (living, state) -> state.setRenderData(ShieldLayer.SHIELD_COUNT_KEY, ShieldLayer.getShieldCount(living)));
-		event.registerEntityModifier(new TypeToken<LivingEntityRenderer<?, ?, ?>>() {}, (living, state) -> {
-			AttributeInstance speed = living.getAttribute(Attributes.MOVEMENT_SPEED);
-			if (speed == null) return;
-
-			AttributeModifier frost = speed.getModifier(FrostedEffect.MOVEMENT_SPEED_MODIFIER);
-			if (frost == null) return;
-
-            state.setRenderData(IceLayer.FROST_COUNT_KEY, frost.amount());
-			state.setRenderData(IceLayer.FROST_ID_KEY, living.getId());
-        });
-		event.registerEntityModifier(new TypeToken<LivingEntityRenderer<?, ?, ?>>() {}, (living, state) -> state.setRenderData(ClientEvents.HEAD_KEY, living.getItemBySlot(EquipmentSlot.HEAD).getItem() instanceof TrophyItem || ClientEvents.areCuriosEquipped(living)));
-
-		event.registerMapModifier((data, state) -> state.setRenderData(TFMagicMapData.MAGIC_MAP_KEY, data instanceof TFMagicMapData));
-		event.registerMapModifier((data, state) -> state.setRenderData(TFMagicMapData.CONQUERED_STRUCTURES_KEY, data instanceof TFMagicMapData map ? map.conqueredStructures : List.of()));
+		// TODO: Fabric - setRenderData/getRenderDataOrDefault are NeoForge mixin injections on EntityRenderState
+		// Requires Fabric equivalent (e.g., custom data attachment or mixin)
 	}
 }

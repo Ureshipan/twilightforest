@@ -28,14 +28,14 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.neoforge.common.ItemAbilities;
-import net.neoforged.neoforge.fluids.FluidUtil;
-import net.neoforged.neoforge.fluids.capability.templates.VoidFluidHandler;
+import twilightforest.compat.neoforge.common.ItemAbilities;
+import twilightforest.compat.neoforge.fluids.FluidUtil;
+import twilightforest.compat.neoforge.fluids.capability.templates.VoidFluidHandler;
 import twilightforest.block.entity.BrazierBlockEntity;
 import twilightforest.enums.BrazierLight;
 import twilightforest.init.TFBlockEntities;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 public class BrazierBlock extends BaseEntityBlock {
 
@@ -138,7 +138,7 @@ public class BrazierBlock extends BaseEntityBlock {
 	@Override
 	protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
 		if (state.is(this) && state.getValue(HALF) == DoubleBlockHalf.UPPER) {
-			if (state.getValue(LIGHT) != BrazierLight.FULL && stack.canPerformAction(ItemAbilities.FIRESTARTER_LIGHT)) {
+			if (state.getValue(LIGHT) != BrazierLight.FULL && ItemAbilities.canPerformAction(stack, ItemAbilities.FIRESTARTER_LIGHT)) {
 				level.setBlock(pos, state.cycle(LIGHT), Block.UPDATE_ALL_IMMEDIATE);
 				level.getBlockState(pos.below()).cycle(LIGHT);
 				if (stack.is(Items.FLINT_AND_STEEL)) {

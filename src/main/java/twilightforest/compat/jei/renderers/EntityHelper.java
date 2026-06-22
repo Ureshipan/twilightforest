@@ -27,7 +27,7 @@ public class EntityHelper implements IIngredientHelper<FakeEntityType> {
 
 	@Override
 	public Identifier getResourceLocation(FakeEntityType type) {
-		return type.type().location();
+		return type.type().identifier();
 	}
 
 	@Override
@@ -38,6 +38,6 @@ public class EntityHelper implements IIngredientHelper<FakeEntityType> {
 	@Override
 	public String getErrorInfo(@Nullable FakeEntityType type) {
 		if (type == null) return "null";
-		return type.type().location().toString();
+		return type.type().identifier().toString();
 	}
 }

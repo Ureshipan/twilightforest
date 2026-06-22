@@ -57,7 +57,7 @@ public class RecipeViewerConstants {
 		return !result.isEmpty() &&  //get rid of empty items
 			!result.is(TFItemTags.BANNED_UNCRAFTABLES) &&  //Prevents things that are tagged as banned from showing up
 			TFConfig.reverseRecipeBlacklist == TFConfig.disableUncraftingRecipes.contains(holder.id().toString()) && //remove disabled recipes
-			TFConfig.flipUncraftingModIdList == TFConfig.blacklistedUncraftingModIds.contains(holder.id().location().getNamespace());
+			TFConfig.flipUncraftingModIdList == TFConfig.blacklistedUncraftingModIds.contains(holder.id().identifier().getNamespace());
 	}
 
 	//all recipe viewers run this once when initializing recipes

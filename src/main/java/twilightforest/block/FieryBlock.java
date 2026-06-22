@@ -13,7 +13,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.fml.ModList;
+import twilightforest.compat.neoforge.fml.ModList;
 import twilightforest.init.TFDamageTypes;
 import twilightforest.init.TFItems;
 
@@ -48,7 +48,6 @@ public class FieryBlock extends Block {
 		super.stepOn(level, pos, state, entity);
 	}
 
-	@Override
 	public boolean isFireSource(BlockState state, LevelReader level, BlockPos pos, Direction direction) {
 		return true;
 	}

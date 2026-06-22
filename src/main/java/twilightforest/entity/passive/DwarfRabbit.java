@@ -93,7 +93,7 @@ public class DwarfRabbit extends Animal implements VariantHolder<Holder<DwarfRab
 	@Override
 	public void addAdditionalSaveData(CompoundTag compound) {
 		super.addAdditionalSaveData(compound);
-		compound.putString("variant", this.getVariant().unwrapKey().orElse(DwarfRabbitVariants.BROWN).location().toString());
+		compound.putString("variant", this.getVariant().unwrapKey().orElse(DwarfRabbitVariants.BROWN).identifier().toString());
 	}
 
 	@Override

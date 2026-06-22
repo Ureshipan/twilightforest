@@ -9,9 +9,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.network.PacketDistributor;
+import twilightforest.compat.neoforge.capabilities.Capabilities;
+import twilightforest.compat.neoforge.items.IItemHandler;
+import twilightforest.compat.neoforge.network.PacketDistributor;
 import twilightforest.config.TFConfig;
 import twilightforest.tags.TFEntityTypeTags;
 import twilightforest.init.TFParticleType;
@@ -63,28 +63,7 @@ public class SortLogCoreBlock extends SpecialMagicLogBlock {
 			}
 		}
 
-		List<Entity> alreadyUsedForInput = new ArrayList<>(); // Keep track of entities we already have for inputs, so we can skip over them when looking for outputs
-
-		level.getEntities((Entity) null, new AABB(pos).inflate(2), entity -> entity.isAlive() && entity.getType().is(TFEntityTypeTags.SORTABLE_ENTITIES)).forEach(entity -> {
-			List<IItemHandler> handlers = new ArrayList<>();
-			for (Direction side : Direction.values()) {
-				IItemHandler handler = entity.getCapability(Capabilities.ItemHandler.ENTITY_AUTOMATION, side);
-				if (handler != null) handlers.add(handler);
-			}
-			if (!handlers.isEmpty()) {
-				inputMap.put(handlers, entity.position().add(0D, entity.getBbHeight() + 0.9D, 0D));
-				alreadyUsedForInput.add(entity);
-			}
-		});
-
-		if (inputMap.isEmpty()) return; // No input
-
-		level.getEntities((Entity) null, new AABB(pos).inflate(16), entity -> entity.isAlive() && !alreadyUsedForInput.contains(entity) && entity.getType().is(TFEntityTypeTags.SORTABLE_ENTITIES)).forEach(entity -> {
-			for (Direction side : Direction.values()) {
-				IItemHandler handler = entity.getCapability(Capabilities.ItemHandler.ENTITY_AUTOMATION, side);
-				if (handler != null) outputMap.put(handler, entity.position().add(0D, entity.getBbHeight() + 0.9D, 0D));
-			}
-		});
+		// TODO: Fabric Transfer API - entity item handler capability lookup
 
 		if (outputMap.isEmpty()) return; // No output
 

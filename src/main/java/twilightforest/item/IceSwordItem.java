@@ -4,7 +4,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.ToolMaterial;
-import net.neoforged.neoforge.network.PacketDistributor;
+import twilightforest.compat.neoforge.network.PacketDistributor;
 import twilightforest.enchantment.ApplyFrostedEffect;
 import twilightforest.init.TFParticleType;
 import twilightforest.network.ParticlePacket;
