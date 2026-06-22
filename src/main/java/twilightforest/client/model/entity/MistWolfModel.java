@@ -1,7 +1,7 @@
 package twilightforest.client.model.entity;
 
 import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderType;
 
 public class MistWolfModel extends HostileWolfModel {
 

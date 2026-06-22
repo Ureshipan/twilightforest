@@ -1,6 +1,6 @@
 package twilightforest.client.renderer.entity;
 
-import net.minecraft.client.model.SheepModel;
+import net.minecraft.client.model.animal.sheep.SheepModel;
 import net.minecraft.client.renderer.entity.AgeableMobRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.layers.SheepWoolLayer;

@@ -1,7 +1,7 @@
 package twilightforest.client.model.entity;
 
 import net.minecraft.client.model.BabyModelTransform;
-import net.minecraft.client.model.SheepModel;
+import net.minecraft.client.model.animal.sheep.SheepModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;

@@ -5,8 +5,8 @@ import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.level.DifficultyInstance;
-import net.minecraft.world.level.MobSpawnSettings;
+import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.SpawnData;
 import org.jetbrains.annotations.Nullable;
 
