@@ -85,8 +85,8 @@ public class OverlayHandler {
 			Minecraft minecraft = Minecraft.getInstance();
 			LocalPlayer player = minecraft.player;
 			Gui gui = minecraft.gui;
-			if (player != null && !minecraft.options.hideGui && (minecraft.gameMode.canHurtPlayer() || TFConfig.showFortificationShieldIndicatorInCreative) && player.hasData(TFDataAttachments.FORTIFICATION_SHIELDS) && player.getData(TFDataAttachments.FORTIFICATION_SHIELDS).shieldsLeft() > 0 && TFConfig.showFortificationShieldIndicator) {
-				renderShieldCount(graphics, gui, graphics.guiWidth(), graphics.guiHeight(), player.getData(TFDataAttachments.FORTIFICATION_SHIELDS).shieldsLeft());
+			if (player != null && !minecraft.options.hideGui && (minecraft.gameMode.canHurtPlayer() || TFConfig.showFortificationShieldIndicatorInCreative) && player.hasAttached(TFDataAttachments.FORTIFICATION_SHIELDS) && player.getAttachedOrCreate(TFDataAttachments.FORTIFICATION_SHIELDS).shieldsLeft() > 0 && TFConfig.showFortificationShieldIndicator) {
+				renderShieldCount(graphics, gui, graphics.guiWidth(), graphics.guiHeight(), player.getAttachedOrCreate(TFDataAttachments.FORTIFICATION_SHIELDS).shieldsLeft());
 			}
 		});
 
@@ -96,7 +96,7 @@ public class OverlayHandler {
 			LocalPlayer player = minecraft.player;
 
 			if (player != null) {
-				TFPortalAttachment portal = player.getData(TFDataAttachments.TF_PORTAL_COOLDOWN);
+				TFPortalAttachment portal = player.getAttachedOrCreate(TFDataAttachments.TF_PORTAL_COOLDOWN);
 				if (portal.getPortalTimer() > 0) {
 					RenderSystem.disableDepthTest();
 					RenderSystem.depthMask(false);

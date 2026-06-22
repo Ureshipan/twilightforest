@@ -71,6 +71,12 @@ tasks.withType(JavaCompile).configureEach {
 	options.compilerArgs += ['-Xmaxerrs', '20000']
 }
 
+// JEI is not yet available/ported for Fabric 1.21.11 — exclude the optional integration
+// from compilation during the port. Re-enable once a JEI (or EMI/REI) build is wired in.
+sourceSets.main.java {
+	exclude 'twilightforest/compat/jei/**'
+}
+
 sourceSets {
 	data {
 		compileClasspath += main.compileClasspath + main.output

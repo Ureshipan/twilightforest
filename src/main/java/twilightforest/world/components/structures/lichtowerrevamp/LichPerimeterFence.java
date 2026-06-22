@@ -356,7 +356,7 @@ public class LichPerimeterFence extends TwilightJigsawPiece implements PieceBear
 		boundedEntity.setPersistenceRequired();
 		boundedEntity.setLeashedTo(knot, false);
 		boundedEntity.moveTo(zombiePos.getX() + 0.5, zombiePos.getY() - 1, zombiePos.getZ() + 0.5);
-		boundedEntity.setData(TFDataAttachments.LEASH_PATHFINDER_OVERRIDE, Unit.INSTANCE);
+		boundedEntity.setAttached(TFDataAttachments.LEASH_PATHFINDER_OVERRIDE, Unit.INSTANCE);
 		level.addFreshEntity(boundedEntity);
 	}
 

@@ -31,10 +31,10 @@ public class HostileMountEvents {
 			event.setCanceled(true);
 		}
 
-		if (living.level() instanceof ServerLevel level && damageSource.is(DamageTypes.FALL) && living.getData(TFDataAttachments.YETI_THROWING).getThrown()) {
+		if (living.level() instanceof ServerLevel level && damageSource.is(DamageTypes.FALL) && living.getAttachedOrCreate(TFDataAttachments.YETI_THROWING).getThrown()) {
 			float amount = event.getAmount();
 			event.setCanceled(true);
-			living.hurtServer(level, level.damageSources().source(TFDamageTypes.YEETED, living.getData(TFDataAttachments.YETI_THROWING).getThrower()), amount);
+			living.hurtServer(level, level.damageSources().source(TFDamageTypes.YEETED, living.getAttachedOrCreate(TFDataAttachments.YETI_THROWING).getThrower()), amount);
 		}
 	}
 

@@ -1,5 +1,6 @@
 package twilightforest.init;
 
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.Holder;
 import net.minecraft.core.UUIDUtil;
@@ -28,15 +29,15 @@ import java.util.UUID;
 public class TFDataComponents {
 	public static final DeferredRegister.DataComponents COMPONENTS = DeferredRegister.createDataComponents(Registries.DATA_COMPONENT_TYPE, TwilightForestMod.ID);
 
-	public static final DeferredComponent<Unit> EMPERORS_CLOTH = COMPONENTS.registerComponent("emperors_cloth", () -> DataComponentType.<Unit>builder().persistent(Codec.unit(Unit.INSTANCE)).networkSynchronized(StreamCodec.unit(Unit.INSTANCE)).build());
+	public static final DeferredComponent<Unit> EMPERORS_CLOTH = COMPONENTS.registerComponent("emperors_cloth", () -> DataComponentType.<Unit>builder().persistent(MapCodec.unitCodec(() -> Unit.INSTANCE)).networkSynchronized(StreamCodec.unit(Unit.INSTANCE)).build());
 	public static final DeferredComponent<PotionFlaskComponent> POTION_FLASK_CONTENTS = COMPONENTS.registerComponent("flask_contents", () -> DataComponentType.<PotionFlaskComponent>builder().persistent(PotionFlaskComponent.CODEC).networkSynchronized(PotionFlaskComponent.STREAM_CODEC).build());
-	public static final DeferredComponent<Unit> INFINITE_GLASS_SWORD = COMPONENTS.registerComponent("infinite_glass_sword", () -> DataComponentType.<Unit>builder().persistent(Codec.unit(Unit.INSTANCE)).networkSynchronized(StreamCodec.unit(Unit.INSTANCE)).build());
+	public static final DeferredComponent<Unit> INFINITE_GLASS_SWORD = COMPONENTS.registerComponent("infinite_glass_sword", () -> DataComponentType.<Unit>builder().persistent(MapCodec.unitCodec(() -> Unit.INSTANCE)).networkSynchronized(StreamCodec.unit(Unit.INSTANCE)).build());
 	public static final DeferredComponent<UUID> THROWN_PROJECTILE = COMPONENTS.registerComponent("thrown_projectile", () -> DataComponentType.<UUID>builder().persistent(UUIDUtil.CODEC).networkSynchronized(UUIDUtil.STREAM_CODEC).build());
 	public static final DeferredComponent<String> EXPERIMENT_115_VARIANTS = COMPONENTS.registerComponent("e115_variant", () -> DataComponentType.<String>builder().persistent(Codec.STRING).networkSynchronized(ByteBufCodecs.STRING_UTF8).build());
 	public static final DeferredComponent<SkullCandles> SKULL_CANDLES = COMPONENTS.registerComponent("skull_candles", () -> DataComponentType.<SkullCandles>builder().persistent(SkullCandles.CODEC).networkSynchronized(SkullCandles.STREAM_CODEC).build());
 	public static final DeferredComponent<CandelabraData> CANDELABRA_DATA = COMPONENTS.registerComponent("candelabra_data", () -> DataComponentType.<CandelabraData>builder().persistent(CandelabraData.CODEC).build());
 	public static final DeferredComponent<Holder<MagicPaintingVariant>> MAGIC_PAINTING_VARIANT = COMPONENTS.registerComponent("magic_painting_variant", () -> DataComponentType.<Holder<MagicPaintingVariant>>builder().persistent(MagicPaintingVariants.CODEC).networkSynchronized(MagicPaintingVariants.STREAM_CODEC).build());
-	public static final DeferredComponent<Unit> TRANSLATABLE_BOOK = COMPONENTS.registerComponent("translatable_book", () -> DataComponentType.<Unit>builder().persistent(Codec.unit(Unit.INSTANCE)).networkSynchronized(StreamCodec.unit(Unit.INSTANCE)).build());
+	public static final DeferredComponent<Unit> TRANSLATABLE_BOOK = COMPONENTS.registerComponent("translatable_book", () -> DataComponentType.<Unit>builder().persistent(MapCodec.unitCodec(() -> Unit.INSTANCE)).networkSynchronized(StreamCodec.unit(Unit.INSTANCE)).build());
 	public static final DeferredComponent<JarLid> JAR_LID = register("jar_lid", JarLid.CODEC);
 	public static final DeferredComponent<Integer> CASKET_DAMAGE = COMPONENTS.registerComponent("casket_damage", () -> DataComponentType.<Integer>builder().persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT).build());
 

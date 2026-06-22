@@ -35,7 +35,7 @@ public class FortificationWandItem extends Item {
 		}
 
 		if (!level.isClientSide()) {
-			player.getData(TFDataAttachments.FORTIFICATION_SHIELDS).setShields(player, 5, true);
+			player.getAttachedOrCreate(TFDataAttachments.FORTIFICATION_SHIELDS).setShields(player, 5, true);
 			if (!player.hasInfiniteMaterials()) {
 				TFItemStackUtils.hurtWithoutBreaking(stack, 1, player);
 			}

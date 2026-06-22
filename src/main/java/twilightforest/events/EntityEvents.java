@@ -105,7 +105,7 @@ public class EntityEvents {
 
 			if (event.getEntity() instanceof ServerPlayer player) {
 				var zombie = EntityType.ZOMBIE.create(player.level(), EntitySpawnReason.CONVERSION);
-				zombie.setData(TFDataAttachments.ZOMBIFIED_PLAYER, player.getGameProfile());
+				zombie.setAttached(TFDataAttachments.ZOMBIFIED_PLAYER, player.getGameProfile());
 				zombie.copyPosition(player);
 				zombie.setCanPickUpLoot(true);
 				zombie.setBaby(false);
@@ -119,7 +119,7 @@ public class EntityEvents {
 
 	@SubscribeEvent
 	public static void zombifiedPlayerAttacks(LivingIncomingDamageEvent event) {
-		if (!(event.getSource() instanceof OminousFireDamageSource) && event.getSource().getEntity() instanceof Zombie zombie && zombie.hasData(TFDataAttachments.ZOMBIFIED_PLAYER) && event.getEntity().level() instanceof ServerLevel level) {
+		if (!(event.getSource() instanceof OminousFireDamageSource) && event.getSource().getEntity() instanceof Zombie zombie && zombie.hasAttached(TFDataAttachments.ZOMBIFIED_PLAYER) && event.getEntity().level() instanceof ServerLevel level) {
 			float amount = event.getAmount();
 			event.setCanceled(true);
 			event.getEntity().hurtServer(level, new OminousFireDamageSource(event.getSource()), amount);
@@ -463,7 +463,7 @@ public class EntityEvents {
 	@SubscribeEvent
 	public static void addQualifiedPlayerIfNeeded(LivingDamageEvent.Post event) {
 		if (event.getEntity().getType().is(TFEntityTypeTags.MULTIPLAYER_INCLUSIVE_ENTITIES)) {
-			var data = event.getEntity().getData(TFDataAttachments.MULTIPLAYER_FIGHT);
+			var data = event.getEntity().getAttachedOrCreate(TFDataAttachments.MULTIPLAYER_FIGHT);
 			if (event.getSource().getEntity() != null) {
 				data.maybeAddQualifiedPlayer(event.getSource().getEntity());
 			}
@@ -472,8 +472,8 @@ public class EntityEvents {
 
 	@SubscribeEvent
 	public static void grantAdvancementIfNeeded(LivingDeathEvent event) {
-		if (!event.isCanceled() && event.getEntity().hasData(TFDataAttachments.MULTIPLAYER_FIGHT)) {
-			event.getEntity().getData(TFDataAttachments.MULTIPLAYER_FIGHT).grantGroupAdvancement(event.getEntity());
+		if (!event.isCanceled() && event.getEntity().hasAttached(TFDataAttachments.MULTIPLAYER_FIGHT)) {
+			event.getEntity().getAttachedOrCreate(TFDataAttachments.MULTIPLAYER_FIGHT).grantGroupAdvancement(event.getEntity());
 		}
 	}
 
@@ -498,7 +498,7 @@ public class EntityEvents {
 	public static void resetFlaskLogic(AdvancementEvent.AdvancementEarnEvent event) {
 		for (var criteria : event.getAdvancement().value().criteria().entrySet()) {
 			if (criteria.getValue().trigger() instanceof DrinkFromFlaskTrigger) {
-				event.getEntity().getData(TFDataAttachments.FLASK_DOSES).resetDoses();
+				event.getEntity().getAttachedOrCreate(TFDataAttachments.FLASK_DOSES).resetDoses();
 				break;
 			}
 		}
@@ -514,12 +514,12 @@ public class EntityEvents {
 
 	@SubscribeEvent
 	public static void entityJoinedWorld(EntityJoinLevelEvent event) {
-		if (!(event.getEntity() instanceof PathfinderMob mob && mob.hasData(TFDataAttachments.LEASH_PATHFINDER_OVERRIDE))) {
+		if (!(event.getEntity() instanceof PathfinderMob mob && mob.hasAttached(TFDataAttachments.LEASH_PATHFINDER_OVERRIDE))) {
 			return;
 		}
 
 		if (!mob.mayBeLeashed()) {
-			mob.removeData(TFDataAttachments.LEASH_PATHFINDER_OVERRIDE);
+			mob.removeAttached(TFDataAttachments.LEASH_PATHFINDER_OVERRIDE);
 		}
 	}
 }

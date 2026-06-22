@@ -33,7 +33,7 @@ public record UpdateFeatherFanFallPacket(int entityID, boolean falling) implemen
 		ctx.enqueueWork(() -> {
 			Entity entity = ctx.player().level().getEntity(message.entityID());
 			if (entity instanceof Player) {
-				entity.setData(TFDataAttachments.FEATHER_FAN, message.falling());
+				entity.setAttached(TFDataAttachments.FEATHER_FAN, message.falling());
 			}
 		});
 	}

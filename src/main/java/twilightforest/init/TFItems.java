@@ -11,6 +11,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.equipment.ArmorType;
+import twilightforest.compat.ArmorItem;
 import twilightforest.compat.registry.DeferredItem;
 import twilightforest.compat.registry.DeferredRegister;
 import twilightforest.TwilightForestMod;

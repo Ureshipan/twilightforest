@@ -123,7 +123,7 @@ public class BrittleFlaskItem extends Item {
 					}
 
 					if (!player.isCreative() && !player.isSpectator() && player instanceof ServerPlayer serverPlayer) {
-						flaskContents.potion().potion().ifPresent(potion -> player.getData(TFDataAttachments.FLASK_DOSES).trackDrink(potion, serverPlayer));
+						flaskContents.potion().potion().ifPresent(potion -> player.getAttachedOrCreate(TFDataAttachments.FLASK_DOSES).trackDrink(potion, serverPlayer));
 					}
 				}
 				player.awardStat(Stats.ITEM_USED.get(this));

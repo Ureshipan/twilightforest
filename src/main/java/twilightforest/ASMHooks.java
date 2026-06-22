@@ -199,7 +199,7 @@ public class ASMHooks {
 
 	public static boolean overrideStayCloseToHolder(boolean prior, PathfinderMob mob) {
 		// TODO Phase 4: replace hasData with Fabric equivalent once data attachments are migrated
-		// return prior && !mob.hasData(TFDataAttachments.LEASH_PATHFINDER_OVERRIDE);
+		// return prior && !mob.hasAttached(TFDataAttachments.LEASH_PATHFINDER_OVERRIDE);
 		return prior;
 	}
 }

@@ -31,23 +31,23 @@ public class CapabilityEvents {
 
 	@SubscribeEvent
 	public static void updateShields(EntityTickEvent.Post event) {
-		if (event.getEntity() instanceof LivingEntity living && !living.level().isClientSide() && living.hasData(TFDataAttachments.FORTIFICATION_SHIELDS)) {
-			event.getEntity().getData(TFDataAttachments.FORTIFICATION_SHIELDS).tick(living);
+		if (event.getEntity() instanceof LivingEntity living && !living.level().isClientSide() && living.hasAttached(TFDataAttachments.FORTIFICATION_SHIELDS)) {
+			event.getEntity().getAttachedOrCreate(TFDataAttachments.FORTIFICATION_SHIELDS).tick(living);
 		}
 	}
 
 	@SubscribeEvent
 	public static void updatePlayerCaps(PlayerTickEvent.Post event) {
-		if (event.getEntity().getData(TFDataAttachments.FEATHER_FAN)) {
+		if (event.getEntity().getAttachedOrCreate(TFDataAttachments.FEATHER_FAN)) {
 			event.getEntity().setIgnoreFallDamageFromCurrentImpulse(true);
 			event.getEntity().currentImpulseImpactPos = event.getEntity().position();
 
 			if (event.getEntity().onGround() || event.getEntity().isSwimming() || event.getEntity().isInWater()) {
-				event.getEntity().setData(TFDataAttachments.FEATHER_FAN, false);
+				event.getEntity().setAttached(TFDataAttachments.FEATHER_FAN, false);
 			}
 		}
-		event.getEntity().getData(TFDataAttachments.YETI_THROWING).tick(event.getEntity());
-		event.getEntity().getData(TFDataAttachments.TF_PORTAL_COOLDOWN).tick(event.getEntity());
+		event.getEntity().getAttachedOrCreate(TFDataAttachments.YETI_THROWING).tick(event.getEntity());
+		event.getEntity().getAttachedOrCreate(TFDataAttachments.TF_PORTAL_COOLDOWN).tick(event.getEntity());
 	}
 
 	@SubscribeEvent
@@ -55,7 +55,7 @@ public class CapabilityEvents {
 		LivingEntity living = event.getEntity();
 		// shields
 		if (!living.level().isClientSide() && !event.getSource().is(DamageTypeTags.BYPASSES_ARMOR)) {
-            FortificationShieldAttachment attachment = living.getData(TFDataAttachments.FORTIFICATION_SHIELDS);
+            FortificationShieldAttachment attachment = living.getAttachedOrCreate(TFDataAttachments.FORTIFICATION_SHIELDS);
 			if (attachment.shieldsLeft() > 0) {
 				if (living.invulnerableTime <= 0) {
 					attachment.breakShield(living, false);
@@ -85,7 +85,7 @@ public class CapabilityEvents {
 			return;
 		updateCapabilities(player, event.getEntity());
 		dataFixLegacyBanish(player);
-		if (!player.hasData(TFDataAttachments.BANISHED_TO_TWILIGHT_FOREST))
+		if (!player.hasAttached(TFDataAttachments.BANISHED_TO_TWILIGHT_FOREST))
 			newSpawnInTwilightForest(player);
 	}
 
@@ -103,7 +103,7 @@ public class CapabilityEvents {
 
 	// send any capabilities that are needed client-side
 	private static void updateCapabilities(ServerPlayer clientTarget, Entity shielded) {
-		var attachment = shielded.getData(TFDataAttachments.FORTIFICATION_SHIELDS);
+		var attachment = shielded.getAttachedOrCreate(TFDataAttachments.FORTIFICATION_SHIELDS);
 		if (attachment.shieldsLeft() > 0) {
 			PacketDistributor.sendToPlayer(clientTarget, new UpdateShieldPacket(shielded.getId(), attachment.temporaryShieldsLeft(), attachment.permanentShieldsLeft()));
 		}
@@ -123,7 +123,7 @@ public class CapabilityEvents {
 			NoReturnTeleporter.createNoPortalTransition(level, player, newDefaultSpawn));
 		player.setRespawnPosition(TFDimension.DIMENSION_KEY, newDefaultSpawn, player.getYRot(), true, false);
 
-		player.setData(TFDataAttachments.BANISHED_TO_TWILIGHT_FOREST, Unit.INSTANCE);
+		player.setAttached(TFDataAttachments.BANISHED_TO_TWILIGHT_FOREST, Unit.INSTANCE);
 	}
 
 	private static void dataFixLegacyBanish(ServerPlayer player) {
@@ -137,9 +137,9 @@ public class CapabilityEvents {
 		playerData.remove("twilightforest_banished");
 		tagCompound.put(Player.PERSISTED_NBT_TAG, playerData);
 
-		if (player.hasData(TFDataAttachments.BANISHED_TO_TWILIGHT_FOREST))
+		if (player.hasAttached(TFDataAttachments.BANISHED_TO_TWILIGHT_FOREST))
 			return;
 
-		player.setData(TFDataAttachments.BANISHED_TO_TWILIGHT_FOREST, Unit.INSTANCE);
+		player.setAttached(TFDataAttachments.BANISHED_TO_TWILIGHT_FOREST, Unit.INSTANCE);
 	}
 }

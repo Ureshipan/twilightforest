@@ -1,5 +1,6 @@
 package twilightforest.util.iterators;
 
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
@@ -105,7 +106,7 @@ public class RectangleLatticeIterator<T> implements Iterator<T>, Iterable<T> {
 
 		public static final TriangularLatticeConfig DEFAULT = new TriangularLatticeConfig(3.5f);
 
-		public static final Codec<TriangularLatticeConfig> CODEC = Codec.withAlternative(VERBOSE_CODEC, Codec.withAlternative(OFFSET_CODEC, Codec.withAlternative(SPACING_CODEC, Codec.unit(DEFAULT))));
+		public static final Codec<TriangularLatticeConfig> CODEC = Codec.withAlternative(VERBOSE_CODEC, Codec.withAlternative(OFFSET_CODEC, Codec.withAlternative(SPACING_CODEC, MapCodec.unitCodec(DEFAULT))));
 
 		public TriangularLatticeConfig(float spacing) {
 			this(spacing, Mth.cos(Mth.PI / 6f) * spacing, Mth.sin(Mth.PI / 6f) * spacing);

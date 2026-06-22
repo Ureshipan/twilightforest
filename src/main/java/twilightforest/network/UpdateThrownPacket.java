@@ -38,7 +38,7 @@ public record UpdateThrownPacket(int entityID, boolean thrown, int thrower, int 
 			Level level = ctx.player().level();
 			Entity entity = level.getEntity(message.entityID());
 			if (entity instanceof Player player) {
-				var attachment = player.getData(TFDataAttachments.YETI_THROWING);
+				var attachment = player.getAttachedOrCreate(TFDataAttachments.YETI_THROWING);
 				LivingEntity thrower = message.thrower() != 0 ? (LivingEntity) level.getEntity(message.thrower()) : null;
 				attachment.setThrown(player, message.thrown(), thrower);
 				attachment.setThrowCooldown(player, message.throwCooldown());

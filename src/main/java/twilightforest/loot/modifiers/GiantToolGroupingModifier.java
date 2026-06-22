@@ -45,7 +45,7 @@ public class GiantToolGroupingModifier extends LootModifier {
 		if (context.getOptionalParameter(LootContextParams.THIS_ENTITY) instanceof Player player) {
 			BlockState state = context.getParameter(LootContextParams.BLOCK_STATE);
 			if (CONVERSIONS.containsKey(state.getBlock())) { // Should be true but let's double-check
-				var attachment = player.getData(TFDataAttachments.GIANT_PICKAXE_MINING);
+				var attachment = player.getAttachedOrCreate(TFDataAttachments.GIANT_PICKAXE_MINING);
 				int blockConversion = attachment.getGiantBlockConversion(); // Get how many conversions are left
 				attachment.setGiantBlockConversion(blockConversion - 1);
 				if (blockConversion == 64)
@@ -67,7 +67,7 @@ public class GiantToolGroupingModifier extends LootModifier {
 		BlockState state = event.getState();
 
 		if (event.getPlayer() instanceof ServerPlayer player && canHarvestWithGiantPick(player, state, pos)) {
-			var attachment = player.getData(TFDataAttachments.GIANT_PICKAXE_MINING);
+			var attachment = player.getAttachedOrCreate(TFDataAttachments.GIANT_PICKAXE_MINING);
 
 			if (shouldBreakGiantBlock(player, attachment)) {
 				attachment.setBreaking(true); // Tell the capability that a block breaking loop is happening, so it knows to fail the if check above. Otherwise, this would go on forever

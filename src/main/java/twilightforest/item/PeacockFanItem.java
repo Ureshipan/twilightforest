@@ -45,13 +45,13 @@ public class PeacockFanItem extends Item {
 	public InteractionResult use(Level level, Player player, @Nonnull InteractionHand hand) {
 		ItemStack stack = player.getItemInHand(hand);
 
-		boolean flag = !player.onGround() && !player.isSwimming() && !player.getData(TFDataAttachments.FEATHER_FAN);
+		boolean flag = !player.onGround() && !player.isSwimming() && !player.getAttachedOrCreate(TFDataAttachments.FEATHER_FAN);
 
 		if (!level.isClientSide()) {
 			int fanned = this.doFan(level, player);
 			stack.hurtAndBreak(fanned + 1, player, LivingEntity.getSlotForHand(hand));
 			if (flag) {
-				player.setData(TFDataAttachments.FEATHER_FAN, true);
+				player.setAttached(TFDataAttachments.FEATHER_FAN, true);
 				PacketDistributor.sendToPlayersTrackingEntityAndSelf(player, new UpdateFeatherFanFallPacket(player.getId(), true));
 			} else {
 				AABB fanBox = this.getEffectAABB(player);
