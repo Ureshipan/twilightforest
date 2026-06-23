@@ -130,7 +130,7 @@ public abstract class AbstractSkullCandleBlock extends BaseEntityBlock implement
 		if (skullStack.isPresent()) {
 			BlockEntity blockEntity = builder.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
 			if (blockEntity instanceof SkullCandleBlockEntity sc) {
-				if (!builder.getParameter(LootContextParams.TOOL).isEmpty() && builder.getParameter(LootContextParams.TOOL).getEnchantmentLevel(sc.getLevel().registryAccess().holderOrThrow(Enchantments.SILK_TOUCH)) > 0) {
+				if (!builder.getParameter(LootContextParams.TOOL).isEmpty() && builder.getParameter(LootContextParams.TOOL).getEnchantmentLevel(sc.getLevel().registryAccess().getOrThrow(Enchantments.SILK_TOUCH)) > 0) {
 					ItemStack newStack = new ItemStack(this);
 
 					newStack.set(TFDataComponents.SKULL_CANDLES, new SkullCandles(sc.getCandleColor(), state.getValue(CANDLES)));

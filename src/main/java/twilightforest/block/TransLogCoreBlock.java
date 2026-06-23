@@ -42,7 +42,7 @@ public class TransLogCoreBlock extends SpecialMagicLogBlock {
 	@Override
 	void performTreeEffect(ServerLevel level, BlockPos pos, RandomSource rand) {
 		ResourceKey<Biome> target = TFBiomes.ENCHANTED_FOREST;
-		Holder<Biome> biome = level.registryAccess().holderOrThrow(target);
+		Holder<Biome> biome = level.registryAccess().getOrThrow(target);
 		int range = TFConfig.transformationCoreRange;
 		for (int i = 0; i < 16; i++) {
 			BlockPos dPos = WorldUtil.randomOffset(rand, pos, range, 0, range);

@@ -48,6 +48,15 @@ public class DeferredHolder<R, T extends R> implements Holder<R>, Supplier<T> {
 		return key.identifier();
 	}
 
+	/** Convenience matching NeoForge: a stack of this entry (works for blocks and items via ItemLike). */
+	public net.minecraft.world.item.ItemStack toStack() {
+		return new net.minecraft.world.item.ItemStack((net.minecraft.world.level.ItemLike) value());
+	}
+
+	public net.minecraft.world.item.ItemStack toStack(int count) {
+		return new net.minecraft.world.item.ItemStack((net.minecraft.world.level.ItemLike) value(), count);
+	}
+
 	void setValue(T value) {
 		this.value = value;
 	}

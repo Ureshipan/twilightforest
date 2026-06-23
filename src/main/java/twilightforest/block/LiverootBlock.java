@@ -31,8 +31,8 @@ public class LiverootBlock extends Block {
 			level.setBlockAndUpdate(pos, TFBlocks.ROOT_BLOCK.get().defaultBlockState());
 			int amountOfRoots = 1;
 			//fortune formula copied from ApplyBonusCount.OreDrops.calculateNewCount so it acts exactly like the loot table
-			if (stack.getEnchantmentLevel(level.registryAccess().holderOrThrow(Enchantments.FORTUNE)) > 0) {
-				int i = level.getRandom().nextInt(stack.getEnchantmentLevel(level.registryAccess().holderOrThrow(Enchantments.FORTUNE)) + 2) - 1;
+			if (stack.getEnchantmentLevel(level.registryAccess().getOrThrow(Enchantments.FORTUNE)) > 0) {
+				int i = level.getRandom().nextInt(stack.getEnchantmentLevel(level.registryAccess().getOrThrow(Enchantments.FORTUNE)) + 2) - 1;
 				if (i < 0) {
 					i = 0;
 				}

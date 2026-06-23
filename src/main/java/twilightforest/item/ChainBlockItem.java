@@ -90,7 +90,7 @@ public class ChainBlockItem extends Item {
 		if (stack.get(TFDataComponents.THROWN_PROJECTILE) == null || !state.is(TFBlockTags.MINEABLE_WITH_BLOCK_AND_CHAIN)) return false;
 		MinecraftServer server = ServerLifecycleHooks.getCurrentServer();
 		if (server != null) {
-			int destruction = stack.getEnchantmentLevel(server.registryAccess().holderOrThrow(TFEnchantments.DESTRUCTION));
+			int destruction = stack.getEnchantmentLevel(server.registryAccess().getOrThrow(TFEnchantments.DESTRUCTION));
 			if (destruction > 0) return !state.is(this.getHarvestLevel(destruction).incorrectBlocksForDrops()); //FIXME 1.21.3
 		}
 		return false;
