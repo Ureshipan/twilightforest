@@ -255,7 +255,7 @@ public class UrGhast extends BaseTFBoss {
 			double sy = y + (this.getRandom().nextDouble() * rangeY);
 			double sz = z + ((this.getRandom().nextDouble() - this.getRandom().nextDouble()) * rangeXZ);
 
-			minion.moveTo(sx, sy, sz, level.getRandom().nextFloat() * 360.0F, 0.0F);
+			minion.snapTo(sx, sy, sz, level.getRandom().nextFloat() * 360.0F, 0.0F);
 			minion.makeBossMinion();
 			EventHooks.finalizeMobSpawn(minion, level, level.getCurrentDifficultyAt(minion.blockPosition()), EntitySpawnReason.MOB_SUMMONED, null);
 			if (minion.checkSpawnRules(level, EntitySpawnReason.MOB_SUMMONED)) {

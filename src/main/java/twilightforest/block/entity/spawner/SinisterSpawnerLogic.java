@@ -140,7 +140,7 @@ public abstract class SinisterSpawnerLogic extends BaseSpawner {
 						}
 
 						Entity entity = EntityType.loadEntityRecursive(entityData, serverLevel, EntitySpawnReason.SPAWNER, spawnedEntity -> {
-							spawnedEntity.moveTo(spawnX, spawnY, spawnZ, spawnedEntity.getYRot(), spawnedEntity.getXRot());
+							spawnedEntity.snapTo(spawnX, spawnY, spawnZ, spawnedEntity.getYRot(), spawnedEntity.getXRot());
 							return spawnedEntity;
 						});
 						if (entity == null) {
@@ -166,7 +166,7 @@ public abstract class SinisterSpawnerLogic extends BaseSpawner {
 							return;
 						}
 
-						entity.moveTo(entity.getX(), entity.getY(), entity.getZ(), randomsource.nextFloat() * 360.0F, 0.0F);
+						entity.snapTo(entity.getX(), entity.getY(), entity.getZ(), randomsource.nextFloat() * 360.0F, 0.0F);
 						if (entity instanceof Mob mob) {
 							if (!twilightforest.compat.neoforge.event.EventHooks.checkSpawnPositionSpawner(mob, serverLevel, EntitySpawnReason.SPAWNER, spawndata, this)) {
 								continue;

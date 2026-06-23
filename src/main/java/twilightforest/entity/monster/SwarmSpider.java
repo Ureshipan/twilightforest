@@ -116,7 +116,7 @@ public class SwarmSpider extends Spider {
 		if (this.getFirstPassenger() != null || accessor.getRandom().nextInt(200) == 0) {
 			SkeletonDruid druid = TFEntities.SKELETON_DRUID.get().create(this.level(), EntitySpawnReason.JOCKEY);
 			if (druid != null) {
-				druid.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
+				druid.snapTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0.0F);
 				druid.setBaby(true);
 				EventHooks.finalizeMobSpawn(druid, accessor, difficulty, EntitySpawnReason.JOCKEY, null);
 

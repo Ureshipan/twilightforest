@@ -43,7 +43,7 @@ public class CharmEffect extends Entity implements ItemSupplier {
 		this.orbiter = owner;
 		this.displayItem = item;
 
-		this.moveTo(owner.getX(), owner.getY() + owner.getEyeHeight(), owner.getZ(), owner.getYRot(), owner.getXRot());
+		this.snapTo(owner.getX(), owner.getY() + owner.getEyeHeight(), owner.getZ(), owner.getYRot(), owner.getXRot());
 
 		Vec3 look = new Vec3(DISTANCE, 0, 0);
 		double x = getX() + (look.x() * DISTANCE);
@@ -74,7 +74,7 @@ public class CharmEffect extends Entity implements ItemSupplier {
 		if (this.orbiter != null) {
 			float rotation = this.tickCount / 10.0F + this.offset;
 			Vec3 look = new Vec3(DISTANCE, 0, 0).yRot(rotation);
-			this.moveTo(this.orbiter.getX() + look.x(), this.orbiter.getY() + this.orbiter.getEyeHeight(), this.orbiter.getZ() + look.z(), this.orbiter.getYRot(), this.orbiter.getXRot());
+			this.snapTo(this.orbiter.getX() + look.x(), this.orbiter.getY() + this.orbiter.getEyeHeight(), this.orbiter.getZ() + look.z(), this.orbiter.getYRot(), this.orbiter.getXRot());
 		}
 
 		if (!this.displayItem.isEmpty()) {

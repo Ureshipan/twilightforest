@@ -434,7 +434,7 @@ public class Lich extends BaseTFBoss {
 		if (projectile instanceof LichBomb) pitch *= 0.85F;
 		this.playSound(TFSounds.LICH_SHOOT.get(), this.getSoundVolume(), pitch);
 
-		projectile.moveTo(sx, sy, sz, this.getYRot(), this.getXRot());
+		projectile.snapTo(sx, sy, sz, this.getYRot(), this.getXRot());
 		projectile.shoot(tx, ty, tz, 0.5F, 1.0F);
 
 		this.level().addFreshEntity(projectile);

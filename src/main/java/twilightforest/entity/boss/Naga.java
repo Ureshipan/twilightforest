@@ -448,7 +448,7 @@ public class Naga extends BaseTFBoss {
 		for (int i = 0; i < this.currentSegmentCount; i++) {
 			NagaSegment segment = this.bodySegments[i];
 			segment.activate();
-			segment.moveTo(getX() + 0.1 * i, getY() + 0.5D, getZ() + 0.1 * i, this.getRandom().nextFloat() * 360.0F, 0.0F);
+			segment.snapTo(getX() + 0.1 * i, getY() + 0.5D, getZ() + 0.1 * i, this.getRandom().nextFloat() * 360.0F, 0.0F);
 			for (int j = 0; j < 20; j++) {
 				double d0 = this.getRandom().nextGaussian() * 0.02D;
 				double d1 = this.getRandom().nextGaussian() * 0.02D;
