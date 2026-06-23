@@ -22,8 +22,48 @@
 
 ## Текущее состояние компиляции
 
-Реальный замер (cap снят через `-Xmaxerrs`): **~4800 уникальных ошибок в ~660 файлах**.
-(Прежняя оценка «35 файлов» была ложной — javac обрезал вывод на 100 ошибках.)
+**~2614 уникальных ошибок** (на старте сессии было ~5036). Снижение через систематические
+автоматизируемые правки. cap javac снят через `-Xmaxerrs 20000` в build.gradle (временно, убрать в конце).
+
+### Как продолжить (HANDOFF — читать первым)
+1. Замер: `./gradlew compileJava --no-daemon > /tmp/full.txt 2>&1; grep -E '^D:.*error:' /tmp/full.txt | sort -u | wc -l`
+2. Рейтинг типов: `grep -oE "error: [a-z][^;]*" /tmp/full.txt | sed -E 's/[0-9]+//g; s/'\''[^'\'']*'\''//g' | sort | uniq -c | sort -rn | head`
+3. Топ отсутствующих классов (есть в jar = переехал пакет): см. приём ниже.
+4. **probe.jar** = mapped MC jar для javap-проверки реальных сигнатур/имён:
+   `cp .gradle/loom-cache/minecraftMaven/net/minecraft/minecraft-merged-*/1.21.11-*/*.jar ~/probe.jar`
+   затем `javap -p -s -classpath ~/probe.jar net.minecraft.<class>`.
+5. Python = `/c/Python314/python.exe` (НЕ `python3`; читает только Windows-пути, пиши temp-файлы в репо).
+6. После каждого коммита: `git push origin fabric-port`.
+
+### Переиспользуемые приёмы (скрипты были одноразовыми, паттерн важен)
+- **Авто-ремап импортов пакетов**: построить индекс `simpleName→FQN` из probe.jar
+  (`unzip -l ~/probe.jar | grep -oE 'net/minecraft/[A-Za-z0-9/]+\.class' | grep -v '$'`),
+  для каждого битого `import net.minecraft...` с ЕДИНСТВЕННЫМ кандидатом — переписать. (27 ремапов за раз.)
+- **Авто-AccessWidener**: для «X has private access in Y» — найти FQN Y и дескриптор поля/метода
+  через `javap -p -s`, дописать `accessible field/method ...` в twilightforest.accesswidener.
+- **Error-driven правки NBT**: парсить `_port_*.txt` из ошибок, точечно менять только помеченные строки
+  (paren-balanced). Так безопасно: не трогаем не-NBT вызовы с тем же именем.
+
+### Что сделано в этой сессии (сверх раздела ниже)
+- Particle rework: compat-база `twilightforest.client.particle.TextureSheetParticle` на `SingleQuadParticle`
+  (тот же пакет → 13 партиклов компилируются; `createParticle` +RandomSource; `ParticleRenderType.*`→`SINGLE_QUADS`). −~460
+- Multipart: `TFPart extends EntityPart` (lib nordmods), боссы `implements MultipartEntity`,
+  `getParts()→EntityPart[]`, вызовы `isMultipartEntity()`→`instanceof MultipartEntity`. −~301
+- NBT 1.21.5: `getInt(k)`→`getIntOr(k,0)` и т.д., `contains(k,t)`→`contains(k)`, `getList(k,t)`→`getListOrEmpty(k)`,
+  `getCompound` у parse()→`getCompoundOrEmpty`. `Codec.unit`→`MapCodec.unitCodec` (DFU 9.0.19).
+- BlockEntityType: приватный ctor+Set<Block> → `FabricBlockEntityTypeBuilder.create(f, blocks).build()`.
+- SpawnerData: вес ушёл из record в `addSpawn(cat, weight, data)` (35 инлайн-вызовов).
+- jsr305 (javax.annotation), стабы `@SubscribeEvent/@EventBusSubscriber/@OnlyIn/EventPriority`, убрана beanification.
+- AW: WoodType/BlockSetType.register, + 27 полей.
+
+### Осталось (крупные «настоящие» рефакторинги, библиотеки НЕ закроют — это ванильные изменения)
+- **Рендер/модели**: `BakedModel`/`IDynamicBakedModel`/`ModelData`/`ModelProperty`/`ChunkRenderTypeSet`/
+  `RenderTypeGroup`/`entityCutoutNoCull` — кастомные модели (NeoForge client model API). Porting Lib нет под 1.21.11.
+- **ValueInput/ValueOutput** (~100): `read/addAdditionalSaveData(CompoundTag)` → новые сигнатуры BE/Entity.
+- **Networking** (`IPayloadContext`, `network.handling`, ~46): портировать на Fabric Networking API.
+- **События** (`BlockEvent`/`PlayerInteractEvent`/`LivingIncomingDamageEvent`...): на Fabric callbacks.
+- **SpawnerData в ControlledSpawningConfig** (~142): нужен weight-несущий record (TF-data-model рефактор).
+- `appendHoverText` новая сигнатура (TooltipDisplay+Consumer), `FlowerPotBlock`/`addPlant`, partamerт частиц в рендере.
 
 Команда замера:
 ```bash
