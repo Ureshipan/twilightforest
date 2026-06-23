@@ -37,7 +37,7 @@ public class PocketWatchItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-		tooltip.add(TOOLTIP);
+	public void appendHoverText(ItemStack stack, TooltipContext context, net.minecraft.world.item.component.TooltipDisplay tfDisplay, java.util.function.Consumer<net.minecraft.network.chat.Component> tooltip, TooltipFlag flag) {
+		tooltip.accept(TOOLTIP);
 	}
 }

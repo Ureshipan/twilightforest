@@ -141,13 +141,13 @@ public class OreMeterItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext context, net.minecraft.world.item.component.TooltipDisplay tfDisplay, java.util.function.Consumer<net.minecraft.network.chat.Component> tooltip, TooltipFlag flag) {
 		Block block = stack.get(TFDataComponents.ORE_FILTER);
 
 		if (block != null)
-			tooltip.add(Component.translatable("misc.twilightforest.ore_meter_targeted_block", block.getDescriptionId()).withStyle(ChatFormatting.GRAY));
+			tooltip.accept(Component.translatable("misc.twilightforest.ore_meter_targeted_block", block.getDescriptionId()).withStyle(ChatFormatting.GRAY));
 
-		super.appendHoverText(stack, context, tooltip, flag);
+		super.appendHoverText(stack, context, tfDisplay, tooltip, flag);
 	}
 
 	public static boolean isLoading(ItemStack stack) {

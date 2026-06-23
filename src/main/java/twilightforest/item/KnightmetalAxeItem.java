@@ -16,8 +16,8 @@ public class KnightmetalAxeItem extends AxeItem {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltips, TooltipFlag flags) {
-		super.appendHoverText(stack, context, tooltips, flags);
-		tooltips.add(Component.translatable(this.getDescriptionId() + ".desc").withStyle(ChatFormatting.GRAY));
+	public void appendHoverText(ItemStack stack, TooltipContext context, net.minecraft.world.item.component.TooltipDisplay tfDisplay, java.util.function.Consumer<net.minecraft.network.chat.Component> tooltips, TooltipFlag flags) {
+		super.appendHoverText(stack, context, tfDisplay, tooltips, flags);
+		tooltips.accept(Component.translatable(this.getDescriptionId() + ".desc").withStyle(ChatFormatting.GRAY));
 	}
 }

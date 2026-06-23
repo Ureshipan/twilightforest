@@ -64,7 +64,7 @@ public class DeferredRegister<T> {
 	 * Call once per register during mod onInitialize() in dependency order.
 	 */
 	public void initialize() {
-		Registry<T> registry = (Registry<T>) BuiltInRegistries.REGISTRY.get(registryKey.identifier());
+		Registry<T> registry = (Registry<T>) BuiltInRegistries.REGISTRY.getValue(registryKey.identifier());
 		if (registry == null) {
 			throw new IllegalStateException("Registry not found: " + registryKey.identifier()
 				+ " — use a custom initializer for non-built-in registries");

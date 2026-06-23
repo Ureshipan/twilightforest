@@ -40,12 +40,12 @@ public class JarItem extends BlockItem {
 		}
 
 		@Override
-		public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> components, TooltipFlag flag) {
-			super.appendHoverText(stack, context, components, flag);
+		public void appendHoverText(ItemStack stack, TooltipContext context, net.minecraft.world.item.component.TooltipDisplay tfDisplay, java.util.function.Consumer<net.minecraft.network.chat.Component> components, TooltipFlag flag) {
+			super.appendHoverText(stack, context, tfDisplay, components, flag);
 			ItemContainerContents contents = stack.getComponents().get(DataComponents.CONTAINER);
 			if (contents != null) {
 				ItemStack storedStack = contents.copyOne();
-				if (!storedStack.isEmpty()) components.add(storedStack.getDisplayName().copy().append(" x" + storedStack.getCount()).withStyle(ChatFormatting.GRAY));
+				if (!storedStack.isEmpty()) components.accept(storedStack.getDisplayName().copy().append(" x" + storedStack.getCount()).withStyle(ChatFormatting.GRAY));
 			}
 		}
 

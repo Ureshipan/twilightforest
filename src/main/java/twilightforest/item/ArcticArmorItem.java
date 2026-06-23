@@ -23,9 +23,9 @@ public class ArcticArmorItem extends ArmorItem {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext context, net.minecraft.world.item.component.TooltipDisplay tfDisplay, java.util.function.Consumer<net.minecraft.network.chat.Component> tooltip, TooltipFlag flag) {
 		if (!stack.has(DataComponents.DYED_COLOR)) {
-			tooltip.add(TOOLTIP);
+			tooltip.accept(TOOLTIP);
 		}
 	}
 

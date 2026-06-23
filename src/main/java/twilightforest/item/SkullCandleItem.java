@@ -23,12 +23,12 @@ public class SkullCandleItem extends StandingAndWallBlockItem {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext context, net.minecraft.world.item.component.TooltipDisplay tfDisplay, java.util.function.Consumer<net.minecraft.network.chat.Component> tooltip, TooltipFlag flag) {
 		CustomData data = stack.get(DataComponents.BLOCK_ENTITY_DATA);
 		if (data != null && !data.isEmpty()) {
 			CompoundTag tag = data.copyTag();
 			if (tag.contains("CandleColor") && tag.contains("CandleAmount")) {
-				tooltip.add(
+				tooltip.accept(
 					Component.translatable(tag.getInt("CandleAmount") > 1 ?
 								"item.twilightforest.skull_candle.desc.multiple" :
 								"item.twilightforest.skull_candle.desc",

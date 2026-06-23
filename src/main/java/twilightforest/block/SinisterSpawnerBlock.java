@@ -78,8 +78,8 @@ public class SinisterSpawnerBlock extends BaseEntityBlock {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-		super.appendHoverText(stack, context, tooltip, flag);
+	public void appendHoverText(ItemStack stack, Item.TooltipContext context, net.minecraft.world.item.component.TooltipDisplay tfDisplay, java.util.function.Consumer<net.minecraft.network.chat.Component> tooltip, TooltipFlag flag) {
+		super.appendHoverText(stack, context, tfDisplay, tooltip, flag);
 		Spawner.appendHoverText(stack, tooltip, "SpawnData");
 	}
 

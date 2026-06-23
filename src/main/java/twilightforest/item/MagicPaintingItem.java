@@ -68,16 +68,16 @@ public class MagicPaintingItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> components, TooltipFlag isAdvanced) {
-		super.appendHoverText(stack, context, components, isAdvanced);
+	public void appendHoverText(ItemStack stack, TooltipContext context, net.minecraft.world.item.component.TooltipDisplay tfDisplay, java.util.function.Consumer<net.minecraft.network.chat.Component> components, TooltipFlag isAdvanced) {
+		super.appendHoverText(stack, context, tfDisplay, components, isAdvanced);
 		Holder<MagicPaintingVariant> magicPainting = stack.get(TFDataComponents.MAGIC_PAINTING_VARIANT);
 
 		if (magicPainting != null) {
 			MagicPaintingVariant painting = magicPainting.value();
 			Identifier location = magicPainting.unwrapKey().orElse(MagicPaintingVariants.DEFAULT).identifier();
-			components.add(Component.translatable(location.toLanguageKey("magic_painting", "title")).withStyle(ChatFormatting.YELLOW));
-			components.add(Component.empty().withStyle(ChatFormatting.GRAY).append(painting.author()));
-			components.add(Component.translatable("painting.dimensions", Mth.positiveCeilDiv(painting.width(), 16), Mth.positiveCeilDiv(painting.height(), 16)));
+			components.accept(Component.translatable(location.toLanguageKey("magic_painting", "title")).withStyle(ChatFormatting.YELLOW));
+			components.accept(Component.empty().withStyle(ChatFormatting.GRAY).append(painting.author()));
+			components.accept(Component.translatable("painting.dimensions", Mth.positiveCeilDiv(painting.width(), 16), Mth.positiveCeilDiv(painting.height(), 16)));
 		}
 	}
 }

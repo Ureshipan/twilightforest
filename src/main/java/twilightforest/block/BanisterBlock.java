@@ -193,8 +193,8 @@ public class BanisterBlock extends HorizontalDirectionalBlock implements SimpleW
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-		tooltip.add(Component.translatable("block.twilightforest.banister.cycle").withStyle(ChatFormatting.GRAY));
+	public void appendHoverText(ItemStack stack, Item.TooltipContext context, net.minecraft.world.item.component.TooltipDisplay tfDisplay, java.util.function.Consumer<net.minecraft.network.chat.Component> tooltip, TooltipFlag flag) {
+		tooltip.accept(Component.translatable("block.twilightforest.banister.cycle").withStyle(ChatFormatting.GRAY));
 	}
 
 	@Override

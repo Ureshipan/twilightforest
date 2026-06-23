@@ -230,20 +230,20 @@ public class MazeMapItem extends MapItem {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext context, net.minecraft.world.item.component.TooltipDisplay tfDisplay, java.util.function.Consumer<net.minecraft.network.chat.Component> tooltip, TooltipFlag flag) {
 		MapId mapId = stack.get(DataComponents.MAP_ID);
 		if (mapId != null) {
 			TFMazeMapData data = TFMazeMapData.getClientMagicMapData(getMapName(mapId.id()));
 			if (flag.isAdvanced()) {
 				if (data != null) {
-					tooltip.add(Component.translatable("item.twilightforest.maze_map.y_level", data.yCenter).withStyle(ChatFormatting.GRAY));
-					tooltip.add(Component.translatable("filled_map.id", mapId.id()).withStyle(ChatFormatting.GRAY));
-					tooltip.add(Component.translatable("filled_map.scale", 1 << data.scale).withStyle(ChatFormatting.GRAY));
-					tooltip.add(Component.translatable("filled_map.level", data.scale, 4).withStyle(ChatFormatting.GRAY));
+					tooltip.accept(Component.translatable("item.twilightforest.maze_map.y_level", data.yCenter).withStyle(ChatFormatting.GRAY));
+					tooltip.accept(Component.translatable("filled_map.id", mapId.id()).withStyle(ChatFormatting.GRAY));
+					tooltip.accept(Component.translatable("filled_map.scale", 1 << data.scale).withStyle(ChatFormatting.GRAY));
+					tooltip.accept(Component.translatable("filled_map.level", data.scale, 4).withStyle(ChatFormatting.GRAY));
 				} else {
-					tooltip.add(Component.translatable("filled_map.unknown").withStyle(ChatFormatting.GRAY));
+					tooltip.accept(Component.translatable("filled_map.unknown").withStyle(ChatFormatting.GRAY));
 				}
-			} else tooltip.add(MapItem.getTooltipForId(mapId));
+			} else tooltip.accept(MapItem.getTooltipForId(mapId));
 		}
 	}
 }
