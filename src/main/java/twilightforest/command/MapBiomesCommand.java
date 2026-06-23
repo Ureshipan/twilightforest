@@ -32,7 +32,6 @@ import java.util.Map;
 /**
  * Thank you @SuperCoder79 (from Twitter) for sharing the original code! Code sourced from a LGPL project
  */
-@tamaized.beanification.Component
 public class MapBiomesCommand {
 
 	private final DecimalFormat numberFormat = new DecimalFormat("#.00");

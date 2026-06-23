@@ -69,7 +69,7 @@ public class FallenTrunkPiece extends StructurePiece {
 		this.radius = tag.getIntOr("radius", 0);
 
 		RegistryOps<Tag> ops = RegistryOps.create(NbtOps.INSTANCE, context.registryAccess());
-		log = BlockStateProvider.CODEC.parse(ops, tag.getCompound("log")).result().orElse(DEFAULT_LOG);
+		log = BlockStateProvider.CODEC.parse(ops, tag.getCompoundOrEmpty("log")).result().orElse(DEFAULT_LOG);
 		chestLootTable = ResourceKey.create(Registries.LOOT_TABLE, Identifier.parse(tag.getStringOr("chest_loot_table", "")));
 		this.holeSeed = tag.getIntOr("hole_seed", 0);
 		this.hole = new Hole(this, RandomSource.create(holeSeed));

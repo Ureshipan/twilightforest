@@ -177,7 +177,6 @@ public class JarRenderer<T extends JarBlockEntity> implements BlockEntityRendere
 
 	public static class MasonJarRenderer extends JarRenderer<MasonJarBlockEntity> {
 
-		@Autowired(dist = Dist.CLIENT)
 		private TFItemDisplayContextEnumExtension itemDisplayContextEnumExtension;
 
 		protected final ItemRenderer itemRenderer;

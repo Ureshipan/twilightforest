@@ -70,10 +70,10 @@ public class HollowTreeLeafDungeon extends HollowTreePiece {
 
 		RegistryOps<Tag> ops = RegistryOps.create(NbtOps.INSTANCE, context.registryAccess());
 
-		this.wood = BlockStateProvider.CODEC.parse(ops, tag.getCompound("wood")).result().orElse(HollowTreePiece.DEFAULT_WOOD);
-		this.leaves = BlockStateProvider.CODEC.parse(ops, tag.getCompound("leaves")).result().orElse(HollowTreePiece.DEFAULT_LEAVES);
-		this.inside = BlockStateProvider.CODEC.parse(ops, tag.getCompound("air")).result().orElse(HollowTreePiece.DEFAULT_DUNGEON_AIR);
-		this.lootContainer = BlockStateProvider.CODEC.parse(ops, tag.getCompound("loot_block")).result().orElse(HollowTreePiece.DEFAULT_DUNGEON_LOOT_BLOCK);
+		this.wood = BlockStateProvider.CODEC.parse(ops, tag.getCompoundOrEmpty("wood")).result().orElse(HollowTreePiece.DEFAULT_WOOD);
+		this.leaves = BlockStateProvider.CODEC.parse(ops, tag.getCompoundOrEmpty("leaves")).result().orElse(HollowTreePiece.DEFAULT_LEAVES);
+		this.inside = BlockStateProvider.CODEC.parse(ops, tag.getCompoundOrEmpty("air")).result().orElse(HollowTreePiece.DEFAULT_DUNGEON_AIR);
+		this.lootContainer = BlockStateProvider.CODEC.parse(ops, tag.getCompoundOrEmpty("loot_block")).result().orElse(HollowTreePiece.DEFAULT_DUNGEON_LOOT_BLOCK);
 
 		this.lootTable = ResourceKey.create(Registries.LOOT_TABLE, Identifier.parse(tag.getStringOr("loot_table", "")));
 

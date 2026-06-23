@@ -9,7 +9,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.*;
 import net.minecraft.server.level.ServerLevel;
 
-@tamaized.beanification.Component
 public class GetSeedAndTeleportCommand {
 	public LiteralArgumentBuilder<CommandSourceStack> register(boolean notIntegratedServer) {
 		return Commands.literal("seed_and_tp").requires((stack) -> !notIntegratedServer || stack.hasPermission(2)).executes(this::run);

@@ -11,7 +11,6 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
 
-@tamaized.beanification.Component
 public class TFCommand {
 
 	private CenterCommand centerCommand = new CenterCommand();

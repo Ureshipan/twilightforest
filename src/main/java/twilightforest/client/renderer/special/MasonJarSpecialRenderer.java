@@ -26,7 +26,6 @@ import java.util.Optional;
 
 public record MasonJarSpecialRenderer(Optional<Item> defaultLid) implements SpecialModelRenderer<DataComponentMap> {
 
-	@Autowired(dist = Dist.CLIENT)
 	private static TFItemDisplayContextEnumExtension itemDisplayContextEnumExtension;
 
 	@Override

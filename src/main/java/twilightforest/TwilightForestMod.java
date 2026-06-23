@@ -95,10 +95,6 @@ public final class TwilightForestMod {
 
 	public static final Logger LOGGER = LogManager.getLogger(ID);
 
-	static {
-		BeanContext.init(ID);
-	}
-
 	private TFCommand tfCommand = new TFCommand();
 
 	private HolidayEvent holidayEvent = new HolidayEvent();

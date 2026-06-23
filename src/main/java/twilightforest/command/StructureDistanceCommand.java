@@ -22,7 +22,6 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureStart;
 import twilightforest.util.DisplayUtil;
 
-@tamaized.beanification.Component
 public class StructureDistanceCommand {
 	private DisplayUtil displayUtil = new DisplayUtil();
 

@@ -17,7 +17,6 @@ import twilightforest.compat.neoforge.common.util.FakePlayer;
 import org.jetbrains.annotations.Nullable;
 import twilightforest.world.components.structures.util.StructureHints;
 
-@tamaized.beanification.Component
 public class GenerateBookCommand {
 
 	private final SimpleCommandExceptionType ERROR_NOT_RUN_BY_PLAYER = new SimpleCommandExceptionType(Component.translatable("commands.tffeature.not_player"));

@@ -298,3 +298,7 @@ accessible field net/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPl
 accessible field net/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacer heightRandB I
 accessible field net/minecraft/world/level/levelgen/structure/StructurePiece orientation Lnet/minecraft/core/Direction;
 mutable field net/minecraft/client/gui/components/SplashRenderer splash Lnet/minecraft/network/chat/Component;
+
+# Port: static register() methods made private in 1.21.11
+accessible method net/minecraft/world/level/block/state/properties/WoodType register (Lnet/minecraft/world/level/block/state/properties/WoodType;)Lnet/minecraft/world/level/block/state/properties/WoodType;
+accessible method net/minecraft/world/level/block/state/properties/BlockSetType register (Lnet/minecraft/world/level/block/state/properties/BlockSetType;)Lnet/minecraft/world/level/block/state/properties/BlockSetType;
