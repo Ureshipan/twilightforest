@@ -50,7 +50,7 @@ public record SwizzleConfig(HolderSet<WoodPalette> targets, WeightedList<Weighte
 		Weighted<HolderSet<WoodPalette>> treasure = // 6.25% chance
 			Weighted.wrap(paletteHolders.get(TFWoodPaletteTags.TREASURE_PALETTES).get(), 1);
 
-		return WeightedList.create(common, uncommon, rare, treasure);
+		return WeightedList.of(common, uncommon, rare, treasure);
 	}
 
 	public static SwizzleConfig generate(HolderGetter<WoodPalette> paletteHolders, TagKey<WoodPalette> swizzleMask, WeightedList<Weighted<HolderSet<WoodPalette>>> paletteChoices, ProcessorRule... postProcessingRules) {

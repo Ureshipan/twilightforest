@@ -139,7 +139,7 @@ public record StructureSpeleothemConfig(
 	@NotNull
 	private static Function<RandomSource, Stalactite> compileSpeleothems(List<Weighted<Stalactite>> unbakedRandomList) {
 		// Construct this once. Constructing it inside the lambda means it'll be constructed each time the lambda is invoked
-		WeightedList<Weighted<Stalactite>> randomList = WeightedList.create(unbakedRandomList);
+		WeightedList<Weighted<Stalactite>> randomList = WeightedList.of(unbakedRandomList);
 
 		// Simplify underlying data structure for returned lambdas by simply returning a
 		// Stone Stalactite getter whenever there's no random elements to pass.

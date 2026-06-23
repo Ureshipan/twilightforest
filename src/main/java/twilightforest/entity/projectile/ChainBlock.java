@@ -135,7 +135,7 @@ public class ChainBlock extends ThrowableProjectile implements IEntityWithComple
 
 			//properly disable shields
 			if (result.getEntity() instanceof Player player && player.isUsingItem() && ItemAbilities.canPerformAction(player.getUseItem(), ItemAbilities.SHIELD_BLOCK)) {
-				player.getUseItem().hurtAndBreak(5, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
+				player.getUseItem().hurtAndBreak(5, player, player.getUsedItemHand());
 				player.disableShield(player.getUseItem());
 			}
 
@@ -147,7 +147,7 @@ public class ChainBlock extends ThrowableProjectile implements IEntityWithComple
 					this.setIsReturning(true);
 					this.tickCount += 60;
 					if (this.getOwner() instanceof LivingEntity living) {
-						this.stack.hurtAndBreak(1, living, LivingEntity.getSlotForHand(this.getHand()));
+						this.stack.hurtAndBreak(1, living, this.getHand());
 					}
 				}
 			}
@@ -267,7 +267,7 @@ public class ChainBlock extends ThrowableProjectile implements IEntityWithComple
 					// despawn if close enough
 					if (distToPlayer < 2F) {
 						if (this.stack != null && this.getOwner() instanceof LivingEntity living && living.getAttachedOrCreate(TFDataAttachments.SMASH_BLOCKS).getBlocksSmashed() > 0) {
-							this.stack.hurtAndBreak(Math.min(living.getAttachedOrCreate(TFDataAttachments.SMASH_BLOCKS).getBlocksSmashed(), 3), living, LivingEntity.getSlotForHand(this.getHand()));
+							this.stack.hurtAndBreak(Math.min(living.getAttachedOrCreate(TFDataAttachments.SMASH_BLOCKS).getBlocksSmashed(), 3), living, this.getHand());
 						}
 						this.discard();
 					}

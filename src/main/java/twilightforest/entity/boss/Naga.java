@@ -370,7 +370,7 @@ public class Naga extends BaseTFBoss implements MultipartEntity {
 				toAttack.push(motion.x() * 1.5D, 0.5D, motion.z() * 1.5D);
 				this.push(motion.x() * -1.25D, 0.5D, motion.z() * -1.25D);
 				if (toAttack instanceof ServerPlayer player) {
-					player.getUseItem().hurtAndBreak(5, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
+					player.getUseItem().hurtAndBreak(5, player, player.getUsedItemHand());
 					PacketDistributor.sendToPlayer(player, new MovePlayerPacket(motion.x() * 3.0D, motion.y() + 0.75D, motion.z() * 3.0D));
 				}
 				this.hurtServer(level, this.damageSources().generic(), 2.0F);
@@ -379,7 +379,7 @@ public class Naga extends BaseTFBoss implements MultipartEntity {
 				return false;
 			} else if (this.getMovementPattern().getState() == NagaMovementPattern.MovementState.STUNLESS_CHARGE) {
 				if (toAttack instanceof ServerPlayer player) {
-					player.getUseItem().hurtAndBreak(10, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
+					player.getUseItem().hurtAndBreak(10, player, player.getUsedItemHand());
 					player.getCooldowns().addCooldown(player.getUseItem(), 200);
 					player.stopUsingItem();
 					this.level().broadcastEntityEvent(player, (byte) 30);

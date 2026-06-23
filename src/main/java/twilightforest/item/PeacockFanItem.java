@@ -49,7 +49,7 @@ public class PeacockFanItem extends Item {
 
 		if (!level.isClientSide()) {
 			int fanned = this.doFan(level, player);
-			stack.hurtAndBreak(fanned + 1, player, LivingEntity.getSlotForHand(hand));
+			stack.hurtAndBreak(fanned + 1, player, hand);
 			if (flag) {
 				player.setAttached(TFDataAttachments.FEATHER_FAN, true);
 				PacketDistributor.sendToPlayersTrackingEntityAndSelf(player, new UpdateFeatherFanFallPacket(player.getId(), true));

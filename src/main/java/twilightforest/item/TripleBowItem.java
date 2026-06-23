@@ -51,7 +51,7 @@ public class TripleBowItem extends BowItem {
 					projectile.applyOnProjectileSpawned(level, itemstack);
 				}
 
-				weapon.hurtAndBreak(this.getDurabilityUse(itemstack), shooter, LivingEntity.getSlotForHand(hand));
+				weapon.hurtAndBreak(this.getDurabilityUse(itemstack), shooter, hand);
 				if (weapon.isEmpty()) {
 					break;
 				}

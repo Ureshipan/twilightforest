@@ -142,7 +142,7 @@ public class BrazierBlock extends BaseEntityBlock {
 				level.setBlock(pos, state.cycle(LIGHT), Block.UPDATE_ALL_IMMEDIATE);
 				level.getBlockState(pos.below()).cycle(LIGHT);
 				if (stack.is(Items.FLINT_AND_STEEL)) {
-					stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
+					stack.hurtAndBreak(1, player, hand);
 				} else {
 					stack.consume(1, player);
 				}

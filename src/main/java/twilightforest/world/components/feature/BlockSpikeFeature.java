@@ -120,7 +120,7 @@ public class BlockSpikeFeature extends Feature<NoneFeatureConfiguration> {
 							level.setBlock(placement, ore.right().get().defaultBlockState(), Block.UPDATE_ALL);
 						} else {
 							// FIXME Deduplicate this construction of the weightedlist, tt is constructed many times per generation
-							WeightedList<Weighted<Block>> entries = WeightedList.create(ore.left().get().stream().map(pair -> Weighted.wrap(pair.getFirst(), pair.getSecond())).toList());
+							WeightedList<Weighted<Block>> entries = WeightedList.of(ore.left().get().stream().map(pair -> Weighted.wrap(pair.getFirst(), pair.getSecond())).toList());
 							level.setBlock(placement, entries.getRandom(random).orElse(Weighted.wrap(Blocks.STONE, 1)).data().defaultBlockState(), Block.UPDATE_ALL);
 						}
 					}

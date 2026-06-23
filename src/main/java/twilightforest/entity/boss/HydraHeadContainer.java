@@ -679,7 +679,7 @@ public class HydraHeadContainer {
 						if (!player.getCooldowns().isOnCooldown(player.getUseItem())) {
 							//cause severe damage and play a shatter sound
 							this.headEntity.level().playSound(null, player.blockPosition(), player.getUseItem().is(Items.SHIELD) ? TFSounds.WOOD_SHIELD_SHATTERS.get() : TFSounds.METAL_SHIELD_SHATTERS.get(), SoundSource.PLAYERS, 1.0F, player.getVoicePitch());
-							player.getUseItem().hurtAndBreak(112, player, LivingEntity.getSlotForHand(player.getUsedItemHand()));
+							player.getUseItem().hurtAndBreak(112, player, player.getUsedItemHand());
 						}
 						//add cooldown and knockback
 						player.getCooldowns().addCooldown(player.getUseItem(), 200);
