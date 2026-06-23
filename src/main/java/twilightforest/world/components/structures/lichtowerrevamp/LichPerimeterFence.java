@@ -29,7 +29,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnorePr
 import net.minecraft.world.level.levelgen.structure.templatesystem.JigsawReplacementProcessor;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-import net.neoforged.neoforge.common.world.PieceBeardifierModifier;
+import twilightforest.compat.neoforge.common.world.PieceBeardifierModifier;
 import org.jetbrains.annotations.Nullable;
 import twilightforest.TwilightForestMod;
 import twilightforest.block.WroughtIronFenceBlock;

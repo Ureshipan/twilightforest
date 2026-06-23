@@ -47,7 +47,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.neoforged.fml.loading.FMLLoader;
-import net.neoforged.neoforge.common.world.PieceBeardifierModifier;
+import twilightforest.compat.neoforge.common.world.PieceBeardifierModifier;
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

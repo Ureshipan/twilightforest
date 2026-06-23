@@ -8,7 +8,7 @@ import net.minecraft.world.level.levelgen.structure.StructurePieceAccessor;
 import net.minecraft.world.level.levelgen.structure.TerrainAdjustment;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-import net.neoforged.neoforge.common.world.PieceBeardifierModifier;
+import twilightforest.compat.neoforge.common.world.PieceBeardifierModifier;
 import twilightforest.TwilightForestMod;
 import twilightforest.init.TFStructurePieceTypes;
 import twilightforest.util.jigsaw.JigsawPlaceContext;

@@ -16,7 +16,7 @@ import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSeriali
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-import net.neoforged.neoforge.common.world.PieceBeardifierModifier;
+import twilightforest.compat.neoforge.common.world.PieceBeardifierModifier;
 import twilightforest.TwilightForestMod;
 import twilightforest.init.TFStructurePieceTypes;
 import twilightforest.tags.TFPaintingVariantTags;

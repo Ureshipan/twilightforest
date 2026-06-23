@@ -23,7 +23,7 @@ import net.minecraft.world.level.levelgen.structure.*;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceSerializationContext;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-import net.neoforged.neoforge.common.world.PieceBeardifierModifier;
+import twilightforest.compat.neoforge.common.world.PieceBeardifierModifier;
 import org.joml.SimplexNoise;
 import twilightforest.init.TFStructurePieceTypes;
 import twilightforest.util.BoundingBoxUtils;
