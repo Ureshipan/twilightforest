@@ -257,13 +257,13 @@ public class OreMagnetItem extends Item {
 		TREE_ORE_TO_BLOCK_REPLACEMENTS.clear();
 
 		//collect all tags
-		for (HolderSet.Named<Block> tag : BuiltInRegistries.BLOCK.getTags().filter(location -> location.key().identifier().getNamespace().equals("c")).toList()) {
+		for (HolderSet.Named<Block> tag : BuiltInRegistries.BLOCK.getTags().filter(location -> location.key().location().getNamespace().equals("c")).toList()) {
 			//check if the tag is a valid ore tag
-			if (tag.key().identifier().getPath().contains("ores_in_ground/")) {
+			if (tag.key().location().getPath().contains("ores_in_ground/")) {
 				//grab the part after the slash for use later
-				String oreground = tag.key().identifier().getPath().substring(15);
+				String oreground = tag.key().location().getPath().substring(15);
 				//check if a tag for ore grounds matches up with our ores in ground tag
-				if (BuiltInRegistries.BLOCK.getTags().filter(location -> location.key().identifier().getNamespace().equals("c")).anyMatch(blockTagKey -> blockTagKey.key().identifier().getPath().equals("ore_bearing_ground/" + oreground))) {
+				if (BuiltInRegistries.BLOCK.getTags().filter(location -> location.key().location().getNamespace().equals("c")).anyMatch(blockTagKey -> blockTagKey.key().location().getPath().equals("ore_bearing_ground/" + oreground))) {
 					//add each ground type to each ore
 					BuiltInRegistries.BLOCK.get(TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("c", "ore_bearing_ground/" + oreground))).get().forEach(ground ->
 						tag.forEach(ore -> {

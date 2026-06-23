@@ -139,7 +139,7 @@ public class ConnectedTextureBuilder extends CustomLoaderBuilder {
 			}
 
 			if (!this.connectableTags.isEmpty()) {
-				this.connectableTags.forEach(tag -> connectables.add("#" + tag.identifier()));
+				this.connectableTags.forEach(tag -> connectables.add("#" + tag.location()));
 			}
 
 			json.add("connectable_blocks", connectables);

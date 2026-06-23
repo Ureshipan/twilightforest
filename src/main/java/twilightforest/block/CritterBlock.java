@@ -142,7 +142,7 @@ public abstract class CritterBlock extends BaseEntityBlock implements SimpleWate
 					stack.consume(1, player);
 					player.getInventory().add(newStack);
 					if (level.isClientSide())
-						Minecraft.getInstance().getSoundManager().stop(TFSounds.CICADA.get().identifier(), SoundSource.NEUTRAL);
+						Minecraft.getInstance().getSoundManager().stop(TFSounds.CICADA.get().location(), SoundSource.NEUTRAL);
 					level.setBlockAndUpdate(pos, state.getValue(WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState());
 					return InteractionResult.SUCCESS;
 				}
@@ -156,7 +156,7 @@ public abstract class CritterBlock extends BaseEntityBlock implements SimpleWate
 		if ((entity instanceof Projectile && !entity.getType().is(TFEntityTypeTags.DONT_KILL_BUGS)) || entity instanceof FallingBlockEntity) {
 			level.setBlockAndUpdate(pos, state.getValue(WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState());
 			if (level.isClientSide())
-				Minecraft.getInstance().getSoundManager().stop(TFSounds.CICADA.get().identifier(), SoundSource.NEUTRAL);
+				Minecraft.getInstance().getSoundManager().stop(TFSounds.CICADA.get().location(), SoundSource.NEUTRAL);
 
 			level.playSound(null, pos, TFSounds.BUG_SQUISH.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
 
