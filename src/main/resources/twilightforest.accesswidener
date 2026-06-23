@@ -268,3 +268,33 @@ accessible method net/minecraft/world/level/material/MapColor <init> (II)V
 accessible method net/minecraft/world/level/levelgen/structure/TemplateStructurePiece makeTemplateLocation ()Lnet/minecraft/resources/Identifier;
 accessible method net/minecraft/world/level/levelgen/structure/structures/EndCityPieces$EndCityPiece makeTemplateLocation ()Lnet/minecraft/resources/Identifier;
 accessible method net/minecraft/world/level/levelgen/structure/structures/WoodlandMansionPieces$WoodlandMansionPiece makeTemplateLocation ()Lnet/minecraft/resources/Identifier;
+
+# ── Port: field accessors auto-generated for 1.21.11 ──
+accessible field net/minecraft/client/Minecraft cameraEntity Lnet/minecraft/world/entity/Entity;
+accessible field net/minecraft/client/gui/Font random Lnet/minecraft/util/RandomSource;
+accessible field net/minecraft/client/gui/components/BossHealthOverlay OVERLAY_BACKGROUND_SPRITES [Lnet/minecraft/resources/Identifier;
+accessible field net/minecraft/client/gui/components/BossHealthOverlay OVERLAY_PROGRESS_SPRITES [Lnet/minecraft/resources/Identifier;
+accessible field net/minecraft/client/gui/components/SplashRenderer splash Lnet/minecraft/network/chat/Component;
+accessible field net/minecraft/client/model/geom/LayerDefinitions INNER_ARMOR_DEFORMATION Lnet/minecraft/client/model/geom/builders/CubeDeformation;
+accessible field net/minecraft/client/model/geom/LayerDefinitions OUTER_ARMOR_DEFORMATION Lnet/minecraft/client/model/geom/builders/CubeDeformation;
+accessible field net/minecraft/client/renderer/block/model/BlockElement faces Ljava/util/Map;
+accessible field net/minecraft/client/renderer/block/model/BlockElement from Lorg/joml/Vector3fc;
+accessible field net/minecraft/client/renderer/block/model/BlockElement lightEmission I
+accessible field net/minecraft/client/renderer/block/model/BlockElement rotation Lnet/minecraft/client/renderer/block/model/BlockElementRotation;
+accessible field net/minecraft/client/renderer/block/model/BlockElement shade Z
+accessible field net/minecraft/client/renderer/block/model/BlockElement to Lorg/joml/Vector3fc;
+accessible field net/minecraft/world/entity/Mob targetSelector Lnet/minecraft/world/entity/ai/goal/GoalSelector;
+accessible field net/minecraft/world/entity/player/Inventory items Lnet/minecraft/core/NonNullList;
+accessible field net/minecraft/world/entity/player/Inventory selected I
+accessible field net/minecraft/world/item/AxeItem STRIPPABLES Ljava/util/Map;
+accessible field net/minecraft/world/item/enchantment/EnchantmentInstance enchantment Lnet/minecraft/core/Holder;
+accessible field net/minecraft/world/item/enchantment/EnchantmentInstance level I
+accessible field net/minecraft/world/level/BaseSpawner displayEntity Lnet/minecraft/world/entity/Entity;
+accessible field net/minecraft/world/level/Level isClientSide Z
+accessible field net/minecraft/world/level/biome/Biome TEMPERATURE_NOISE Lnet/minecraft/world/level/levelgen/synth/PerlinSimplexNoise;
+accessible field net/minecraft/world/level/block/entity/BaseContainerBlockEntity name Lnet/minecraft/network/chat/Component;
+accessible field net/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacer baseHeight I
+accessible field net/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacer heightRandA I
+accessible field net/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacer heightRandB I
+accessible field net/minecraft/world/level/levelgen/structure/StructurePiece orientation Lnet/minecraft/core/Direction;
+mutable field net/minecraft/client/gui/components/SplashRenderer splash Lnet/minecraft/network/chat/Component;
