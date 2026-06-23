@@ -29,11 +29,11 @@ public interface EnforcedHomePoint {
 
 	default void loadHomePointFromNbt(CompoundTag tag) {
 		//properly load old home points, just assume theyre set in TF
-		if (tag.contains("Home", 9)) {
-			ListTag nbttaglist = tag.getList("Home", 6);
-			double hx = nbttaglist.getDouble(0);
-			double hy = nbttaglist.getDouble(1);
-			double hz = nbttaglist.getDouble(2);
+		if (tag.contains("Home")) {
+			ListTag nbttaglist = tag.getListOrEmpty("Home");
+			double hx = nbttaglist.getDoubleOr(0, 0.0);
+			double hy = nbttaglist.getDoubleOr(1, 0.0);
+			double hz = nbttaglist.getDoubleOr(2, 0.0);
 			this.setRestrictionPoint(GlobalPos.of(TFDimension.DIMENSION_KEY, BlockPos.containing(hx, hy, hz)));
 		} else {
 			if (tag.contains("HomePos")) {

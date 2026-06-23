@@ -52,7 +52,7 @@ public class HollowHillComponent extends TFStructureComponentOld {
 	public HollowHillComponent(StructurePieceSerializationContext ctx, StructurePieceType piece, CompoundTag nbt) {
 		super(piece, nbt);
 
-		this.hillSize = nbt.getInt("hillSize");
+		this.hillSize = nbt.getIntOr("hillSize", 0);
 		this.radius = ((this.hillSize * 2 + 1) * 8) - 6;
 		this.hdiam = (this.hillSize * 2 + 1) * 16;
 

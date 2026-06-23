@@ -82,13 +82,13 @@ public class TeleporterCache extends SavedData {
 
 	public static TeleporterCache load(CompoundTag tag, HolderLookup.Provider provider) {
 		TeleporterCache cache = new TeleporterCache();
-		tag.getList("dest", Tag.TAG_COMPOUND).stream().map(CompoundTag.class::cast).forEach(dest -> {
+		tag.getListOrEmpty("dest").stream().map(CompoundTag.class::cast).forEach(dest -> {
 			Identifier name = Identifier.parse(dest.getString("name"));
 			cache.destinationCoordinateCache.putIfAbsent(name, Maps.newHashMapWithExpectedSize(4096));
 			dest.getList("links", Tag.TAG_COMPOUND).stream().map(CompoundTag.class::cast).forEach(link -> {
 				CompoundTag column = link.getCompound("column");
 				CompoundTag portal = link.getCompound("portal");
-				cache.destinationCoordinateCache.get(name).put(new ColumnPos(column.getInt("x"), column.getInt("z")), new TFTeleporter.PortalPosition(BlockPos.of(portal.getLong("pos")), portal.getLong("time")));
+				cache.destinationCoordinateCache.get(name).put(new ColumnPos(column.getIntOr("x", 0), column.getIntOr("z", 0)), new TFTeleporter.PortalPosition(BlockPos.of(portal.getLongOr("pos", 0L)), portal.getLongOr("time", 0L)));
 			});
 		});
 		return cache;

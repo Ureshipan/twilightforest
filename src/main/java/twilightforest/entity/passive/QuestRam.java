@@ -180,8 +180,8 @@ public class QuestRam extends Animal implements EnforcedHomePoint {
 	@Override
 	public void readAdditionalSaveData(CompoundTag compound) {
 		super.readAdditionalSaveData(compound);
-		this.setColorFlags(compound.getInt("ColorFlags"));
-		this.setRewarded(compound.getBoolean("Rewarded"));
+		this.setColorFlags(compound.getIntOr("ColorFlags", 0));
+		this.setRewarded(compound.getBooleanOr("Rewarded", false));
 		this.loadHomePointFromNbt(compound);
 	}
 

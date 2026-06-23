@@ -206,16 +206,16 @@ public class GrowingBeanstalkBlockEntity extends BlockEntity {
 	@Override
 	protected void loadAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
 		super.loadAdditional(compoundTag, provider);
-		this.ticker = compoundTag.getInt("ticker");
-		this.layer = compoundTag.getInt("layer");
-		this.isAreaClearEnough = compoundTag.getBoolean("isAreaClearEnough");
+		this.ticker = compoundTag.getIntOr("ticker", 0);
+		this.layer = compoundTag.getIntOr("layer", 0);
+		this.isAreaClearEnough = compoundTag.getBooleanOr("isAreaClearEnough", false);
 
-		this.nextLeafY = compoundTag.getInt("nextLeafY");
-		this.yOffset = compoundTag.getInt("yOffset");
-		this.cScale = compoundTag.getFloat("cScale");
-		this.rScale = compoundTag.getFloat("rScale");
-		this.maxY = compoundTag.getInt("maxY");
-		this.blocksSkipped = compoundTag.getInt("blocksSkipped");
+		this.nextLeafY = compoundTag.getIntOr("nextLeafY", 0);
+		this.yOffset = compoundTag.getIntOr("yOffset", 0);
+		this.cScale = compoundTag.getFloatOr("cScale", 0.0F);
+		this.rScale = compoundTag.getFloatOr("rScale", 0.0F);
+		this.maxY = compoundTag.getIntOr("maxY", 0);
+		this.blocksSkipped = compoundTag.getIntOr("blocksSkipped", 0);
 	}
 
 	public boolean isBeanstalkRumbling() {

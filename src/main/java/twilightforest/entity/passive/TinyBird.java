@@ -71,7 +71,7 @@ public class TinyBird extends FlyingBird implements VariantHolder<Holder<TinyBir
 	@Override
 	public void readAdditionalSaveData(CompoundTag compound) {
 		super.readAdditionalSaveData(compound);
-		Optional.ofNullable(Identifier.tryParse(compound.getString("variant")))
+		Optional.ofNullable(Identifier.tryParse(compound.getStringOr("variant", "")))
 			.map(location -> ResourceKey.create(TFRegistries.Keys.TINY_BIRD_VARIANT, location))
 			.flatMap(key -> this.registryAccess().lookupOrThrow(TFRegistries.Keys.TINY_BIRD_VARIANT).get(key))
 			.ifPresent(this::setVariant);

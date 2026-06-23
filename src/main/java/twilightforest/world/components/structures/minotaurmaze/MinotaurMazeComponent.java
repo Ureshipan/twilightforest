@@ -31,7 +31,7 @@ public class MinotaurMazeComponent extends TFStructureComponentOld {
 	public MinotaurMazeComponent(StructurePieceSerializationContext ctx, CompoundTag nbt) {
 		super(TFStructurePieceTypes.TFMMaze.get(), nbt);
 
-		this.level = nbt.getInt("mazeLevel");
+		this.level = nbt.getIntOr("mazeLevel", 0);
 		this.rcoords = nbt.getIntArray("roomCoords");
 
 		// recreate maze object

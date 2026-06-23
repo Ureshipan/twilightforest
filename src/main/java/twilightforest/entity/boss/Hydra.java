@@ -228,12 +228,12 @@ public class Hydra extends BaseTFBoss {
 	@Override
 	public void readAdditionalSaveData(CompoundTag compound) {
 		super.readAdditionalSaveData(compound);
-		this.activateHeadsOnLoad(compound.getByte("NumHeads"));
-		if (compound.contains("HeadNames", Tag.TAG_LIST)) {
+		this.activateHeadsOnLoad(compound.getByteOr("NumHeads", (byte) 0));
+		if (compound.contains("HeadNames")) {
 			List<String> names = new ArrayList<>();
-			ListTag list = compound.getList("HeadNames", Tag.TAG_STRING);
+			ListTag list = compound.getListOrEmpty("HeadNames");
 			for (int i = 0; i < list.size(); i++) {
-				String name = list.getString(i);
+				String name = list.getStringOr(i, "");
 				names.add(name);
 				this.hc[i].headEntity.setCustomName(Component.literal(name));
 			}

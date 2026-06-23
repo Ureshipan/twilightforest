@@ -186,7 +186,7 @@ public class GraveyardFeature extends Feature<NoneFeatureConfiguration> {
 
 		data.forEach(info -> {
 			if (info.nbt() != null && StructureMode.valueOf(info.nbt().getString("mode")) == StructureMode.DATA) {
-				String s = info.nbt().getString("metadata");
+				String s = info.nbt().getStringOr("metadata", "");
 				BlockPos p = info.pos();
 				if ("spawner".equals(s)) {
 					world.removeBlock(p, false);

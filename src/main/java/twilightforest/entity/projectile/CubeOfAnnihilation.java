@@ -215,7 +215,7 @@ public class CubeOfAnnihilation extends ThrowableProjectile {
 	@Override
 	protected void readAdditionalSaveData(CompoundTag pCompound) {
 		super.readAdditionalSaveData(pCompound);
-		if (pCompound.contains("CubeOfAnnihilationStack", 10)) {
+		if (pCompound.contains("CubeOfAnnihilationStack")) {
 			this.stack = ItemStack.parseOptional(this.registryAccess(), pCompound.getCompound("CubeOfAnnihilationStack"));
 		}
 	}

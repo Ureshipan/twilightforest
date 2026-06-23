@@ -115,8 +115,8 @@ public abstract class BookshelfSpawner implements IOwnedSpawner {
 	}
 
 	public void load(@Nullable Level level, BlockPos pos, CompoundTag tag) {
-		this.spawnDelay = tag.getShort("Delay");
-		boolean flag = tag.contains("SpawnData", 10);
+		this.spawnDelay = tag.getShortOr("Delay", (short) 0);
+		boolean flag = tag.contains("SpawnData");
 		if (flag) {
 			SpawnData spawndata = SpawnData.CODEC
 				.parse(NbtOps.INSTANCE, tag.getCompound("SpawnData"))
@@ -125,9 +125,9 @@ public abstract class BookshelfSpawner implements IOwnedSpawner {
 			this.setNextSpawnData(level, pos, spawndata);
 		}
 
-		boolean flag1 = tag.contains("SpawnPotentials", 9);
+		boolean flag1 = tag.contains("SpawnPotentials");
 		if (flag1) {
-			ListTag listtag = tag.getList("SpawnPotentials", 10);
+			ListTag listtag = tag.getListOrEmpty("SpawnPotentials");
 			this.spawnPotentials = SpawnData.LIST_CODEC
 				.parse(NbtOps.INSTANCE, listtag)
 				.resultOrPartial(p_186388_ -> TwilightForestMod.LOGGER.warn("Death Tome Spawner: Invalid SpawnPotentials list: {}", p_186388_))
@@ -136,22 +136,22 @@ public abstract class BookshelfSpawner implements IOwnedSpawner {
 			this.spawnPotentials = WeightedList.single(this.nextSpawnData != null ? this.nextSpawnData : new SpawnData());
 		}
 
-		if (tag.contains("MinSpawnDelay", 99)) {
-			this.minSpawnDelay = tag.getShort("MinSpawnDelay");
-			this.maxSpawnDelay = tag.getShort("MaxSpawnDelay");
+		if (tag.contains("MinSpawnDelay")) {
+			this.minSpawnDelay = tag.getShortOr("MinSpawnDelay", (short) 0);
+			this.maxSpawnDelay = tag.getShortOr("MaxSpawnDelay", (short) 0);
 		}
 
-		if (tag.contains("MaxNearbyEntities", 99)) {
-			this.maxNearbyEntities = tag.getShort("MaxNearbyEntities");
-			this.requiredPlayerRange = tag.getShort("RequiredPlayerRange");
+		if (tag.contains("MaxNearbyEntities")) {
+			this.maxNearbyEntities = tag.getShortOr("MaxNearbyEntities", (short) 0);
+			this.requiredPlayerRange = tag.getShortOr("RequiredPlayerRange", (short) 0);
 		}
 
-		if (tag.contains("SpawnRange", 99)) {
-			this.spawnRange = tag.getShort("SpawnRange");
+		if (tag.contains("SpawnRange")) {
+			this.spawnRange = tag.getShortOr("SpawnRange", (short) 0);
 		}
 
-		if (tag.contains("SpawnCheckRange", 99)) {
-			this.spawnCheckRange = tag.getShort("SpawnCheckRange");
+		if (tag.contains("SpawnCheckRange")) {
+			this.spawnCheckRange = tag.getShortOr("SpawnCheckRange", (short) 0);
 		}
 	}
 
@@ -270,7 +270,7 @@ public abstract class BookshelfSpawner implements IOwnedSpawner {
 
 			entity.moveTo(entity.getX(), entity.getY(), entity.getZ(), random.nextFloat() * 360.0F, 0.0F);
 			if (entity instanceof Mob mob) {
-				boolean flag1 = data.getEntityToSpawn().size() == 1 && data.getEntityToSpawn().contains("id", 8);
+				boolean flag1 = data.getEntityToSpawn().size() == 1 && data.getEntityToSpawn().contains("id");
 				EventHooks.finalizeMobSpawnSpawner(mob, level, level.getCurrentDifficultyAt(entity.blockPosition()), EntitySpawnReason.SPAWNER, null, this, flag1);
 
 				data.getEquipment().ifPresent(mob::equip);

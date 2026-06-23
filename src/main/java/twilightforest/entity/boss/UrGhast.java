@@ -431,7 +431,7 @@ public class UrGhast extends BaseTFBoss {
 	@Override
 	public void readAdditionalSaveData(CompoundTag compound) {
 		super.readAdditionalSaveData(compound);
-		this.setInTantrum(compound.getBoolean("inTantrum"));
+		this.setInTantrum(compound.getBooleanOr("inTantrum", false));
 	}
 
 	@Override

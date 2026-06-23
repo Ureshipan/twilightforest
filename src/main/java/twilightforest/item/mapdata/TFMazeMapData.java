@@ -33,9 +33,9 @@ public class TFMazeMapData extends MapItemSavedData {
 
 	public static TFMazeMapData load(CompoundTag nbt, HolderLookup.Provider provider) {
 		MapItemSavedData data = MapItemSavedData.load(nbt, provider);
-		final boolean trackingPosition = !nbt.contains("trackingPosition", 1) || nbt.getBoolean("trackingPosition");
-		final boolean unlimitedTracking = nbt.getBoolean("unlimitedTracking");
-		final boolean locked = nbt.getBoolean("locked");
+		final boolean trackingPosition = !nbt.contains("trackingPosition") || nbt.getBoolean("trackingPosition");
+		final boolean unlimitedTracking = nbt.getBooleanOr("unlimitedTracking", false);
+		final boolean locked = nbt.getBooleanOr("locked", false);
 		TFMazeMapData tfdata = new TFMazeMapData(data.centerX, data.centerZ, data.scale, trackingPosition, unlimitedTracking, locked, data.dimension);
 
 		tfdata.colors = data.colors;
@@ -44,8 +44,8 @@ public class TFMazeMapData extends MapItemSavedData {
 		tfdata.frameMarkers.putAll(data.frameMarkers);
 		tfdata.trackedDecorationCount = data.trackedDecorationCount;
 
-		tfdata.yCenter = nbt.getInt("yCenter");
-		tfdata.ore = nbt.getBoolean("mapOres");
+		tfdata.yCenter = nbt.getIntOr("yCenter", 0);
+		tfdata.ore = nbt.getBooleanOr("mapOres", false);
 
 		return tfdata;
 	}

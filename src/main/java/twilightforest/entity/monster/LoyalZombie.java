@@ -152,7 +152,7 @@ public class LoyalZombie extends TamableAnimal {
 	@Override
 	public void readAdditionalSaveData(CompoundTag compound) {
 		super.readAdditionalSaveData(compound);
-		this.setBaby(compound.getBoolean("IsBaby"));
+		this.setBaby(compound.getBooleanOr("IsBaby", false));
 	}
 
 	@Override

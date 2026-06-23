@@ -65,13 +65,13 @@ public class FallenTrunkPiece extends StructurePiece {
 
 	public FallenTrunkPiece(StructurePieceSerializationContext context, CompoundTag tag) {
 		super(TFStructurePieceTypes.TFFallenTrunk.value(), tag);
-		this.length = tag.getInt("length");
-		this.radius = tag.getInt("radius");
+		this.length = tag.getIntOr("length", 0);
+		this.radius = tag.getIntOr("radius", 0);
 
 		RegistryOps<Tag> ops = RegistryOps.create(NbtOps.INSTANCE, context.registryAccess());
 		log = BlockStateProvider.CODEC.parse(ops, tag.getCompound("log")).result().orElse(DEFAULT_LOG);
-		chestLootTable = ResourceKey.create(Registries.LOOT_TABLE, Identifier.parse(tag.getString("chest_loot_table")));
-		this.holeSeed = tag.getInt("hole_seed");
+		chestLootTable = ResourceKey.create(Registries.LOOT_TABLE, Identifier.parse(tag.getStringOr("chest_loot_table", "")));
+		this.holeSeed = tag.getIntOr("hole_seed", 0);
 		this.hole = new Hole(this, RandomSource.create(holeSeed));
 	}
 

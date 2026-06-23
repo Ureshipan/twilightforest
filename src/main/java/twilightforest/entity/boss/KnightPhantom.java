@@ -530,10 +530,10 @@ public class KnightPhantom extends BaseTFBoss {
 	@Override
 	public void readAdditionalSaveData(CompoundTag compound) {
 		super.readAdditionalSaveData(compound);
-		this.totalKnownKnights = compound.getInt("TotalKnownKnights");
-		this.setNumber(compound.getInt("MyNumber"));
-		this.switchToFormationByNumber(compound.getInt("Formation"));
-		this.setTicksProgress(compound.getInt("TicksProgress"));
+		this.totalKnownKnights = compound.getIntOr("TotalKnownKnights", 0);
+		this.setNumber(compound.getIntOr("MyNumber", 0));
+		this.switchToFormationByNumber(compound.getIntOr("Formation", 0));
+		this.setTicksProgress(compound.getIntOr("TicksProgress", 0));
 		this.getEntityData().set(IT_IS_OVER, compound.getBoolean("IsItOver"));
 	}
 

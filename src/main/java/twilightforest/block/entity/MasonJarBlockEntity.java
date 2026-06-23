@@ -61,7 +61,7 @@ public class MasonJarBlockEntity extends JarBlockEntity {
 	protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
 		super.loadAdditional(tag, registries);
 		this.item.deserializeNBT(registries, tag.getCompound(TAG_ITEM));
-		this.itemRotation = tag.getInt(TAG_ANGLE);
+		this.itemRotation = tag.getIntOr(TAG_ANGLE, 0);
 	}
 
 	public boolean fillFromLootTable(ResourceKey<LootTable> lootTableKey, long seed, ServerLevel level) {

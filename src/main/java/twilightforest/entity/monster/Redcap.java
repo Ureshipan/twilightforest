@@ -106,6 +106,6 @@ public class Redcap extends Monster {
 	@Override
 	public void readAdditionalSaveData(CompoundTag compound) {
 		super.readAdditionalSaveData(compound);
-		this.heldTNT.setCount(compound.getInt("TNTLeft"));
+		this.heldTNT.setCount(compound.getIntOr("TNTLeft", 0));
 	}
 }

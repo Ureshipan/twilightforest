@@ -54,7 +54,7 @@ public class SkullCandleBlockEntity extends SkullBlockEntity {
 	@Override
 	protected void loadAdditional(CompoundTag tag, HolderLookup.Provider provider) {
 		super.loadAdditional(tag, provider);
-		this.candleColor = tag.getInt("CandleColor");
+		this.candleColor = tag.getIntOr("CandleColor", 0);
 	}
 
 	@Override

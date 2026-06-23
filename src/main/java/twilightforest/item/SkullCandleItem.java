@@ -33,7 +33,7 @@ public class SkullCandleItem extends StandingAndWallBlockItem {
 								"item.twilightforest.skull_candle.desc.multiple" :
 								"item.twilightforest.skull_candle.desc",
 							String.valueOf(tag.getInt("CandleAmount")),
-							WordUtils.capitalize(AbstractSkullCandleBlock.CandleColors.colorFromInt(tag.getInt("CandleColor")).getSerializedName()
+							WordUtils.capitalize(AbstractSkullCandleBlock.CandleColors.colorFromInt(tag.getIntOr("CandleColor", 0)).getSerializedName()
 								.replace("\"", "").replace("_", " ")))
 						.withStyle(ChatFormatting.GRAY));
 			}

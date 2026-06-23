@@ -183,7 +183,7 @@ public class IceBomb extends TFThrowable {
 
 	@Override
 	protected void readAdditionalSaveData(CompoundTag pCompound) {
-		this.zoneTimer = pCompound.getInt("zone_timer");
-		this.hasHit = pCompound.getBoolean("has_hit");
+		this.zoneTimer = pCompound.getIntOr("zone_timer", 0);
+		this.hasHit = pCompound.getBooleanOr("has_hit", false);
 	}
 }

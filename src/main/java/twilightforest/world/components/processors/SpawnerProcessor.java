@@ -80,7 +80,7 @@ public class SpawnerProcessor extends StructureProcessor {
 				nbtInfo.putShort("Delay", (short) Math.round(nbtInfo.getShort("MinSpawnDelay") * this.startDelayFactor.get()));
 			}
 
-			if (!nbtInfo.contains("SpawnData") || nbtInfo.getList("SpawnData", Tag.TAG_COMPOUND).isEmpty()) {
+			if (!nbtInfo.contains("SpawnData") || nbtInfo.getListOrEmpty("SpawnData").isEmpty()) {
 				Optional<SpawnData> randomSpawn = this.entities.getRandomValue(placeSettings.getRandom(modifiedInfo.pos()));
 
 				if (randomSpawn.isPresent()) {
@@ -93,12 +93,12 @@ public class SpawnerProcessor extends StructureProcessor {
 					if (this.entityWidthMax.isPresent() && entitySpawnData instanceof CompoundTag compoundTag) {
 						// give @p command_block[block_entity_data={id:command_block,auto:1,Command:"/setblock ~ ~ ~ spawner{SpawnCount:4,MaxNearbyEntities:6,SpawnRange:4,Delay:1,MinSpawnDelay:200,MaxSpawnDelay:760,RequiredPlayerRange:16,SpawnData:{entity:{id:zombie,attributes:[{id:\"generic.scale\",base:2f}]}}} replace"}] 1
 
-						Optional<EntityType<?>> type = BuiltInRegistries.ENTITY_TYPE.getOptional(Identifier.parse(spawn.entityToSpawn().getString("id")));
+						Optional<EntityType<?>> type = BuiltInRegistries.ENTITY_TYPE.getOptional(Identifier.parse(spawn.entityToSpawn().getStringOr("id", "")));
 						float newScale = this.rescaleToFitWidth(type.map(EntityType::getWidth).orElse(0f));
 
 						if (Float.isFinite(newScale) && newScale != 1) {
-							CompoundTag entityCompound = compoundTag.getCompound("entity");
-							ListTag attributes = entityCompound.getList("attributes", Tag.TAG_COMPOUND);
+							CompoundTag entityCompound = compoundTag.getCompoundOrEmpty("entity");
+							ListTag attributes = entityCompound.getListOrEmpty("attributes");
 							// Example of tag schema: SpawnData:{entity:{id:zombie,attributes:[{id:\"generic.scale\",base:2f}]}}
 							CompoundTag scale = new CompoundTag();
 							scale.putString("id", "generic.scale");

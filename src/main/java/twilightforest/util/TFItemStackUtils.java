@@ -113,7 +113,7 @@ public class TFItemStackUtils {
 		List<ItemStack> blockedItems = new ArrayList<>();
 
 		for (int i = 0; i < tag.size(); ++i) {
-			CompoundTag compoundtag = tag.getCompound(i);
+			CompoundTag compoundtag = tag.getCompoundOrEmpty(i);
 			int j = compoundtag.getByte("Slot") & 255;
 			ItemStack itemstack = ItemStack.parseOptional(registryAccess, compoundtag);
 			if (!itemstack.isEmpty()) {

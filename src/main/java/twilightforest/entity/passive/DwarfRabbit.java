@@ -99,7 +99,7 @@ public class DwarfRabbit extends Animal implements VariantHolder<Holder<DwarfRab
 	@Override
 	public void readAdditionalSaveData(CompoundTag compound) {
 		super.readAdditionalSaveData(compound);
-		Optional.ofNullable(Identifier.tryParse(compound.getString("variant")))
+		Optional.ofNullable(Identifier.tryParse(compound.getStringOr("variant", "")))
 			.map(location -> ResourceKey.create(TFRegistries.Keys.DWARF_RABBIT_VARIANT, location))
 			.flatMap(key -> this.registryAccess().lookupOrThrow(TFRegistries.Keys.DWARF_RABBIT_VARIANT).get(key))
 			.ifPresent(this::setVariant);

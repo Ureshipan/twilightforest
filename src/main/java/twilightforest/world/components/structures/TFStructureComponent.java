@@ -79,8 +79,8 @@ public abstract class TFStructureComponent extends StructurePiece implements Spa
 
 	public TFStructureComponent(StructurePieceType piece, CompoundTag nbt) {
 		super(piece, nbt);
-		this.spawnListIndex = nbt.getInt("si");
-		this.deco = TFStructureDecorator.getDecoFor(nbt.getString("deco"));
+		this.spawnListIndex = nbt.getIntOr("si", 0);
+		this.deco = TFStructureDecorator.getDecoFor(nbt.getStringOr("deco", ""));
 		this.rotation = Rotation.NONE;
 		this.rotation = Rotation.values()[nbt.getInt("rot") % Rotation.values().length];
 	}

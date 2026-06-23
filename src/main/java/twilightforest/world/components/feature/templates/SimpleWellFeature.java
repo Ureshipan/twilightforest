@@ -59,7 +59,7 @@ public class SimpleWellFeature extends TemplateFeature<SwizzleConfig> {
 
 	@Override
 	protected void processMarkers(StructureTemplate.StructureBlockInfo info, WorldGenLevel world, Rotation rotation, Mirror mirror, RandomSource random) {
-		String s = info.nbt().getString("metadata");
+		String s = info.nbt().getStringOr("metadata", "");
 		BlockPos blockPos = info.pos();
 
 		// removeBlock calls are required due to WorldGenRegion jank with cached TEs, this ensures the correct TE is used

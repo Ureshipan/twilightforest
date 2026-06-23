@@ -103,35 +103,35 @@ public class ReactorDebrisBlockEntity extends BlockEntity {
 		super.loadAdditional(tag, registries);
 
 		if (tag.contains("textures")) {
-			CompoundTag textures = tag.getCompound("textures");
-			this.textures[0] = nonEmptyNotNull(textures.getString("west"));
-			this.textures[1] = nonEmptyNotNull(textures.getString("east"));
-			this.textures[2] = nonEmptyNotNull(textures.getString("bottom"));
-			this.textures[3] = nonEmptyNotNull(textures.getString("top"));
-			this.textures[4] = nonEmptyNotNull(textures.getString("north"));
-			this.textures[5] = nonEmptyNotNull(textures.getString("south"));
+			CompoundTag textures = tag.getCompoundOrEmpty("textures");
+			this.textures[0] = nonEmptyNotNull(textures.getStringOr("west", ""));
+			this.textures[1] = nonEmptyNotNull(textures.getStringOr("east", ""));
+			this.textures[2] = nonEmptyNotNull(textures.getStringOr("bottom", ""));
+			this.textures[3] = nonEmptyNotNull(textures.getStringOr("top", ""));
+			this.textures[4] = nonEmptyNotNull(textures.getStringOr("north", ""));
+			this.textures[5] = nonEmptyNotNull(textures.getStringOr("south", ""));
 		}
 
-		ListTag posTag = tag.getList("pos", Tag.TAG_FLOAT);
+		ListTag posTag = tag.getListOrEmpty("pos");
 		if (posTag.size() == 3) {
-			this.minPos = new Vector3f(posTag.getFloat(0), posTag.getFloat(1), posTag.getFloat(2));
+			this.minPos = new Vector3f(posTag.getFloatOr(0, 0.0F), posTag.getFloatOr(1, 0.0F), posTag.getFloat(2));
 		}
 		if (!new AABB(0, 0, 0, 1, 1, 1).contains(this.minPos.x, this.minPos.y, this.minPos.z)) {
 			this.minPos = new Vector3f();
 		}
 
-		ListTag sizeTag = tag.getList("sizes", Tag.TAG_FLOAT);
+		ListTag sizeTag = tag.getListOrEmpty("sizes");
 		if (sizeTag.size() == 3) {
-			this.maxPos = new Vector3f(sizeTag.getFloat(0), sizeTag.getFloat(1), sizeTag.getFloat(2)).add(this.minPos);
+			this.maxPos = new Vector3f(sizeTag.getFloatOr(0, 0.0F), sizeTag.getFloatOr(1, 0.0F), sizeTag.getFloat(2)).add(this.minPos);
 		}
 		if (!new AABB(0, 0, 0, 1, 1, 1).contains(this.minPos.x, this.minPos.y, this.minPos.z)) {
 			this.maxPos = new Vector3f(1);
 		}
 
 		this.shape = Shapes.box(this.minPos.x, this.minPos.y, this.minPos.z, this.maxPos.x, this.maxPos.y, this.maxPos.z);
-		this.rerolls = tag.getBoolean("rerolls");
-		this.willDisappear = tag.getBoolean("will_disappear");
-		this.timeAlive = tag.getByte("time_alive");
+		this.rerolls = tag.getBooleanOr("rerolls", false);
+		this.willDisappear = tag.getBooleanOr("will_disappear", false);
+		this.timeAlive = tag.getByteOr("time_alive", (byte) 0);
 	}
 
 	@Override

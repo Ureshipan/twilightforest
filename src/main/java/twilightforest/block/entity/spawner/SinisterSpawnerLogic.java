@@ -172,7 +172,7 @@ public abstract class SinisterSpawnerLogic extends BaseSpawner {
 								continue;
 							}
 
-							boolean flag1 = spawndata.getEntityToSpawn().size() == 1 && spawndata.getEntityToSpawn().contains("id", 8);
+							boolean flag1 = spawndata.getEntityToSpawn().size() == 1 && spawndata.getEntityToSpawn().contains("id");
 							// Neo: Patch in FinalizeSpawn for spawners so it may be fired unconditionally, instead of only when vanilla would normally call it.
 							// The local flag1 is the conditions under which the spawner will normally call Mob#finalizeSpawn.
 							twilightforest.compat.neoforge.event.EventHooks.finalizeMobSpawnSpawner(mob, serverLevel, serverLevel.getCurrentDifficultyAt(entity.blockPosition()), EntitySpawnReason.SPAWNER, null, this, flag1);
@@ -263,7 +263,7 @@ public abstract class SinisterSpawnerLogic extends BaseSpawner {
 		}
 
 		if (tag.contains("EntityScanRange"))
-			this.entityScanRange = tag.getInt("EntityScanRange");
+			this.entityScanRange = tag.getIntOr("EntityScanRange", 0);
 		else
 			this.entityScanRange = this.spawnRange;
 	}

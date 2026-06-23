@@ -54,7 +54,7 @@ public class FancyWellFeature extends TemplateFeature<SwizzleConfig> {
 
 	@Override
 	protected void processMarkers(StructureTemplate.StructureBlockInfo info, WorldGenLevel world, Rotation rotation, Mirror mirror, RandomSource random) {
-		String s = info.nbt().getString("metadata");
+		String s = info.nbt().getStringOr("metadata", "");
 
 		if (!s.startsWith("loot")) return;
 

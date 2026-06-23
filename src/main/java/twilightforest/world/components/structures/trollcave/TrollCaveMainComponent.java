@@ -49,8 +49,8 @@ public class TrollCaveMainComponent extends TFStructureComponentOld {
 	public TrollCaveMainComponent(StructurePieceType piece, StructurePieceSerializationContext ctx, CompoundTag nbt) {
 		super(piece, nbt);
 
-		this.size = nbt.getInt("size");
-		this.height = nbt.getInt("height");
+		this.size = nbt.getIntOr("size", 0);
+		this.height = nbt.getIntOr("height", 0);
 
 		this.speleothemConfigHolder = StructureSpeleothemConfigs.getConfigHolder(ctx.registryAccess(), nbt.getString("config_id"));
 		this.speleothemConfig = this.speleothemConfigHolder.value();

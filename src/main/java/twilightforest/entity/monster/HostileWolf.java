@@ -92,7 +92,7 @@ public class HostileWolf extends Monster implements VariantHolder<Holder<WolfVar
 	@Override
 	public void readAdditionalSaveData(CompoundTag tag) {
 		super.readAdditionalSaveData(tag);
-		Optional.ofNullable(Identifier.tryParse(tag.getString("variant")))
+		Optional.ofNullable(Identifier.tryParse(tag.getStringOr("variant", "")))
 			.map(location -> ResourceKey.create(Registries.WOLF_VARIANT, location))
 			.flatMap(key -> this.registryAccess().lookupOrThrow(Registries.WOLF_VARIANT).get(key))
 			.ifPresent(this::setVariant);

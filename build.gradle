@@ -146,6 +146,9 @@ dependencies {
 	// Local jar from the GitHub release (JitPack can't serve Loom-built artifacts); Loom remaps & bundles it.
 	modImplementation include(files("libs/Primitive-Multipart-Entities-${project.multipart_entities_version}.jar"))
 
+	// JSR-305 nullability annotations (javax.annotation.*) — not on the Fabric classpath
+	compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
+
 	// ModMenu integration (optional)
 //	modCompileOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
 

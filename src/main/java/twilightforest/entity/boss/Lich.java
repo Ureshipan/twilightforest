@@ -237,15 +237,15 @@ public class Lich extends BaseTFBoss {
 		if (compound.contains("MasterLich")) {
 			this.setMasterUUID(compound.getUUID("MasterLich"));
 		}
-		if (compound.contains("SummonedClones", Tag.TAG_LIST)) {
+		if (compound.contains("SummonedClones")) {
 			this.summonedClones.clear();
-			ListTag cloneList = compound.getList("SummonedClones", Tag.TAG_INT_ARRAY);
+			ListTag cloneList = compound.getListOrEmpty("SummonedClones");
 			cloneList.forEach(tag -> this.summonedClones.add(NbtUtils.loadUUID(tag)));
 		}
-		this.setShieldStrength(compound.getInt("ShieldStrength"));
-		this.setMinionsToSummon(compound.getInt("MinionsToSummon"));
-		this.babyMinionsSummoned = compound.getInt("BabyMinionsSummoned");
-		this.hitsWithoutTeleport = compound.getInt("HitsWithoutTeleport");
+		this.setShieldStrength(compound.getIntOr("ShieldStrength", 0));
+		this.setMinionsToSummon(compound.getIntOr("MinionsToSummon", 0));
+		this.babyMinionsSummoned = compound.getIntOr("BabyMinionsSummoned", 0);
+		this.hitsWithoutTeleport = compound.getIntOr("HitsWithoutTeleport", 0);
 	}
 
 	@Override

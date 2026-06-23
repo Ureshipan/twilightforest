@@ -133,7 +133,7 @@ public class Yeti extends Monster implements IHostileMount {
 	@Override
 	public void readAdditionalSaveData(CompoundTag compound) {
 		super.readAdditionalSaveData(compound);
-		this.setAngry(compound.getBoolean("Angry"));
+		this.setAngry(compound.getBooleanOr("Angry", false));
 	}
 
 	@Override

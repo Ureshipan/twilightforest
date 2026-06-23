@@ -173,9 +173,9 @@ public class Troll extends Monster implements RangedAttackMob {
 	@Override
 	public void readAdditionalSaveData(CompoundTag compound) {
 		super.readAdditionalSaveData(compound);
-		this.setHasRock(compound.getBoolean("HasRock"));
-		this.rockCooldown = compound.getInt("RockCooldown");
-		this.rock = NbtUtils.readBlockState(this.level().holderLookup(Registries.BLOCK), compound.getCompound("RockState"));
+		this.setHasRock(compound.getBooleanOr("HasRock", false));
+		this.rockCooldown = compound.getIntOr("RockCooldown", 0);
+		this.rock = NbtUtils.readBlockState(this.level().holderLookup(Registries.BLOCK), compound.getCompoundOrEmpty("RockState"));
 	}
 
 	private void setCombatTask() {

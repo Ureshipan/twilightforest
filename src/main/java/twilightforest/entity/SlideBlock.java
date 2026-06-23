@@ -181,9 +181,9 @@ public class SlideBlock extends Entity {
 
 	@Override
 	protected void readAdditionalSaveData(@Nonnull CompoundTag compound) {
-		this.slideTime = compound.getInt("Time");
-		this.getEntityData().set(MOVE_DIRECTION, Direction.from3DDataValue(compound.getByte("Direction")));
-		this.myState = NbtUtils.readBlockState(this.level().holderLookup(Registries.BLOCK), compound.getCompound("BlockState"));
+		this.slideTime = compound.getIntOr("Time", 0);
+		this.getEntityData().set(MOVE_DIRECTION, Direction.from3DDataValue(compound.getByteOr("Direction", (byte) 0)));
+		this.myState = NbtUtils.readBlockState(this.level().holderLookup(Registries.BLOCK), compound.getCompoundOrEmpty("BlockState"));
 	}
 
 	@Override

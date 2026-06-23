@@ -102,7 +102,7 @@ public class LowerGoblinKnight extends Monster {
 	@Override
 	public void readAdditionalSaveData(CompoundTag compound) {
 		super.readAdditionalSaveData(compound);
-		this.setHasArmor(compound.getBoolean("hasArmor"));
+		this.setHasArmor(compound.getBooleanOr("hasArmor", false));
 	}
 
 	@Nullable

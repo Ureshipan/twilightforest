@@ -66,7 +66,7 @@ public class HollowTreeLeafDungeon extends HollowTreePiece {
 	public HollowTreeLeafDungeon(StructurePieceSerializationContext context, CompoundTag tag) {
 		super(TFStructurePieceTypes.TFHTLD.value(), tag);
 
-		this.radius = tag.getInt("leafRadius");
+		this.radius = tag.getIntOr("leafRadius", 0);
 
 		RegistryOps<Tag> ops = RegistryOps.create(NbtOps.INSTANCE, context.registryAccess());
 
@@ -75,9 +75,9 @@ public class HollowTreeLeafDungeon extends HollowTreePiece {
 		this.inside = BlockStateProvider.CODEC.parse(ops, tag.getCompound("air")).result().orElse(HollowTreePiece.DEFAULT_DUNGEON_AIR);
 		this.lootContainer = BlockStateProvider.CODEC.parse(ops, tag.getCompound("loot_block")).result().orElse(HollowTreePiece.DEFAULT_DUNGEON_LOOT_BLOCK);
 
-		this.lootTable = ResourceKey.create(Registries.LOOT_TABLE, Identifier.parse(tag.getString("loot_table")));
+		this.lootTable = ResourceKey.create(Registries.LOOT_TABLE, Identifier.parse(tag.getStringOr("loot_table", "")));
 
-		ResourceKey<EntityType<?>> dungeonMonster = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.parse(tag.getString("monster")));
+		ResourceKey<EntityType<?>> dungeonMonster = ResourceKey.create(Registries.ENTITY_TYPE, Identifier.parse(tag.getStringOr("monster", "")));
 		this.monster = context.registryAccess().lookup(Registries.ENTITY_TYPE)
 			.<Holder<EntityType<?>>>flatMap(reg -> reg.get(dungeonMonster))
 			.orElse(HollowTreePiece.DEFAULT_DUNGEON_MONSTER);

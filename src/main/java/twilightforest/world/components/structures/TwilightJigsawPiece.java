@@ -80,11 +80,11 @@ public class TwilightJigsawPiece extends TwilightTemplateStructurePiece implemen
 	}
 
 	protected static JigsawRecord readSourceFromNBT(CompoundTag structureTag) {
-		return JigsawRecord.fromTag(structureTag.getCompound("source"));
+		return JigsawRecord.fromTag(structureTag.getCompoundOrEmpty("source"));
 	}
 
 	protected static List<JigsawRecord> readConnectionsFromNBT(CompoundTag structureTag) {
-		ListTag connections = structureTag.getList("connections", Tag.TAG_COMPOUND);
+		ListTag connections = structureTag.getListOrEmpty("connections");
 
 		List<JigsawRecord> connectionsList = new ArrayList<>();
 

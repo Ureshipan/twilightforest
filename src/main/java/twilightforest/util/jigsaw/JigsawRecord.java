@@ -66,8 +66,8 @@ public record JigsawRecord(int priority, FrontAndTop orientation, BlockPos pos, 
 	public static JigsawRecord fromTag(CompoundTag tag) {
 		return new JigsawRecord(
 			tag.getInt("priority"),
-			FrontAndTop.values()[tag.getInt("facing")],
-			new BlockPos(tag.getInt("x"), tag.getInt("y"), tag.getInt("z")),
+			FrontAndTop.values()[tag.getIntOr("facing", 0)],
+			new BlockPos(tag.getIntOr("x", 0), tag.getIntOr("y", 0), tag.getInt("z")),
 			tag.getString("name"),
 			tag.getString("target")
 		);

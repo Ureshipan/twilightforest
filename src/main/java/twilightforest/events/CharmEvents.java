@@ -269,7 +269,7 @@ public class CharmEvents {
 			for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
 				if (player.getInventory().getItem(i).is(TFItems.KEEPSAKE_CASKET)) {
 					Inventory tmp = new Inventory(player);
-					tmp.load(getPlayerData(player).getList(CHARM_INV_TAG, 10));
+					tmp.load(getPlayerData(player).getListOrEmpty(CHARM_INV_TAG));
 					tmp.add(player.getInventory().getItem(i).copy());
 					player.getInventory().setItem(i, ItemStack.EMPTY);
 					getPlayerData(player).put(CHARM_INV_TAG, tmp.save(new ListTag()));
@@ -288,9 +288,9 @@ public class CharmEvents {
 		//check if our tag is in the persistent player data. If so, copy that inventory over to our own. Cloud storage at its finest!
 		CompoundTag playerData = getPlayerData(player);
 		if (!player.level().isClientSide() && playerData.contains(CHARM_INV_TAG)) {
-			ListTag tagList = playerData.getList(CHARM_INV_TAG, 10);
+			ListTag tagList = playerData.getListOrEmpty(CHARM_INV_TAG);
 			TFItemStackUtils.loadNoClear(player.registryAccess(), tagList, player.getInventory());
-			getPlayerData(player).getList(CHARM_INV_TAG, 10).clear();
+			getPlayerData(player).getListOrEmpty(CHARM_INV_TAG).clear();
 			getPlayerData(player).remove(CHARM_INV_TAG);
 		}
 

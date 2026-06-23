@@ -249,8 +249,8 @@ public class Kobold extends Monster {
 	@Override
 	public void readAdditionalSaveData(CompoundTag tag) {
 		super.readAdditionalSaveData(tag);
-		this.eatingTime = tag.getInt("EatingTimeLeft");
-		this.lastEatenBreadTicks = tag.getInt("TimeSinceBreadLastEaten");
+		this.eatingTime = tag.getIntOr("EatingTimeLeft", 0);
+		this.lastEatenBreadTicks = tag.getIntOr("TimeSinceBreadLastEaten", 0);
 	}
 
 	@Override

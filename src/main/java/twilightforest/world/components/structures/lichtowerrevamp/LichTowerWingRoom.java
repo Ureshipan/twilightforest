@@ -94,11 +94,11 @@ public final class LichTowerWingRoom extends TwilightJigsawPiece implements Piec
 		LichTowerUtil.addDefaultProcessors(this.placeSettings.addProcessor(lichTowerUtil.getRoomSpawnerProcessor()));
 		this.placeSettings().setLiquidSettings(LiquidSettings.IGNORE_WATERLOGGING);
 
-		this.roomSize = compoundTag.getInt("room_size");
-		this.generateGround = compoundTag.getBoolean("gen_ground");
-		this.ladderIndex = compoundTag.getInt("ladder_index");
+		this.roomSize = compoundTag.getIntOr("room_size", 0);
+		this.generateGround = compoundTag.getBooleanOr("gen_ground", false);
+		this.ladderIndex = compoundTag.getIntOr("ladder_index", 0);
 		this.jigsawLadderTarget = this.shouldLadderUpwards() ? this.getSpareJigsaws().get(this.ladderIndex).target() : "";
-		this.roofFallback = compoundTag.getInt("roof_index");
+		this.roofFallback = compoundTag.getIntOr("roof_index", 0);
 		this.allowedCeilingPlacements = compoundTag.getIntArray("allowed_ceiling_placements");
 	}
 
@@ -130,7 +130,7 @@ public final class LichTowerWingRoom extends TwilightJigsawPiece implements Piec
 		blockInfos.removeIf(info -> {
 			CompoundTag nbt = info.nbt();
 			if (nbt == null || nbt.isEmpty()) return false;
-			String metadata = nbt.getString("metadata");
+			String metadata = nbt.getStringOr("metadata", "");
 			return !(metadata.startsWith("rope") || metadata.startsWith("chain"));
 		});
 
@@ -171,7 +171,7 @@ public final class LichTowerWingRoom extends TwilightJigsawPiece implements Piec
 	}
 
 	private static boolean filterMetadata(RandomSource random, CompoundTag nbt) {
-		if (nbt.isEmpty() || !nbt.contains("metadata", Tag.TAG_STRING))
+		if (nbt.isEmpty() || !nbt.contains("metadata"))
 			return true;
 
 		String metadata = nbt.getString("metadata").split("%", 1)[0];

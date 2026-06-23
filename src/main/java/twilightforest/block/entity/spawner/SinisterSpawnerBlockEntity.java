@@ -43,7 +43,7 @@ public class SinisterSpawnerBlockEntity extends BlockEntity implements Spawner {
 		this.spawner.load(this.level, this.worldPosition, tag);
 
 		if (tag.contains("LootTable")) {
-			this.lootTable = ResourceKey.create(Registries.LOOT_TABLE, Identifier.parse(tag.getString("LootTable")));
+			this.lootTable = ResourceKey.create(Registries.LOOT_TABLE, Identifier.parse(tag.getStringOr("LootTable", "")));
 		} else {
 			this.lootTable = null;
 		}

@@ -38,9 +38,9 @@ public class TFMagicMapData extends MapItemSavedData {
 
 	public static TFMagicMapData load(CompoundTag nbt, HolderLookup.Provider provider) {
 		MapItemSavedData data = MapItemSavedData.load(nbt, provider);
-		final boolean trackingPosition = !nbt.contains("trackingPosition", 1) || nbt.getBoolean("trackingPosition");
-		final boolean unlimitedTracking = nbt.getBoolean("unlimitedTracking");
-		final boolean locked = nbt.getBoolean("locked");
+		final boolean trackingPosition = !nbt.contains("trackingPosition") || nbt.getBoolean("trackingPosition");
+		final boolean unlimitedTracking = nbt.getBooleanOr("unlimitedTracking", false);
+		final boolean locked = nbt.getBooleanOr("locked", false);
 		TFMagicMapData tfdata = new TFMagicMapData(data.centerX, data.centerZ, data.scale, trackingPosition, unlimitedTracking, locked, data.dimension);
 
 		tfdata.colors = data.colors;
@@ -65,9 +65,9 @@ public class TFMagicMapData extends MapItemSavedData {
 			}
 		}
 
-		if (nbt.contains("conquered_structures", Tag.TAG_LIST)) {
+		if (nbt.contains("conquered_structures")) {
 			tfdata.conqueredStructures.clear();
-			ListTag tag = nbt.getList("conquered_structures", Tag.TAG_STRING);
+			ListTag tag = nbt.getListOrEmpty("conquered_structures");
 			tag.forEach(tag1 -> tfdata.conqueredStructures.add(tag1.getAsString()));
 		}
 
