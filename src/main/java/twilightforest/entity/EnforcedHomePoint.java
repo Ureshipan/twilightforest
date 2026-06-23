@@ -1,19 +1,15 @@
 package twilightforest.entity;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.NbtOps;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.GoalSelector;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.Nullable;
-import twilightforest.TwilightForestMod;
 import twilightforest.entity.ai.goal.AttemptToGoHomeGoal;
-import twilightforest.init.TFDimension;
 
 public interface EnforcedHomePoint {
 
@@ -21,25 +17,15 @@ public interface EnforcedHomePoint {
 		selector.addGoal(5, new AttemptToGoHomeGoal<>(entity, 1.25D));
 	}
 
-	default void saveHomePointToNbt(CompoundTag tag) {
+	default void saveHomePointToNbt(ValueOutput tag) {
 		if (this.getRestrictionPoint() != null) {
-			GlobalPos.CODEC.encodeStart(NbtOps.INSTANCE, this.getRestrictionPoint()).resultOrPartial(TwilightForestMod.LOGGER::error).ifPresent(tag1 -> tag.put("HomePos", tag1));
+			tag.store("HomePos", GlobalPos.CODEC, this.getRestrictionPoint());
 		}
 	}
 
-	default void loadHomePointFromNbt(CompoundTag tag) {
-		//properly load old home points, just assume theyre set in TF
-		if (tag.contains("Home")) {
-			ListTag nbttaglist = tag.getListOrEmpty("Home");
-			double hx = nbttaglist.getDoubleOr(0, 0.0);
-			double hy = nbttaglist.getDoubleOr(1, 0.0);
-			double hz = nbttaglist.getDoubleOr(2, 0.0);
-			this.setRestrictionPoint(GlobalPos.of(TFDimension.DIMENSION_KEY, BlockPos.containing(hx, hy, hz)));
-		} else {
-			if (tag.contains("HomePos")) {
-				this.setRestrictionPoint(GlobalPos.CODEC.parse(NbtOps.INSTANCE, tag.get("HomePos")).resultOrPartial(TwilightForestMod.LOGGER::error).orElse(null));
-			}
-		}
+	default void loadHomePointFromNbt(ValueInput tag) {
+		// Port note: legacy "Home" ListTag format dropped; only the codec-based "HomePos" is read.
+		tag.read("HomePos", GlobalPos.CODEC).ifPresent(this::setRestrictionPoint);
 	}
 
 	default boolean isMobWithinHomeArea(Entity entity) {

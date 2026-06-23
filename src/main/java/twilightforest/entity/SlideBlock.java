@@ -180,17 +180,17 @@ public class SlideBlock extends Entity {
 	}
 
 	@Override
-	protected void readAdditionalSaveData(@Nonnull CompoundTag compound) {
+	protected void readAdditionalSaveData(@Nonnull net.minecraft.world.level.storage.ValueInput compound) {
 		this.slideTime = compound.getIntOr("Time", 0);
 		this.getEntityData().set(MOVE_DIRECTION, Direction.from3DDataValue(compound.getByteOr("Direction", (byte) 0)));
-		this.myState = NbtUtils.readBlockState(this.level().holderLookup(Registries.BLOCK), compound.getCompoundOrEmpty("BlockState"));
+		this.myState = compound.read("BlockState", net.minecraft.world.level.block.state.BlockState.CODEC).orElse(net.minecraft.world.level.block.Blocks.AIR.defaultBlockState());
 	}
 
 	@Override
-	protected void addAdditionalSaveData(@Nonnull CompoundTag compound) {
+	protected void addAdditionalSaveData(@Nonnull net.minecraft.world.level.storage.ValueOutput compound) {
 		compound.putInt("Time", this.slideTime);
 		compound.putByte("Direction", (byte) this.getEntityData().get(MOVE_DIRECTION).get3DDataValue());
-		compound.put("BlockState", NbtUtils.writeBlockState(this.myState));
+		compound.store("BlockState", net.minecraft.world.level.block.state.BlockState.CODEC, this.myState);
 	}
 
 	@Override
