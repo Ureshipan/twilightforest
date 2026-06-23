@@ -41,7 +41,8 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.entity.PartEntity;
+import nordmods.primitive_multipart_entities.common.entity.EntityPart;
+import nordmods.primitive_multipart_entities.common.entity.MultipartEntity;
 import twilightforest.compat.neoforge.event.EventHooks;
 import twilightforest.compat.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.Nullable;
@@ -61,7 +62,7 @@ import twilightforest.util.entities.EntityUtil;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Naga extends BaseTFBoss {
+public class Naga extends BaseTFBoss implements MultipartEntity {
 	private static final int DEATH_ANIMATION_DURATION = 24;
 	private static final int DEATH_PARTICLES_DURATION = 100;
 
@@ -505,10 +506,6 @@ public class Naga extends BaseTFBoss {
 		}
 	}
 
-	@Override
-	public boolean isMultipartEntity() {
-		return true;
-	}
 
 	@Override
 	public void recreateFromPacket(ClientboundAddEntityPacket packet) {
@@ -518,7 +515,7 @@ public class Naga extends BaseTFBoss {
 
 	@Nullable
 	@Override
-	public PartEntity<?>[] getParts() {
+	public EntityPart[] getParts() {
 		return this.bodySegments;
 	}
 

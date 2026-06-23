@@ -144,8 +144,8 @@ public class HoverBeamGoal extends HoverBaseGoal<SnowQueen> {
 		List<Entity> possibleList = this.attacker.level().getEntities(this.attacker, this.attacker.getBoundingBox().move(lookVec.x() * offset, lookVec.y() * offset, lookVec.z() * offset).inflate(range, range, range));
 		double hitDist = 0;
 
-		if (this.attacker.isMultipartEntity())
-			possibleList.removeAll(Arrays.asList(Objects.requireNonNull(this.attacker.getParts())));
+		if (this.attacker instanceof nordmods.primitive_multipart_entities.common.entity.MultipartEntity mp)
+			possibleList.removeAll(Arrays.asList(Objects.requireNonNull(mp.getParts())));
 
 		for (Entity possibleEntity : possibleList) {
 			if (possibleEntity.isPickable() && possibleEntity != this.attacker) {

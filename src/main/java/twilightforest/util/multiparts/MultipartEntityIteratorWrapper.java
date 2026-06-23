@@ -1,7 +1,8 @@
 package twilightforest.util.multiparts;
 
 import net.minecraft.world.entity.Entity;
-import net.neoforged.neoforge.entity.PartEntity;
+import nordmods.primitive_multipart_entities.common.entity.EntityPart;
+import nordmods.primitive_multipart_entities.common.entity.MultipartEntity;
 import org.jetbrains.annotations.Nullable;
 import twilightforest.entity.TFPart;
 
@@ -32,13 +33,13 @@ public class MultipartEntityIteratorWrapper implements Iterator<Entity> {
 			return next;
 		}
 		Entity next = delegate.next();
-		if (next.isMultipartEntity()) {
-			PartEntity<?>[] arr = next.getParts();
+		if (next instanceof MultipartEntity mp) {
+			EntityPart[] arr = mp.getParts();
 			// getParts is nullable, the annotation is used incorrectly
 			//noinspection ConstantValue
 			if (arr != null) {
 				int size = 0;
-				for (PartEntity<?> partEntity : arr) {
+				for (EntityPart partEntity : arr) {
 					if (partEntity instanceof TFPart<?>)
 						size++;
 				}
@@ -46,7 +47,7 @@ public class MultipartEntityIteratorWrapper implements Iterator<Entity> {
 					partIndex = 0;
 					parts = new TFPart<?>[size];
 					int index = 0;
-					for (PartEntity<?> partEntity : arr) {
+					for (EntityPart partEntity : arr) {
 						if (partEntity instanceof TFPart<?> part) {
 							parts[index] = part;
 							index++;

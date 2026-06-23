@@ -30,7 +30,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.pathfinder.Path;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.entity.PartEntity;
+import nordmods.primitive_multipart_entities.common.entity.EntityPart;
+import nordmods.primitive_multipart_entities.common.entity.MultipartEntity;
 import twilightforest.compat.neoforge.event.EventHooks;
 import org.jetbrains.annotations.Nullable;
 import twilightforest.entity.TFPart;
@@ -43,7 +44,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class Hydra extends BaseTFBoss {
+public class Hydra extends BaseTFBoss implements MultipartEntity {
 
 	private static final int TICKS_BEFORE_HEALING = 1000;
 	private static final int HEAD_RESPAWN_TICKS = 140;
@@ -577,7 +578,7 @@ public class Hydra extends BaseTFBoss {
 		if (source.getEntity() == this || source.getDirectEntity() == this)
 			return false;
 		if (this.getParts() != null)
-			for (PartEntity<?> partEntity : this.getParts())
+			for (EntityPart partEntity : this.getParts())
 				if (partEntity == source.getEntity() || partEntity == source.getDirectEntity())
 					return false;
 
@@ -636,17 +637,13 @@ public class Hydra extends BaseTFBoss {
 		return !source.is(TFDamageTypes.HYDRA_MORTAR) && super.isInvulnerableTo(level, source);
 	}
 
-	@Override
-	public boolean isMultipartEntity() {
-		return true;
-	}
 
 	/**
 	 * We need to do this for the bounding boxes on the parts to become active
 	 */
 	@Nullable
 	@Override
-	public PartEntity<?>[] getParts() {
+	public EntityPart[] getParts() {
 		return this.partArray;
 	}
 

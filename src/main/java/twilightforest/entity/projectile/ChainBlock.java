@@ -28,7 +28,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import twilightforest.compat.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.entity.IEntityWithComplexSpawn;
-import net.neoforged.neoforge.entity.PartEntity;
+import twilightforest.entity.TFPart;
 import org.jetbrains.annotations.Nullable;
 import twilightforest.tags.TFBlockTags;
 import twilightforest.init.TFDamageTypes;
@@ -128,7 +128,7 @@ public class ChainBlock extends ThrowableProjectile implements IEntityWithComple
 			if (stack != null) {
 				if (result.getEntity() instanceof LivingEntity living) {
 					damage = EnchantmentHelper.modifyDamage(level, this.stack, living, source, damage);
-				} else if (result.getEntity() instanceof PartEntity<?> part && part.getParent() instanceof LivingEntity living) {
+				} else if (result.getEntity() instanceof TFPart<?> part && part.getParent() instanceof LivingEntity living) {
 					damage = EnchantmentHelper.modifyDamage(level, this.stack, living, source, damage);
 				}
 			}

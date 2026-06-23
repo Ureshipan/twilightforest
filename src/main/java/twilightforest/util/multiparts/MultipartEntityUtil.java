@@ -24,7 +24,7 @@ public class MultipartEntityUtil {
 	}
 
 	public Entity sendDirtyMultipartEntityData(Entity entity) {
-		if (entity.isMultipartEntity())
+		if (entity instanceof nordmods.primitive_multipart_entities.common.entity.MultipartEntity)
 			PacketDistributor.sendToPlayersTrackingEntity(entity, new UpdateTFMultipartPacket(entity));
 		return entity;
 	}

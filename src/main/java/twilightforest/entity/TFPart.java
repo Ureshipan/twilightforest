@@ -9,13 +9,14 @@ import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.entity.PartEntity;
+import nordmods.primitive_multipart_entities.common.entity.EntityPart;
+import nordmods.primitive_multipart_entities.common.entity.MultipartEntity;
 import twilightforest.TwilightForestMod;
 import twilightforest.network.UpdateTFMultipartPacket;
 
 import java.util.Objects;
 
-public abstract class TFPart<T extends Entity> extends PartEntity<T> {
+public abstract class TFPart<T extends Entity> extends EntityPart {
 
 	public static final Identifier RENDERER = TwilightForestMod.prefix("noop");
 
@@ -34,7 +35,12 @@ public abstract class TFPart<T extends Entity> extends PartEntity<T> {
 	public int hurtTime;
 
 	public TFPart(T parent) {
-		super(parent);
+		super(parent, 1.0F, 1.0F);
+	}
+
+	@SuppressWarnings("unchecked")
+	public T getParent() {
+		return (T) this.owner;
 	}
 
 	public Identifier renderer() {
@@ -77,7 +83,7 @@ public abstract class TFPart<T extends Entity> extends PartEntity<T> {
 	}
 
 	public final void updateLastPos() {
-		this.moveTo(this.getX(), this.getY(), this.getZ());
+		this.snapTo(this.getX(), this.getY(), this.getZ());
 		this.yRotO = this.getYRot();
 		this.xRotO = this.getXRot();
 		this.tickCount++;
@@ -125,9 +131,9 @@ public abstract class TFPart<T extends Entity> extends PartEntity<T> {
 			this.getZ(),
 			this.getYRot(),
 			this.getXRot(),
-			this.dimensions.width(),
-			this.dimensions.height(),
-			this.dimensions.fixed(),
+			this.realSize.width(),
+			this.realSize.height(),
+			this.realSize.fixed(),
 			getEntityData().packDirty());
 
 	}
@@ -144,9 +150,9 @@ public abstract class TFPart<T extends Entity> extends PartEntity<T> {
 	}
 
 	public static void assignPartIDs(Entity parent) {
-		PartEntity<?>[] parts = parent.getParts();
+		EntityPart[] parts = ((MultipartEntity) parent).getParts();
 		for (int i = 0, partsLength = Objects.requireNonNull(parts).length; i < partsLength; i++) {
-			PartEntity<?> part = parts[i];
+			EntityPart part = parts[i];
 			part.setId(parent.getId() + i);
 		}
 	}

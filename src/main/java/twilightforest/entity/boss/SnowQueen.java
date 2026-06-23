@@ -33,7 +33,8 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.entity.PartEntity;
+import nordmods.primitive_multipart_entities.common.entity.EntityPart;
+import nordmods.primitive_multipart_entities.common.entity.MultipartEntity;
 import twilightforest.compat.neoforge.event.EventHooks;
 import org.jetbrains.annotations.Nullable;
 import twilightforest.entity.IBreathAttacker;
@@ -48,7 +49,7 @@ import twilightforest.util.WorldUtil;
 
 import java.util.List;
 
-public class SnowQueen extends BaseTFBoss implements IBreathAttacker {
+public class SnowQueen extends BaseTFBoss implements IBreathAttacker, MultipartEntity {
 
 	private static final int MAX_SUMMONS = 6;
 	private static final EntityDataAccessor<Boolean> BEAM_FLAG = SynchedEntityData.defineId(SnowQueen.class, EntityDataSerializers.BOOLEAN);
@@ -398,10 +399,6 @@ public class SnowQueen extends BaseTFBoss implements IBreathAttacker {
 		// TODO: slow target?
 	}
 
-	@Override
-	public boolean isMultipartEntity() {
-		return true;
-	}
 
 	@Override
 	public void recreateFromPacket(ClientboundAddEntityPacket packet) {
@@ -414,7 +411,7 @@ public class SnowQueen extends BaseTFBoss implements IBreathAttacker {
 	 */
 	@Nullable
 	@Override
-	public PartEntity<?>[] getParts() {
+	public EntityPart[] getParts() {
 		return this.iceArray;
 	}
 
