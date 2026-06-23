@@ -128,13 +128,13 @@ public class SkeletonDruid extends AbstractSkeleton {
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundTag compound) {
+	public void addAdditionalSaveData(ValueOutput compound) {
 		super.addAdditionalSaveData(compound);
 		compound.putBoolean("IsBaby", this.isBaby());
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundTag compound) {
+	public void readAdditionalSaveData(ValueInput compound) {
 		super.readAdditionalSaveData(compound);
 		this.setBaby(compound.getBooleanOr("IsBaby", false));
 	}

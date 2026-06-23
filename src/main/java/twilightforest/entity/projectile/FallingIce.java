@@ -225,7 +225,7 @@ public class FallingIce extends Entity {
 	}
 
 	@Override
-	protected void addAdditionalSaveData(CompoundTag tag) {
+	protected void addAdditionalSaveData(ValueOutput tag) {
 		tag.put("BlockState", NbtUtils.writeBlockState(this.blockState));
 		tag.putInt("Time", this.time);
 		if (this.blockData != null) {
@@ -235,7 +235,7 @@ public class FallingIce extends Entity {
 	}
 
 	@Override
-	protected void readAdditionalSaveData(CompoundTag tag) {
+	protected void readAdditionalSaveData(ValueInput tag) {
 		this.blockState = NbtUtils.readBlockState(this.level().holderLookup(Registries.BLOCK), tag.getCompoundOrEmpty("BlockState"));
 		this.time = tag.getIntOr("Time", 0);
 		if (tag.contains("BlockEntityData")) {

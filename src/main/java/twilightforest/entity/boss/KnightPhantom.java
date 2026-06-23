@@ -518,7 +518,7 @@ public class KnightPhantom extends BaseTFBoss {
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundTag compound) {
+	public void addAdditionalSaveData(ValueOutput compound) {
 		super.addAdditionalSaveData(compound);
 		compound.putInt("TotalKnownKnights", this.totalKnownKnights);
 		compound.putInt("MyNumber", this.getNumber());
@@ -528,7 +528,7 @@ public class KnightPhantom extends BaseTFBoss {
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundTag compound) {
+	public void readAdditionalSaveData(ValueInput compound) {
 		super.readAdditionalSaveData(compound);
 		this.totalKnownKnights = compound.getIntOr("TotalKnownKnights", 0);
 		this.setNumber(compound.getIntOr("MyNumber", 0));

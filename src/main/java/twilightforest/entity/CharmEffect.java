@@ -111,11 +111,11 @@ public class CharmEffect extends Entity implements ItemSupplier {
 	}
 
 	@Override
-	protected void readAdditionalSaveData(CompoundTag cmp) {
+	protected void readAdditionalSaveData(ValueInput cmp) {
 	}
 
 	@Override
-	protected void addAdditionalSaveData(CompoundTag cmp) {
+	protected void addAdditionalSaveData(ValueOutput cmp) {
 	}
 
 	@Nonnull

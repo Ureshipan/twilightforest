@@ -182,13 +182,13 @@ public class CarminiteGhastguard extends Ghast implements EnforcedHomePoint {
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundTag compound) {
+	public void addAdditionalSaveData(ValueOutput compound) {
 		this.saveHomePointToNbt(compound);
 		super.addAdditionalSaveData(compound);
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundTag compound) {
+	public void readAdditionalSaveData(ValueInput compound) {
 		super.readAdditionalSaveData(compound);
 		this.loadHomePointFromNbt(compound);
 	}

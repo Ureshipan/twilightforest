@@ -44,13 +44,13 @@ public class ThrownBlock extends TFThrowable {
 	}
 
 	@Override
-	protected void addAdditionalSaveData(CompoundTag tag) {
+	protected void addAdditionalSaveData(ValueOutput tag) {
 		super.addAdditionalSaveData(tag);
 		tag.put("BlockState", NbtUtils.writeBlockState(this.state));
 	}
 
 	@Override
-	protected void readAdditionalSaveData(CompoundTag tag) {
+	protected void readAdditionalSaveData(ValueInput tag) {
 		super.readAdditionalSaveData(tag);
 		this.state = NbtUtils.readBlockState(this.level().holderLookup(Registries.BLOCK), tag.getCompoundOrEmpty("BlockState"));
 	}

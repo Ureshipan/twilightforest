@@ -36,12 +36,12 @@ public class SnowQueenIceShield extends TFPart<SnowQueen> {
 	}
 
 	@Override
-	protected void readAdditionalSaveData(CompoundTag compound) {
+	protected void readAdditionalSaveData(ValueInput compound) {
 
 	}
 
 	@Override
-	protected void addAdditionalSaveData(CompoundTag compound) {
+	protected void addAdditionalSaveData(ValueOutput compound) {
 
 	}
 

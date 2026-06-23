@@ -213,7 +213,7 @@ public class Lich extends BaseTFBoss {
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundTag compound) {
+	public void addAdditionalSaveData(ValueOutput compound) {
 		super.addAdditionalSaveData(compound);
 		if (this.getMasterUUID() != null) {
 			compound.putUUID("MasterLich", this.getMasterUUID());
@@ -232,7 +232,7 @@ public class Lich extends BaseTFBoss {
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundTag compound) {
+	public void readAdditionalSaveData(ValueInput compound) {
 		super.readAdditionalSaveData(compound);
 		if (compound.contains("MasterLich")) {
 			this.setMasterUUID(compound.getUUID("MasterLich"));

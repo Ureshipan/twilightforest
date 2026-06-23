@@ -161,7 +161,7 @@ public class Troll extends Monster implements RangedAttackMob {
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundTag compound) {
+	public void addAdditionalSaveData(ValueOutput compound) {
 		super.addAdditionalSaveData(compound);
 		compound.putBoolean("HasRock", this.hasRock());
 		compound.putInt("RockCooldown", this.rockCooldown);
@@ -171,7 +171,7 @@ public class Troll extends Monster implements RangedAttackMob {
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundTag compound) {
+	public void readAdditionalSaveData(ValueInput compound) {
 		super.readAdditionalSaveData(compound);
 		this.setHasRock(compound.getBooleanOr("HasRock", false));
 		this.rockCooldown = compound.getIntOr("RockCooldown", 0);

@@ -106,7 +106,7 @@ public class MagicPainting extends HangingEntity {
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundTag tag) {
+	public void addAdditionalSaveData(ValueOutput tag) {
 		Identifier location = this.getReg().getKey(this.getVariant().value());
 		if (location != null) tag.putString("variant", location.toString());
 		tag.putByte("facing", (byte) this.direction.get2DDataValue());
@@ -114,7 +114,7 @@ public class MagicPainting extends HangingEntity {
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundTag tag) {
+	public void readAdditionalSaveData(ValueInput tag) {
 		if (tag.contains("variant")) {
 			Identifier location = Identifier.tryParse(tag.getStringOr("variant", ""));
 			if (location != null) {

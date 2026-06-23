@@ -94,12 +94,12 @@ public abstract class HydraPart extends TFPart<Hydra> {
 	}
 
 	@Override
-	protected void readAdditionalSaveData(CompoundTag compound) {
+	protected void readAdditionalSaveData(ValueInput compound) {
 
 	}
 
 	@Override
-	protected void addAdditionalSaveData(CompoundTag compound) {
+	protected void addAdditionalSaveData(ValueOutput compound) {
 
 	}
 

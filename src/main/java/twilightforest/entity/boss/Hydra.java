@@ -210,7 +210,7 @@ public class Hydra extends BaseTFBoss implements MultipartEntity {
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundTag compound) {
+	public void addAdditionalSaveData(ValueOutput compound) {
 		byte headData = 0;
 		for (int i = 0; i < MAX_HEADS; i++) {
 			if (this.hc[i].isActive()) {
@@ -227,7 +227,7 @@ public class Hydra extends BaseTFBoss implements MultipartEntity {
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundTag compound) {
+	public void readAdditionalSaveData(ValueInput compound) {
 		super.readAdditionalSaveData(compound);
 		this.activateHeadsOnLoad(compound.getByteOr("NumHeads", (byte) 0));
 		if (compound.contains("HeadNames")) {

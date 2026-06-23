@@ -265,13 +265,13 @@ public class DeathTome extends Monster implements RangedAttackMob {
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundTag tag) {
+	public void readAdditionalSaveData(ValueInput tag) {
 		super.readAdditionalSaveData(tag);
 		this.entityData.set(DATA_LECTERN, tag.getBoolean("on_lectern"));
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundTag tag) {
+	public void addAdditionalSaveData(ValueOutput tag) {
 		super.addAdditionalSaveData(tag);
 		tag.putBoolean("on_lectern", this.entityData.get(DATA_LECTERN));
 	}

@@ -305,7 +305,7 @@ public class ChainBlock extends ThrowableProjectile implements IEntityWithComple
 	}
 
 	@Override
-	protected void readAdditionalSaveData(CompoundTag pCompound) {
+	protected void readAdditionalSaveData(ValueInput pCompound) {
 		super.readAdditionalSaveData(pCompound);
 		if (pCompound.contains("BlockAndChainStack")) {
 			this.stack = ItemStack.parseOptional(this.registryAccess(), pCompound.getCompound("BlockAndChainStack"));
@@ -314,7 +314,7 @@ public class ChainBlock extends ThrowableProjectile implements IEntityWithComple
 	}
 
 	@Override
-	protected void addAdditionalSaveData(CompoundTag pCompound) {
+	protected void addAdditionalSaveData(ValueOutput pCompound) {
 		super.addAdditionalSaveData(pCompound);
 		pCompound.put("BlockAndChainStack", this.stack.save(this.registryAccess()));
 		pCompound.putBoolean("IsReturning", this.isReturning());

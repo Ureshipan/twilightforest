@@ -131,13 +131,13 @@ public class Wraith extends Mob implements Enemy, EnforcedHomePoint {
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundTag tag) {
+	public void addAdditionalSaveData(ValueOutput tag) {
 		super.addAdditionalSaveData(tag);
 		this.saveHomePointToNbt(tag);
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundTag tag) {
+	public void readAdditionalSaveData(ValueInput tag) {
 		super.readAdditionalSaveData(tag);
 		this.loadHomePointFromNbt(tag);
 	}

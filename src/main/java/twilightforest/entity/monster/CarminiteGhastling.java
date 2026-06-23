@@ -108,13 +108,13 @@ public class CarminiteGhastling extends CarminiteGhastguard {
 	}
 
 	@Override
-	public void addAdditionalSaveData(CompoundTag compound) {
+	public void addAdditionalSaveData(ValueOutput compound) {
 		compound.putBoolean("isMinion", this.isMinion);
 		super.addAdditionalSaveData(compound);
 	}
 
 	@Override
-	public void readAdditionalSaveData(CompoundTag compound) {
+	public void readAdditionalSaveData(ValueInput compound) {
 		super.readAdditionalSaveData(compound);
 		if (compound.getBooleanOr("isMinion", false)) {
 			this.makeBossMinion();

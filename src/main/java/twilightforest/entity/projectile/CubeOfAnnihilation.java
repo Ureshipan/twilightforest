@@ -213,7 +213,7 @@ public class CubeOfAnnihilation extends ThrowableProjectile {
 	}
 
 	@Override
-	protected void readAdditionalSaveData(CompoundTag pCompound) {
+	protected void readAdditionalSaveData(ValueInput pCompound) {
 		super.readAdditionalSaveData(pCompound);
 		if (pCompound.contains("CubeOfAnnihilationStack")) {
 			this.stack = ItemStack.parseOptional(this.registryAccess(), pCompound.getCompound("CubeOfAnnihilationStack"));
@@ -221,7 +221,7 @@ public class CubeOfAnnihilation extends ThrowableProjectile {
 	}
 
 	@Override
-	protected void addAdditionalSaveData(CompoundTag pCompound) {
+	protected void addAdditionalSaveData(ValueOutput pCompound) {
 		super.addAdditionalSaveData(pCompound);
 		pCompound.put("CubeOfAnnihilationStack", this.stack.save(this.registryAccess()));
 	}
