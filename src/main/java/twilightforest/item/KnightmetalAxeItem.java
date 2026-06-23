@@ -2,17 +2,17 @@ package twilightforest.item;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.TooltipFlag;
 
 import java.util.List;
 
-public class KnightmetalAxeItem extends AxeItem {
+public class KnightmetalAxeItem extends Item {
 
 	public KnightmetalAxeItem(ToolMaterial material, Properties properties) {
-		super(material, 6.0F, -3.8F, properties);
+		super(properties.axe(material, 6.0F, -3.8F));
 	}
 
 	@Override

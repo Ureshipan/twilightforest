@@ -6,10 +6,10 @@ import net.minecraft.world.item.*;
 
 import java.util.List;
 
-public class MinotaurAxeItem extends AxeItem {
+public class MinotaurAxeItem extends Item {
 
 	public MinotaurAxeItem(ToolMaterial material, Properties properties) {
-		super(material, 6.0F, -3.2F, properties);
+		super(properties.axe(material, 6.0F, -3.2F));
 	}
 
 	@Override

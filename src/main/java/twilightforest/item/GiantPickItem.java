@@ -18,10 +18,10 @@ import twilightforest.init.TFDataAttachments;
 
 import java.util.List;
 
-public class GiantPickItem extends PickaxeItem {
+public class GiantPickItem extends Item {
 
 	public GiantPickItem(ToolMaterial material, Properties properties) {
-		super(material, 8, -3.5F, properties);
+		super(properties.pickaxe(material, 8, -3.5F));
 	}
 
 	@Override
