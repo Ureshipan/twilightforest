@@ -33,7 +33,7 @@ public class CustomTextureParticle extends TextureSheetParticle {
 
 	@Override
 	public ParticleRenderType getRenderType() {
-		return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
+		return ParticleRenderType.SINGLE_QUADS;
 	}
 
 	@Override
@@ -64,7 +64,7 @@ public class CustomTextureParticle extends TextureSheetParticle {
 	@OnlyIn(Dist.CLIENT)
 	public record Factory(SpriteSet sprite, boolean fullBright) implements ParticleProvider<SimpleParticleType> {
 		@Override
-		public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+		public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, net.minecraft.util.RandomSource randomSource) {
 			CustomTextureParticle particle = new CustomTextureParticle(level, x, y, z, xSpeed, ySpeed, zSpeed, this.fullBright);
 			particle.pickSprite(this.sprite);
 			return particle;
@@ -74,7 +74,7 @@ public class CustomTextureParticle extends TextureSheetParticle {
 	@OnlyIn(Dist.CLIENT)
 	public record ShieldBreak(SpriteSet sprite) implements ParticleProvider<SimpleParticleType> {
 		@Override
-		public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+		public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, net.minecraft.util.RandomSource randomSource) {
 			CustomTextureParticle particle = new CustomTextureParticle(level, x, y, z, xSpeed, ySpeed, zSpeed, true);
 			particle.pickSprite(this.sprite);
 			particle.scale(0.75F);

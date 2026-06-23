@@ -25,7 +25,7 @@ public class MagicEffectParticle extends SpellParticle {
 			this.sprite = sprite;
 		}
 
-		public Particle createParticle(ColorParticleOption type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+		public Particle createParticle(ColorParticleOption type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, net.minecraft.util.RandomSource randomSource) {
 			MagicEffectParticle particle = new MagicEffectParticle(level, x, y, z, xSpeed, ySpeed, zSpeed, this.sprite);
 			particle.setColor(type.getRed(), type.getGreen(), type.getBlue());
 			particle.setAlpha(type.getAlpha());

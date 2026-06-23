@@ -31,7 +31,7 @@ public class CloudPuffParticle extends TextureSheetParticle {
 
 	@Override
 	public ParticleRenderType getRenderType() {
-		return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
+		return ParticleRenderType.SINGLE_QUADS;
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class CloudPuffParticle extends TextureSheetParticle {
 	public record Factory(SpriteSet sprites) implements ParticleProvider<SimpleParticleType> {
 
 		@Override
-		public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+		public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, net.minecraft.util.RandomSource randomSource) {
 			return new CloudPuffParticle(level, x, y, z, xSpeed, ySpeed, zSpeed, this.sprites);
 		}
 	}

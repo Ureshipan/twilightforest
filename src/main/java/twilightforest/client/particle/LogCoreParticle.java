@@ -17,7 +17,7 @@ public class LogCoreParticle extends RisingParticle {
 
 	@Override
 	public ParticleRenderType getRenderType() {
-		return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
+		return ParticleRenderType.SINGLE_QUADS;
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class LogCoreParticle extends RisingParticle {
 
 	public record Factory(SpriteSet sprite) implements ParticleProvider<SimpleParticleType> {
 		@Override
-		public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double x2, double y2, double z2) {
+		public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double x2, double y2, double z2, net.minecraft.util.RandomSource randomSource) {
 			LogCoreParticle logCoreParticle = new LogCoreParticle(level, x, y, z, x2, y2, z2);
 			logCoreParticle.pickSprite(this.sprite);
 			return logCoreParticle;

@@ -21,7 +21,7 @@ public class ProtectionParticle extends SuspendedTownParticle {
 	public record Factory(SpriteSet sprite) implements ParticleProvider<SimpleParticleType> {
 
 		@Override
-		public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double vx, double vy, double vz) {
+		public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double vx, double vy, double vz, net.minecraft.util.RandomSource randomSource) {
 			ProtectionParticle particle = new ProtectionParticle(level, x, y, z, vx, vy, vz);
 			particle.pickSprite(this.sprite);
 			particle.setColor(1.0F, 1.0F, 1.0F);

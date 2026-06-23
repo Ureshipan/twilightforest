@@ -36,7 +36,7 @@ public class SortingParticle extends TextureSheetParticle {
 
 	@Override
 	public ParticleRenderType getRenderType() {
-		return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
+		return ParticleRenderType.SINGLE_QUADS;
 	}
 
 	@Override
@@ -82,7 +82,7 @@ public class SortingParticle extends TextureSheetParticle {
 
 	public record Factory(SpriteSet sprite) implements ParticleProvider<SimpleParticleType> {
 		@Override
-		public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double x2, double y2, double z2) {
+		public Particle createParticle(SimpleParticleType particleType, ClientLevel level, double x, double y, double z, double x2, double y2, double z2, net.minecraft.util.RandomSource randomSource) {
 			SortingParticle sortingParticle = new SortingParticle(level, x, y, z, x2, y2, z2);
 			sortingParticle.pickSprite(this.sprite);
 			return sortingParticle;

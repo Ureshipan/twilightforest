@@ -27,7 +27,7 @@ public class AngryLichParticle extends HeartParticle {
 			this.sprite = sprites;
 		}
 
-		public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+		public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, net.minecraft.util.RandomSource randomSource) {
 			AngryLichParticle lichParticle = new AngryLichParticle(level, x, y, z);
 			lichParticle.pickSprite(this.sprite);
 			lichParticle.setColor(1.0F, 1.0F, 1.0F);
