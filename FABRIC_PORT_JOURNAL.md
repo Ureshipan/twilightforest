@@ -22,8 +22,26 @@
 
 ## Текущее состояние компиляции
 
-**~2497 уникальных ошибок** (на старте сессии было ~5036). Снижение через систематические
-автоматизируемые правки. cap javac снят через `-Xmaxerrs 20000` в build.gradle (временно, убрать в конце).
+**~2234 уникальных ошибок** (на старте сессии было ~5036, −56%). cap javac снят через `-Xmaxerrs 20000` в build.gradle (временно, убрать в конце).
+
+### Свежие сделанные пачки (после ~2497)
+- IPayloadContext → compat-шим (redirect 23 импортов + `flow()`); PieceBeardifierModifier compat-интерфейс (22 структуры)
+- LazyLoadedValue→`Suppliers.memoize`; BannerPatternItem + inline tool-конструкторы → `Item`/`Properties.<tool>`
+- Wraith `extends FlyingMob`→`Mob` (FlyingMob удалён, слит в Mob — каскад −71)
+- **ValueInput/ValueOutput (сущности)**: `add/readAdditionalSaveData(CompoundTag)`→`(ValueOutput/ValueInput)` в 33 файлах;
+  helper-методы (`EnforcedHomePoint`, `SlideBlock`) на codec `store/read`. **Остался BE-side (9 файлов с `HolderLookup.Provider`).**
+- `holderOrThrow`→`getOrThrow`, `WeightedList.create`→`of`, `getSlotForHand` unwrap, `toStack()` в DeferredHolder,
+  откат over-reach `.location()`→`.identifier()` на SoundEvent/TagKey.
+
+### Главные оставшиеся блоки (по убыванию объёма)
+1. **Рендер/модели** (~400+): `BakedModel`/`IDynamicBakedModel`/`ModelData`/`ModelProperty`/`ChunkRenderTypeSet`/
+   `RenderTypeGroup`/`entityCutoutNoCull`/`RenderTypeHelper`/`DelegateBakedModel`/`PlayerRenderState`/RenderSystem GL-стейт
+   (`enableBlend`/`disableBlend`/`enableDepthTest`). Кастомные модели TF (Connected/ForceField/GiantBlock/Patch/NoiseVarying).
+2. **BE ValueInput/Output** (9 файлов): убрать `HolderLookup.Provider`-параметр, codec-вызовы через `output.store`/`input.read`.
+3. **События** (`BlockEvent`/`PlayerInteractEvent`/`PlayerEvent`/`LivingIncomingDamageEvent`/`PlayerTickEvent`...):
+   ~25 хендлеров (EntityEvents/ToolEvents/CharmEvents/CapabilityEvents/...) → на Fabric callbacks (или стабы классов событий).
+4. **Networking регистрация** (`RegisterPayloadHandlersEvent`/`PayloadRegistrar`) → Fabric `PayloadTypeRegistry` + `ServerPlayNetworking`.
+5. Точечное: command permissions (`hasPermission(int)`→PermissionSet), `FlowerPotBlock.addPlant`, `getPersistentData`, data maps (`TFDataMaps`).
 
 Доп. сделано после multipart: appendHoverText (5-арг, TooltipDisplay+Consumer, .add→.accept, 30 файлов),
 tool-items off SwordItem/PickaxeItem/AxeItem (Properties.pickaxe/sword/axe; hurtEnemy теперь void),
