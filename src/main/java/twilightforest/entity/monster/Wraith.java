@@ -36,7 +36,7 @@ import twilightforest.util.entities.EntityUtil;
 import java.util.EnumSet;
 import java.util.Optional;
 
-public class Wraith extends FlyingMob implements Enemy, EnforcedHomePoint {
+public class Wraith extends Mob implements Enemy, EnforcedHomePoint {
 
 	private static final EntityDataAccessor<Optional<GlobalPos>> HOME_POINT = SynchedEntityData.defineId(Wraith.class, EntityDataSerializers.OPTIONAL_GLOBAL_POS);
 
