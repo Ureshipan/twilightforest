@@ -22,8 +22,13 @@
 
 ## Текущее состояние компиляции
 
-**~2614 уникальных ошибок** (на старте сессии было ~5036). Снижение через систематические
+**~2497 уникальных ошибок** (на старте сессии было ~5036). Снижение через систематические
 автоматизируемые правки. cap javac снят через `-Xmaxerrs 20000` в build.gradle (временно, убрать в конце).
+
+Доп. сделано после multipart: appendHoverText (5-арг, TooltipDisplay+Consumer, .add→.accept, 30 файлов),
+tool-items off SwordItem/PickaxeItem/AxeItem (Properties.pickaxe/sword/axe; hurtEnemy теперь void),
+`DeferredHolder.toStack()` через ItemLike, `holderOrThrow`→`getOrThrow`, registry `.get()`→`.getValue()` в шиме,
+`level.getOrThrow(enchant)`→`registryAccess().lookupOrThrow(ENCHANTMENT).getOrThrow(...)`.
 
 ### Как продолжить (HANDOFF — читать первым)
 1. Замер: `./gradlew compileJava --no-daemon > /tmp/full.txt 2>&1; grep -E '^D:.*error:' /tmp/full.txt | sort -u | wc -l`
